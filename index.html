@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced Triangle Counter</title>
+    
+    <!-- 🌐 GOOGLE SEO OPTIMIZATION (تجهيز الأرشفة للظهور في نتائج بحث جوجل) -->
+    <title>Advanced Triangle Counter - Combinatorics Engine by Eng. Md. Abu Hantash</title>
+    <meta name="description" content="Discover an innovative geometric combinatorics algorithm developed by Eng. Md. Abu Hantash to calculate the total number of triangles formed inside a main triangle. Fast, secure, and accurate.">
+    <meta name="keywords" content="triangle counter, Eng. Md. Abu Hantash, Abu Hantash triangle formula, count triangles in a triangle formula, geometric combinatorics algorithm, triangle intersection counter, non-symmetric triangle formula">
+    <meta name="author" content="Eng. Md. Abu Hantash">
+    <meta name="robots" content="index, follow">
+
     <style>
         :root {
             --primary: #2563eb;
@@ -13,6 +20,7 @@
             --text: #1e293b;
             --border: #e2e8f0;
             --accent: #0f172a;
+            --danger: #ef4444;
         }
         body {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
@@ -21,6 +29,7 @@
             margin: 0;
             padding: 20px;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
@@ -36,13 +45,11 @@
             overflow: hidden;
             border: 1px solid var(--border);
         }
-        /* Calculator Section */
         .calculator-side {
             flex: 1;
             padding: 40px;
             box-sizing: border-box;
         }
-        /* Visual Guide Section */
         .diagram-side {
             flex: 1;
             background-color: #fafafa;
@@ -106,6 +113,18 @@
         button:hover {
             background-color: var(--primary-hover);
         }
+        .error-box {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #fef2f2;
+            border: 1px solid #fca5a5;
+            border-radius: 10px;
+            color: #b91c1c;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+            display: none;
+        }
         .result-box {
             margin-top: 20px;
             padding: 15px;
@@ -125,7 +144,6 @@
             font-weight: 800;
             color: #15803d;
         }
-        /* Visual Guide Styles */
         .guide-title {
             font-size: 18px;
             font-weight: 700;
@@ -157,9 +175,62 @@
             color: white;
             flex-shrink: 0;
         }
+
+        /* 👤 AUTHOR & CONTACT DESIGN (بطاقة التعريف والتواصل الرسمية بالمهندس) */
+        .author-card {
+            width: 100%;
+            max-width: 1000px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            margin-top: 20px;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .author-info h3 {
+            margin: 0 0 4px 0;
+            font-size: 16px;
+            color: var(--accent);
+        }
+        .author-info p {
+            margin: 0;
+            font-size: 13px;
+            color: #64748b;
+        }
+        .contact-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .btn-contact {
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            background-color: #f1f5f9;
+            color: #334155;
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+        .btn-contact:hover {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        .copyright-text {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #94a3b8;
+        }
+
         @media (max-width: 850px) {
-            .main-wrapper {
+            .main-wrapper, .author-card {
                 flex-direction: column;
+                gap: 15px;
+                text-align: center;
             }
             .diagram-side {
                 border-left: none;
@@ -171,32 +242,35 @@
 <body>
 
 <div class="main-wrapper">
-    <!-- LEFT SIDE: THE CALCULATOR (SECURE VERSION) -->
+    <!-- LEFT SIDE: THE CALCULATOR -->
     <div class="calculator-side">
         <h1>📐 Advanced Triangle Counter</h1>
         <div class="subtitle">Next-Generation Geometric Calculation System</div>
         
         <div class="input-group">
             <label>Lines from Vertex 1</label>
-            <input type="number" id="v1" min="0" placeholder="0">
+            <input type="number" id="v1" placeholder="0">
         </div>
         
         <div class="input-group">
             <label>Lines from Vertex 2</label>
-            <input type="number" id="v2" min="0" placeholder="0">
+            <input type="number" id="v2" placeholder="0">
         </div>
         
         <div class="input-group">
             <label>Lines from Vertex 3</label>
-            <input type="number" id="v3" min="0" placeholder="0">
+            <input type="number" id="v3" placeholder="0">
         </div>
         
         <div class="input-group">
             <label>Triple Intersection Points (P)</label>
-            <input type="number" id="p_val" min="0" placeholder="0">
+            <input type="number" id="p_val" placeholder="0">
         </div>
         
         <button onclick="calculateTriangles()">Calculate Total Triangles</button>
+        
+        <!-- Error Display Box -->
+        <div class="error-box" id="errorBox"></div>
         
         <div class="result-box" id="resultBox">
             <h2>Total Triangles Formed:</h2>
@@ -210,66 +284,15 @@
         
         <svg width="280" height="240" viewBox="0 0 280 240" style="background: #fff; border-radius: 12px; border: 1px solid var(--border); box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);">
             <polygon points="140,20 30,200 250,200" fill="none" stroke="#0f172a" stroke-width="3"/>
-            
             <line x1="140" y1="20" x2="140" y2="200" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="4"/>
             <line x1="30" y1="200" x2="175" y2="78" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="4"/>
             <line x1="250" y1="200" x2="105" y2="78" stroke="#ea580c" stroke-width="1.5" stroke-dasharray="4"/>
-            
             <text x="135" y="15" font-weight="bold" font-size="12" fill="#2563eb">Vertex 1</text>
             <text x="5" y="215" font-weight="bold" font-size="12" fill="#16a34a">Vertex 2</text>
             <text x="235" y="215" font-weight="bold" font-size="12" fill="#ea580c">Vertex 3</text>
-            
             <circle cx="140" cy="110" r="5" fill="#ef4444"/>
             <text x="150" y="114" font-weight="bold" font-size="11" fill="#ef4444">Point P</text>
         </svg>
         
         <ul class="guide-list">
             <li class="guide-item">
-                <span class="badge" style="background-color: #2563eb;">Vertices</span>
-                Count lines drawn starting from each corner and landing on the opposite base side.
-            </li>
-            <li class="guide-item">
-                <span class="badge" style="background-color: #ef4444;">Point P</span>
-                Count only interior nodes where exactly three internal lines cross paths at one single point.
-            </li>
-            <li class="guide-item">
-                <span class="badge" style="background-color: #0f172a;">Smart Auto</span>
-                The engine automatically sorts inputs behind the scenes to maintain mathematical precision.
-            </li>
-        </ul>
-    </div>
-</div>
-
-<!-- SECURE CONNECTION TO THE PYTHON BACKEND -->
-<script>
-async function calculateTriangles() {
-    let v1 = parseInt(document.getElementById('v1').value) || 0;
-    let v2 = parseInt(document.getElementById('v2').value) || 0;
-    let v3 = parseInt(document.getElementById('v3').value) || 0;
-    let p_val = parseInt(document.getElementById('p_val').value) || 0;
-    
-    try {
-        // Sending numbers securely to our local Python black box server
-        let response = await fetch('https://triangel-server.onrender.com/calculate', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ v1: v1, v2: v2, v3: v3, p_val: p_val })
-        });
-        
-        let data = await response.json();
-        
-        if (data.success) {
-            // Displaying only the final numeric result returned by the backend
-            document.getElementById('resultValue').innerText = data.result;
-            document.getElementById('resultBox').style.display = 'block';
-        } else {
-            alert("Error in calculation: " + data.error);
-        }
-    } catch (error) {
-        alert("Could not connect to the secure server. Please make sure app.py is running!");
-    }
-}
-</script>
-
-</body>
-</html>
