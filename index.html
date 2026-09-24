@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- 🌐 GOOGLE SEO OPTIMIZATION (تجهيز الأرشفة للظهور في نتائج بحث جوجل) -->
+    <!-- 🌐 GOOGLE SEO OPTIMIZATION -->
     <title>Advanced Triangle Counter - Combinatorics Engine by Eng. Md. Abu Hantash</title>
     <meta name="description" content="Discover an innovative geometric combinatorics algorithm developed by Eng. Md. Abu Hantash to calculate the total number of triangles formed inside a main triangle. Fast, secure, and accurate.">
     <meta name="keywords" content="triangle counter, Eng. Md. Abu Hantash, Abu Hantash triangle formula, count triangles in a triangle formula, geometric combinatorics algorithm, triangle intersection counter, non-symmetric triangle formula">
@@ -176,7 +176,7 @@
             flex-shrink: 0;
         }
 
-        /* 👤 AUTHOR & CONTACT DESIGN (بطاقة التعريف والتواصل الرسمية بالمهندس) */
+        /* 👤 AUTHOR & CONTACT DESIGN */
         .author-card {
             width: 100%;
             max-width: 1000px;
@@ -296,3 +296,61 @@
         
         <ul class="guide-list">
             <li class="guide-item">
+                <span class="badge" style="background-color: #2563eb;">Vertices</span>
+
+Count lines drawn starting from each corner and landing on the opposite base side.
+
+
+Point P
+Count only interior nodes where exactly three internal lines cross paths at one single point.
+
+
+Smart Auto
+The engine automatically sorts inputs behind the scenes to maintain mathematical precision.
+
+
+
+Algorithm Invented by: Eng. Md. Abu Hantash
+Innovative Geometric Combinatorics Formulation © 2026. All rights reserved.
+
+
+📧 Email Me
+💼 [LinkedIn](https://sa.linkedin.com/)
+
+Secure Cloud Calculation System • Powered by Flask & Render
+async function calculateTriangles() {
+let v1 = document.getElementById('v1').value;
+let v2 = document.getElementById('v2').value;
+let v3 = document.getElementById('v3').value;
+let p_val = document.getElementById('p_val').value;
+let errorBox = document.getElementById('errorBox');
+let resultBox = document.getElementById('resultBox');
+errorBox.style.display = 'none';
+resultBox.style.display = 'none';
+let n1 = parseFloat(v1) || 0;
+let n2 = parseFloat(v2) || 0;
+let n3 = parseFloat(v3) || 0;
+let np = parseFloat(p_val) || 0;
+try {
+// =========================================================================
+// 🚨 🚨 🚨 الـرابط الـصحيح والـفعلي لـخادمك الـسحابي مـعلم هـنا بـالأسفل 🚨 🚨 🚨
+// =========================================================================
+let response = await fetch('https://triangel-server.onrender.com/calculate', {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({ v1: n1, v2: n2, v3: n3, p_val: np })
+});
+// =========================================================================
+let data = await response.json();
+if (data.success) {
+document.getElementById('resultValue').innerText = data.result;
+resultBox.style.display = 'block';
+} else {
+errorBox.innerText = data.error;
+errorBox.style.display = 'block';
+}
+} catch (error) {
+errorBox.innerText = "Connection Error: Could not reach the secure calculation cloud.";
+errorBox.style.display = 'block';
+}
+}
