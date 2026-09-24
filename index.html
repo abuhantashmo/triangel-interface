@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- 🌐 GOOGLE SEO OPTIMIZATION -->
+    <!-- 🌐 GOOGLE SEO OPTIMIZATION (تجهيز الأرشفة للظهور في نتائج بحث جوجل) -->
     <title>Advanced Triangle Counter - Combinatorics Engine by Eng. Md. Abu Hantash</title>
     <meta name="description" content="Discover an innovative geometric combinatorics algorithm developed by Eng. Md. Abu Hantash to calculate the total number of triangles formed inside a main triangle. Fast, secure, and accurate.">
     <meta name="keywords" content="triangle counter, Eng. Md. Abu Hantash, Abu Hantash triangle formula, count triangles in a triangle formula, geometric combinatorics algorithm, triangle intersection counter, non-symmetric triangle formula">
@@ -164,7 +164,7 @@
             line-height: 1.5;
             color: #475569;
         }
-        /* 👤 AUTHOR & CONTACT DESIGN */
+        /* 👤 AUTHOR & CONTACT DESIGN (بطاقة التعريف والتواصل الرسمية بالمهندس) */
         .author-card {
             width: 100%;
             max-width: 1000px;
@@ -263,7 +263,6 @@
             <div class="result-value" id="resultValue">0</div>
         </div>
     </div>
-
     <!-- RIGHT SIDE: VISUAL DIAGRAM & GUIDE -->
     <div class="diagram-side">
         <div class="guide-title">📊 Geometric Input Guide</div>
@@ -283,4 +282,66 @@
         <ul class="guide-list">
             <li class="guide-item"><strong>Vertices:</strong> Count lines drawn starting from each corner and landing on the opposite base side.</li>
             <li class="guide-item"><strong>Point P:</strong> Count only interior nodes where exactly three internal lines cross paths at one single point.</li>
-Use code with caution.Smart Auto: The engine automatically sorts inputs behind the scenes to maintain mathematical precision.Algorithm Invented by: Eng. Md. Abu HantashInnovative Geometric Combinatorics Formulation © 2026. All rights reserved.📧 Email Me💼 LinkedInSecure Cloud Calculation System • Powered by Flask & Renderasync function calculateTriangles() {let v1 = document.getElementById('v1').value;let v2 = document.getElementById('v2').value;let v3 = document.getElementById('v3').value;let p_val = document.getElementById('p_val').value;let errorBox = document.getElementById('errorBox');let resultBox = document.getElementById('resultBox');errorBox.style.display = 'none';resultBox.style.display = 'none';let n1 = parseFloat(v1) || 0;let n2 = parseFloat(v2) || 0;let n3 = parseFloat(v3) || 0;let np = parseFloat(p_val) || 0;try {// تم تصحيح الرابط هنا ليرتبط بسيرفرك مباشرةlet response = await fetch('https://triangel-server.onrender.com/calculate', {method: 'POST',headers: { 'Content-Type': 'application/json' },body: JSON.stringify({ v1: n1, v2: n2, v3: n3, p_val: np })});let data = await response.json();if (data.success) {document.getElementById('resultValue').innerText = data.result;resultBox.style.display = 'block';} else {errorBox.innerText = data.error || "An error occurred during calculation.";errorBox.style.display = 'block';}} catch (error) {errorBox.innerText = "Connection Error: Could not reach the secure calculation cloud.";errorBox.style.display = 'block';}}
+            <li class="guide-item"><strong>Smart Auto:</strong> The engine automatically sorts inputs behind the scenes to maintain mathematical precision.</li>
+        </ul>
+    </div>
+</div>
+
+<div class="author-card">
+    <div class="author-info">
+        <h3>Algorithm Invented by: Eng. Md. Abu Hantash</h3>
+        <p>Innovative Geometric Combinatorics Formulation © 2026. All rights reserved.</p>
+    </div>
+    <div class="contact-buttons">
+        <a href="mailto:your-email@example.com" class="btn-contact">📧 Email Me</a>
+        <a href="https://linkedin.com/in/your-profile" class="btn-contact" target="_blank">💼 LinkedIn</a>
+    </div>
+</div>
+
+<div class="copyright-text">
+    Secure Cloud Calculation System • Powered by Flask & Render
+</div>
+
+<script>
+async function calculateTriangles() {
+    let v1 = document.getElementById('v1').value;
+    let v2 = document.getElementById('v2').value;
+    let v3 = document.getElementById('v3').value;
+    let p_val = document.getElementById('p_val').value;
+    let errorBox = document.getElementById('errorBox');
+    let resultBox = document.getElementById('resultBox');
+    
+    errorBox.style.display = 'none';
+    resultBox.style.display = 'none';
+
+    // جلب القيم العشرية كاملة لتسافر إلى درع الحماية السحابي ويكتشفها
+    let n1 = parseFloat(v1) || 0;
+    let n2 = parseFloat(v2) || 0;
+    let n3 = parseFloat(v3) || 0;
+    let np = parseFloat(p_val) || 0;
+
+    try {
+        // تم تعديل الرابط بدقة وتوجيهه إلى سيرفر الـ API الخاص بك
+        let response = await fetch('https://triangel-server.onrender.com/calculate', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ v1: n1, v2: n2, v3: n3, p_val: np })
+        });
+        
+        let data = await response.json();
+        if (data.success) {
+            document.getElementById('resultValue').innerText = data.result;
+            resultBox.style.display = 'block';
+        } else {
+            // استقبال رسائل المنع وعرضها بالمستطيل الأحمر الناعم داخل التصميم
+            errorBox.innerText = data.error;
+            errorBox.style.display = 'block';
+        }
+    } catch (error) {
+        errorBox.innerText = "Connection Error: Could not reach the secure calculation cloud.";
+        errorBox.style.display = 'block';
+    }
+}
+</script>
+</body>
+</html>
