@@ -14,7 +14,7 @@
         :root {
             --primary: #2563eb;
             --primary-hover: #1d4ed8;
-            --bg: #f1f5f9;
+            --bg: linear-gradient(135deg, #e0e7ff 0%, #f1f5f9 100%);
             --card-bg: #ffffff;
             --text: #1e293b;
             --border: #e2e8f0;
@@ -23,7 +23,7 @@
         }
         body {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background-color: var(--bg);
+            background: var(--bg);
             color: var(--text);
             margin: 0;
             padding: 20px;
@@ -157,12 +157,15 @@
             width: 100%;
         }
         .guide-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 12px;
-            font-size: 13px;
-            line-height: 1.5;
+            margin-bottom: 16px;
+            font-size: 13.5px;
+            line-height: 1.6;
             color: #475569;
+        }
+        .guide-item strong {
+            color: var(--accent);
+            display: inline-block;
+            margin-bottom: 2px;
         }
         /* 👤 AUTHOR & CONTACT DESIGN (بطاقة التعريف والتواصل الرسمية بالمهندس) */
         .author-card {
@@ -202,6 +205,9 @@
             color: #334155;
             border: 1px solid var(--border);
             transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
         .btn-contact:hover {
             background-color: var(--primary);
@@ -222,6 +228,9 @@
             .diagram-side {
                 border-left: none;
                 border-top: 1px solid var(--border);
+            }
+            .contact-buttons {
+                justify-content: center;
             }
         }
     </style>
@@ -267,7 +276,7 @@
     <div class="diagram-side">
         <div class="guide-title">📊 Geometric Input Guide</div>
         
-        <svg width="280" height="240" viewBox="0 0 280 240" style="background: #fff; border-radius: 12px; border: 1px solid var(--border); box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);">
+        <svg width="280" height="240" viewBox="0 0 280 240" style="background: #fff; border-radius: 12px; border: 1px solid var(--border); box-shadow: inset 0 2px 4px rgba(0,0,0,0.02); margin-bottom: 15px;">
             <polygon points="140,20 30,200 250,200" fill="none" stroke="#0f172a" stroke-width="3"/>
             <line x1="140" y1="20" x2="140" y2="200" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="4"/>
             <line x1="30" y1="200" x2="175" y2="78" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="4"/>
@@ -280,9 +289,18 @@
         </svg>
         
         <ul class="guide-list">
-            <li class="guide-item"><strong>Vertices:</strong> Count lines drawn starting from each corner and landing on the opposite base side.</li>
-            <li class="guide-item"><strong>Point P:</strong> Count only interior nodes where exactly three internal lines cross paths at one single point.</li>
-            <li class="guide-item"><strong>Smart Auto:</strong> The engine automatically sorts inputs behind the scenes to maintain mathematical precision.</li>
+            <li class="guide-item">
+                <strong>🔹 Vertices:</strong>
+                <div>Count internal lines drawn starting from each corner and landing on the opposite base side.</div>
+            </li>
+            <li class="guide-item">
+                <strong>🔸 Point P:</strong>
+                <div>Count only interior nodes where exactly three internal lines cross paths at one single point.</div>
+            </li>
+            <li class="guide-item">
+                <strong>⚙️ Smart Auto:</strong>
+                <div>The engine automatically sorts inputs behind the scenes to maintain mathematical precision.</div>
+            </li>
         </ul>
     </div>
 </div>
@@ -293,8 +311,8 @@
         <p>Innovative Geometric Combinatorics Formulation © 2026. All rights reserved.</p>
     </div>
     <div class="contact-buttons">
-        <a href="mailto:your-email@example.com" class="btn-contact">📧 Email Me</a>
-        <a href="https://linkedin.com/in/your-profile" class="btn-contact" target="_blank">💼 LinkedIn</a>
+        <a href="mailto:abuhantashmo@gmail.com" class="btn-contact">📧 Email Me</a>
+        <a href="https://www.linkedin.com/in/mohammad-abu-hantash-6b8253170/" class="btn-contact" target="_blank">💼 LinkedIn</a>
     </div>
 </div>
 
@@ -310,30 +328,25 @@ async function calculateTriangles() {
     let p_val = document.getElementById('p_val').value;
     let errorBox = document.getElementById('errorBox');
     let resultBox = document.getElementById('resultBox');
-    
     errorBox.style.display = 'none';
     resultBox.style.display = 'none';
-
-    // جلب القيم العشرية كاملة لتسافر إلى درع الحماية السحابي ويكتشفها
+    
     let n1 = parseFloat(v1) || 0;
     let n2 = parseFloat(v2) || 0;
     let n3 = parseFloat(v3) || 0;
     let np = parseFloat(p_val) || 0;
-
+    
     try {
-        // تم تعديل الرابط بدقة وتوجيهه إلى سيرفر الـ API الخاص بك
         let response = await fetch('https://triangel-server.onrender.com/calculate', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ v1: n1, v2: n2, v3: n3, p_val: np })
         });
-        
         let data = await response.json();
         if (data.success) {
             document.getElementById('resultValue').innerText = data.result;
             resultBox.style.display = 'block';
         } else {
-            // استقبال رسائل المنع وعرضها بالمستطيل الأحمر الناعم داخل التصميم
             errorBox.innerText = data.error;
             errorBox.style.display = 'block';
         }
