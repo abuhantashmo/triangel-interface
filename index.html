@@ -14,7 +14,7 @@
         :root {
             --primary: #2563eb;
             --primary-hover: #1d4ed8;
-            --bg: linear-gradient(135deg, #e0e7ff 0%, #f1f5f9 100%);
+            --bg: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
             --card-bg: #ffffff;
             --text: #1e293b;
             --border: #e2e8f0;
@@ -157,15 +157,12 @@
             width: 100%;
         }
         .guide-item {
-            margin-bottom: 16px;
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 14px;
             font-size: 13.5px;
             line-height: 1.6;
             color: #475569;
-        }
-        .guide-item strong {
-            color: var(--accent);
-            display: inline-block;
-            margin-bottom: 2px;
         }
         /* 👤 AUTHOR & CONTACT DESIGN (بطاقة التعريف والتواصل الرسمية بالمهندس) */
         .author-card {
@@ -205,9 +202,6 @@
             color: #334155;
             border: 1px solid var(--border);
             transition: all 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
         }
         .btn-contact:hover {
             background-color: var(--primary);
@@ -229,9 +223,6 @@
                 border-left: none;
                 border-top: 1px solid var(--border);
             }
-            .contact-buttons {
-                justify-content: center;
-            }
         }
     </style>
 </head>
@@ -242,24 +233,25 @@
         <h1>📐 Advanced Triangle Counter</h1>
         <div class="subtitle">Next-Generation Geometric Calculation System</div>
         
+        <!-- تم تغيير الـ type إلى text لمنع المتصفح من تصفير وحجب المدخلات الخاطئة والحروف -->
         <div class="input-group">
             <label>Lines from Vertex 1</label>
-            <input type="number" id="v1" placeholder="0">
+            <input type="text" id="v1" placeholder="0">
         </div>
         
         <div class="input-group">
             <label>Lines from Vertex 2</label>
-            <input type="number" id="v2" placeholder="0">
+            <input type="text" id="v2" placeholder="0">
         </div>
         
         <div class="input-group">
             <label>Lines from Vertex 3</label>
-            <input type="number" id="v3" placeholder="0">
+            <input type="text" id="v3" placeholder="0">
         </div>
         
         <div class="input-group">
             <label>Triple Intersection Points (P)</label>
-            <input type="number" id="p_val" placeholder="0">
+            <input type="text" id="p_val" placeholder="0">
         </div>
         
         <button onclick="calculateTriangles()">Calculate Total Triangles</button>
@@ -276,7 +268,7 @@
     <div class="diagram-side">
         <div class="guide-title">📊 Geometric Input Guide</div>
         
-        <svg width="280" height="240" viewBox="0 0 280 240" style="background: #fff; border-radius: 12px; border: 1px solid var(--border); box-shadow: inset 0 2px 4px rgba(0,0,0,0.02); margin-bottom: 15px;">
+        <svg width="280" height="240" viewBox="0 0 280 240" style="background: #fff; border-radius: 12px; border: 1px solid var(--border); box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);">
             <polygon points="140,20 30,200 250,200" fill="none" stroke="#0f172a" stroke-width="3"/>
             <line x1="140" y1="20" x2="140" y2="200" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="4"/>
             <line x1="30" y1="200" x2="175" y2="78" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="4"/>
@@ -289,18 +281,9 @@
         </svg>
         
         <ul class="guide-list">
-            <li class="guide-item">
-                <strong>🔹 Vertices:</strong>
-                <div>Count internal lines drawn starting from each corner and landing on the opposite base side.</div>
-            </li>
-            <li class="guide-item">
-                <strong>🔸 Point P:</strong>
-                <div>Count only interior nodes where exactly three internal lines cross paths at one single point.</div>
-            </li>
-            <li class="guide-item">
-                <strong>⚙️ Smart Auto:</strong>
-                <div>The engine automatically sorts inputs behind the scenes to maintain mathematical precision.</div>
-            </li>
+            <li class="guide-item">🔹 <strong>Vertices:</strong> Count lines drawn starting from each corner and landing on the opposite base side.</li>
+            <li class="guide-item">🔸 <strong>Point P:</strong> Count only interior nodes where exactly three internal lines cross paths at one single point.</li>
+            <li class="guide-item">⚙️ <strong>Smart Auto:</strong> The engine automatically sorts inputs behind the scenes to maintain mathematical precision.</li>
         </ul>
     </div>
 </div>
@@ -322,31 +305,47 @@
 
 <script>
 async function calculateTriangles() {
-    let v1 = document.getElementById('v1').value;
-    let v2 = document.getElementById('v2').value;
-    let v3 = document.getElementById('v3').value;
-    let p_val = document.getElementById('p_val').value;
+    // جلب النصوص الخام لحمايتها من التصفير والاقتطاع التلقائي من المتصفح
+    let v1 = document.getElementById('v1').value.trim();
+    let v2 = document.getElementById('v2').value.trim();
+    let v3 = document.getElementById('v3').value.trim();
+    let p_val = document.getElementById('p_val').value.trim();
+    
     let errorBox = document.getElementById('errorBox');
     let resultBox = document.getElementById('resultBox');
+    
     errorBox.style.display = 'none';
     resultBox.style.display = 'none';
-    
-    let n1 = parseFloat(v1) || 0;
-    let n2 = parseFloat(v2) || 0;
-    let n3 = parseFloat(v3) || 0;
-    let np = parseFloat(p_val) || 0;
-    
+
+    // حظر الحقول الفارغة فوراً قبل الإرسال
+    if(!v1 || !v2 || !v3 || !p_val) {
+        errorBox.innerText = "Validation Error: All fields are required! Please fill in all variables.";
+        errorBox.style.display = 'block';
+        return;
+    }
+
+    // درع التعبير النمطي الصارم: يسمح فقط بأرقام صحيحة موجبة ويمنع الحروف، الإشارات، والكسور تماماً لتعبر النصوص الخام بأمان
+    const strictIntegerRegex = /^\\d+$/;
+
+    if (!strictIntegerRegex.test(v1) || !strictIntegerRegex.test(v2) || !strictIntegerRegex.test(v3) || !strictIntegerRegex.test(p_val)) {
+        errorBox.innerText = "Invalid Input! Please enter whole, positive numbers only (No decimals, signs, or random symbols).";
+        errorBox.style.display = 'block';
+        return; 
+    }
+
     try {
         let response = await fetch('https://triangel-server.onrender.com/calculate', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ v1: n1, v2: n2, v3: n3, p_val: np })
+            body: JSON.stringify({ v1: v1, v2: v2, v3: v3, p_val: p_val })
         });
+        
         let data = await response.json();
         if (data.success) {
             document.getElementById('resultValue').innerText = data.result;
             resultBox.style.display = 'block';
         } else {
+            // استقبال رسائل المنع وعرضها بالمستطيل الأحمر الناعم داخل التصميم
             errorBox.innerText = data.error;
             errorBox.style.display = 'block';
         }
