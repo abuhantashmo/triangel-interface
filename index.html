@@ -305,7 +305,7 @@
 
 <script>
 async function calculateTriangles() {
-    // جلب النصوص الخام لحمايتها من التصفير والاقتطاع التلقائي من المتصفح
+    // 1. جلب النصوص وتطهيرها فوراً من أي مسافات مخفية في البداية أو النهاية باستخدام .trim()
     let v1 = document.getElementById('v1').value.trim();
     let v2 = document.getElementById('v2').value.trim();
     let v3 = document.getElementById('v3').value.trim();
@@ -317,18 +317,18 @@ async function calculateTriangles() {
     errorBox.style.display = 'none';
     resultBox.style.display = 'none';
 
-    // حظر الحقول الفارغة فوراً قبل الإرسال
+    // 2. التحقق من الحقول الفارغة بعد التطهير
     if(!v1 || !v2 || !v3 || !p_val) {
         errorBox.innerText = "Validation Error: All fields are required! Please fill in all variables.";
         errorBox.style.display = 'block';
         return;
     }
 
-    // درع التعبير النمطي الصارم: يسمح فقط بأرقام صحيحة موجبة ويمنع الحروف، الإشارات، والكسور تماماً لتعبر النصوص الخام بأمان
-    const strictIntegerRegex = /^\\d+$/;
+    // 3. درع الفحص المرن: يقبل الأرقام الصحيحة فقط ويسمح بالمسافات لكنه يمنع الكسور، السوالب، والحروف تماماً
+    const strictIntegerRegex = /^\d+$/;
 
     if (!strictIntegerRegex.test(v1) || !strictIntegerRegex.test(v2) || !strictIntegerRegex.test(v3) || !strictIntegerRegex.test(p_val)) {
-        errorBox.innerText = "Invalid Input! Please enter whole, positive numbers only (No decimals, signs, or random symbols).";
+        errorBox.innerText = "Invalid Input! Please enter positive whole numbers only (No decimals, signs, or symbols).";
         errorBox.style.display = 'block';
         return; 
     }
@@ -345,7 +345,6 @@ async function calculateTriangles() {
             document.getElementById('resultValue').innerText = data.result;
             resultBox.style.display = 'block';
         } else {
-            // استقبال رسائل المنع وعرضها بالمستطيل الأحمر الناعم داخل التصميم
             errorBox.innerText = data.error;
             errorBox.style.display = 'block';
         }
@@ -354,6 +353,7 @@ async function calculateTriangles() {
         errorBox.style.display = 'block';
     }
 }
+
 </script>
 </body>
 </html>
