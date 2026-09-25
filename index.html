@@ -353,7 +353,6 @@
 
 <script>
 async function calculateTriangles() {
-    // جلب وتطهير الفراغات فوراً
     let v1 = document.getElementById('v1').value.trim();
     let v2 = document.getElementById('v2').value.trim();
     let v3 = document.getElementById('v3').value.trim();
@@ -391,13 +390,11 @@ async function calculateTriangles() {
             document.getElementById('resultValue').innerText = data.result;
             resultBox.style.display = 'block';
             
-            // تحديث عداد مرات الاستدعاء وعرضه أسفل النتيجة مباشرة للجمهور
             if(data.total_calls) {
                 document.getElementById('totalCallsValue').innerText = data.total_calls;
                 document.getElementById('callCounterBox').style.display = 'block';
             }
             
-            // تسجيل حدث التفاعل الناجح في لوحة جوجل
             gtag('event', 'calculate_success', { 'event_category': 'Engagement', 'event_label': 'Triangle Formula Calculation' });
         } else {
             errorBox.innerText = data.error;
