@@ -294,6 +294,11 @@
         <div class="result-box" id="resultBox">
             <h2>Total Triangles Formed:</h2>
             <div class="result-value" id="resultValue">0</div>
+            
+            <!-- صندوق عرض إجمالي مرات التفعيل للجمهور مدمج داخلياً -->
+            <div id="callCounterBox" style="margin-top: 15px; font-size: 13.5px; color: #64748b; font-weight: 500; border-top: 1px dashed var(--border); padding-top: 12px; display: none;">
+                🚀 Total Executions: <span id="totalCallsValue" style="color: #2563eb; font-weight: 700;">0</span> times
+            </div>
         </div>
     </div>
     <!-- RIGHT SIDE: VISUAL DIAGRAM & GUIDE -->
@@ -348,6 +353,7 @@
 
 <script>
 async function calculateTriangles() {
+    // جلب وتطهير الفراغات فوراً
     let v1 = document.getElementById('v1').value.trim();
     let v2 = document.getElementById('v2').value.trim();
     let v3 = document.getElementById('v3').value.trim();
@@ -385,6 +391,13 @@ async function calculateTriangles() {
             document.getElementById('resultValue').innerText = data.result;
             resultBox.style.display = 'block';
             
+            // تحديث عداد مرات الاستدعاء وعرضه أسفل النتيجة مباشرة للجمهور
+            if(data.total_calls) {
+                document.getElementById('totalCallsValue').innerText = data.total_calls;
+                document.getElementById('callCounterBox').style.display = 'block';
+            }
+            
+            // تسجيل حدث التفاعل الناجح في لوحة جوجل
             gtag('event', 'calculate_success', { 'event_category': 'Engagement', 'event_label': 'Triangle Formula Calculation' });
         } else {
             errorBox.innerText = data.error;
