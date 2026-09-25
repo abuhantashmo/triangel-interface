@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
+    <!-- 📊 GOOGLE ANALYTICS INTEGRATION -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5PZVW9QJT6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-5PZVW9QJT6');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- 🌐 GOOGLE SEO OPTIMIZATION (تجهيز الأرشفة للظهور في نتائج بحث جوجل) -->
+    <!-- 🌐 GOOGLE SEO OPTIMIZATION -->
     <title>Advanced Triangle Counter - Combinatorics Engine by Eng. Md. Abu Hantash</title>
     <meta name="description" content="Discover an innovative geometric combinatorics algorithm developed by Eng. Md. Abu Hantash to calculate the total number of triangles formed inside a main triangle. Fast, secure, and accurate.">
     <meta name="keywords" content="triangle counter, Eng. Md. Abu Hantash, Abu Hantash triangle formula, count triangles in a triangle formula, geometric combinatorics algorithm, triangle intersection counter, non-symmetric triangle formula">
@@ -164,7 +173,31 @@
             line-height: 1.6;
             color: #475569;
         }
-        /* 👤 AUTHOR & CONTACT DESIGN (بطاقة التعريف والتواصل الرسمية بالمهندس) */
+        
+        /* 📜 SECURE SEO DESCRIPTION SECTION */
+        .seo-section {
+            width: 100%;
+            max-width: 1000px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            margin-top: 20px;
+            padding: 30px;
+            box-sizing: border-box;
+        }
+        .seo-section h2 {
+            font-size: 20px;
+            color: var(--accent);
+            margin-top: 0;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 10px;
+        }
+        .seo-section p {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #475569;
+        }
+        
         .author-card {
             width: 100%;
             max-width: 1000px;
@@ -214,7 +247,7 @@
             color: #94a3b8;
         }
         @media (max-width: 850px) {
-            .main-wrapper, .author-card {
+            .main-wrapper, .author-card, .seo-section {
                 flex-direction: column;
                 gap: 15px;
                 text-align: center;
@@ -233,7 +266,6 @@
         <h1>📐 Advanced Triangle Counter</h1>
         <div class="subtitle">Next-Generation Geometric Calculation System</div>
         
-        <!-- تم تغيير الـ type إلى text لمنع المتصفح من تصفير وحجب المدخلات الخاطئة والحروف -->
         <div class="input-group">
             <label>Lines from Vertex 1</label>
             <input type="text" id="v1" placeholder="0">
@@ -276,16 +308,27 @@
             <text x="135" y="15" font-weight="bold" font-size="12" fill="#2563eb">Vertex 1</text>
             <text x="5" y="215" font-weight="bold" font-size="12" fill="#16a34a">Vertex 2</text>
             <text x="235" y="215" font-weight="bold" font-size="12" fill="#ea580c">Vertex 3</text>
-            <circle cx="140" cy="110" r="5" fill="#ef4444"/>
             <text x="150" y="114" font-weight="bold" font-size="11" fill="#ef4444">Point P</text>
         </svg>
-        
         <ul class="guide-list">
             <li class="guide-item">🔹 <strong>Vertices:</strong> Count lines drawn starting from each corner and landing on the opposite base side.</li>
             <li class="guide-item">🔸 <strong>Point P:</strong> Count only interior nodes where exactly three internal lines cross paths at one single point.</li>
             <li class="guide-item">⚙️ <strong>Smart Auto:</strong> The engine automatically sorts inputs behind the scenes to maintain mathematical precision.</li>
         </ul>
     </div>
+</div>
+
+<div class="seo-section">
+    <h2>About the Geometric Combinatorics Algorithm</h2>
+    <p>
+        The <strong>Advanced Triangle Counter Engine</strong> utilizes a next-generation geometric combinatorics algorithm formulated by <strong>Eng. Md. Abu Hantash</strong>. 
+        This engine is specifically designed to calculate the absolute number of non-symmetric and overlapping sub-triangles created inside a primary triangular domain when multiple cevian lines are drawn from all three major vertices.
+    </p>
+    <p>
+        Traditional counting methods fail when multiple lines intersect at shared interior nodes. 
+        By inputting the precise line frequencies from Vertex 1, Vertex 2, Vertex 3, and identifying the exact number of concurrent interior triple intersection points (Point P), this secure cloud system guarantees immediate mathematical calibration. 
+        Ideal for structural design analysis, graph theory validation, and algorithmic testing.
+    </p>
 </div>
 
 <div class="author-card">
@@ -300,12 +343,11 @@
 </div>
 
 <div class="copyright-text">
-    Secure Cloud Calculation System • Powered by Flask & Render
+    Secure Cloud Calculation System • Powered by Flask, Render & Google Analytics
 </div>
 
 <script>
 async function calculateTriangles() {
-    // 1. جلب النصوص وتطهيرها فوراً من أي مسافات مخفية في البداية أو النهاية باستخدام .trim()
     let v1 = document.getElementById('v1').value.trim();
     let v2 = document.getElementById('v2').value.trim();
     let v3 = document.getElementById('v3').value.trim();
@@ -317,14 +359,12 @@ async function calculateTriangles() {
     errorBox.style.display = 'none';
     resultBox.style.display = 'none';
 
-    // 2. التحقق من الحقول الفارغة بعد التطهير
     if(!v1 || !v2 || !v3 || !p_val) {
         errorBox.innerText = "Validation Error: All fields are required! Please fill in all variables.";
         errorBox.style.display = 'block';
         return;
     }
 
-    // 3. درع الفحص المرن: يقبل الأرقام الصحيحة فقط ويسمح بالمسافات لكنه يمنع الكسور، السوالب، والحروف تماماً
     const strictIntegerRegex = /^\d+$/;
 
     if (!strictIntegerRegex.test(v1) || !strictIntegerRegex.test(v2) || !strictIntegerRegex.test(v3) || !strictIntegerRegex.test(p_val)) {
@@ -344,6 +384,8 @@ async function calculateTriangles() {
         if (data.success) {
             document.getElementById('resultValue').innerText = data.result;
             resultBox.style.display = 'block';
+            
+            gtag('event', 'calculate_success', { 'event_category': 'Engagement', 'event_label': 'Triangle Formula Calculation' });
         } else {
             errorBox.innerText = data.error;
             errorBox.style.display = 'block';
@@ -353,7 +395,6 @@ async function calculateTriangles() {
         errorBox.style.display = 'block';
     }
 }
-
 </script>
 </body>
 </html>
