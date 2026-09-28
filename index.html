@@ -5,7 +5,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5PZVW9QJT6"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag()){dataLayer.push(arguments);}
+        function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'G-5PZVW9QJT6');
     </script>
@@ -14,21 +14,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- 🌐 GOOGLE SEO OPTIMIZATION -->
-    <title>Advanced Triangle Counter - Constant Time Complexity Equation by Eng. Md. Abu Hantash</title>
-    <meta name="description" content="An innovative geometric combinatorics formula formulated by Eng. Md. Abu Hantash. Calculate sub-triangles instantly with Constant Time Complexity O(1) without recursive counting or resource-heavy engines.">
-    <meta name="keywords" content="triangle counter, Eng. Md. Abu Hantash, Abu Hantash triangle formula, count triangles in a triangle formula, geometric combinatorics algorithm, triangle intersection counter, non-symmetric triangle formula, Big O Notation, Constant Time Complexity">
+    <title>Advanced Triangle Counter - Combinatorics Engine by Eng. Md. Abu Hantash</title>
+    <meta name="description" content="Discover an innovative geometric combinatorics algorithm developed by Eng. Md. Abu Hantash to calculate the total number of triangles formed inside a main triangle. Fast, secure, and accurate.">
+    <meta name="keywords" content="triangle counter, Eng. Md. Abu Hantash, Abu Hantash triangle formula, count triangles in a triangle formula, geometric combinatorics algorithm, triangle intersection counter, non-symmetric triangle formula">
     <meta name="author" content="Eng. Md. Abu Hantash">
     <meta name="robots" content="index, follow">
-
-    <!-- 🔗 LINK PREVIEW CONFIGURATION (OPEN GRAPH FOR WHATSAPP & LINKEDIN) -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://triangel-counter.onrender.com/">
-    <meta property="og:title" content="Advanced Triangle Counter - Constant Time Complexity Equation by Eng. Md. Abu Hantash">
-    <meta property="og:description" content="An innovative geometric combinatorics formula formulated by Eng. Md. Abu Hantash. Calculate sub-triangles instantly with Constant Time Complexity O(1) without recursive counting or resource-heavy engines.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500&auto=format&fit=crop&q=60">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-
     <style>
         :root {
             --primary: #2563eb;
@@ -310,10 +300,14 @@
         
         <button onclick="calculateTriangles()">Calculate Total Triangles</button>
         
+        <!-- Error Display Box -->
+        <div class="error-box" id="errorBox"></div>
+        
         <div class="result-box" id="resultBox">
             <h2>Total Triangles Formed:</h2>
             <div class="result-value" id="resultValue">0</div>
             
+            <!-- صندوق العداد العام للجمهور -->
             <div id="callCounterBox" style="margin-top: 15px; font-size: 13.5px; color: #64748b; font-weight: 500; border-top: 1px dashed var(--border); padding-top: 12px; display: none;">
                 🚀 Total Executions: <span id="totalCallsValue" style="color: #2563eb; font-weight: 700;">0</span> times
             </div>
@@ -324,6 +318,8 @@
         
         <svg width="280" height="240" viewBox="0 0 280 240" style="background: #fff; border-radius: 12px; border: 1px solid var(--border); box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);">
             <polygon points="140,20 30,200 250,200" fill="none" stroke="#0f172a" stroke-width="3"/>
+            
+            <line x1="140" y1="20" x2="140" y2="200" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="4"/>
             
             <line x1="30" y1="200" x2="159.8" y2="52.5" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="4"/>
             <line x1="30" y1="200" x2="195.0" y2="110.0" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="4"/>
@@ -336,8 +332,10 @@
             <text x="5" y="215" font-weight="bold" font-size="12" fill="#16a34a">Vertex 2</text>
             <text x="230" y="215" font-weight="bold" font-size="12" fill="#ea580c">Vertex 3</text>
             
-            <text x="150" y="82" font-weight="bold" font-size="11" fill="#ef4444">P</text>
+            <circle cx="140" cy="71" r="5" fill="#ef4444"/>
+            <text x="150" y="75" font-weight="bold" font-size="11" fill="#ef4444">P</text>
             
+            <circle cx="140" cy="144" r="5" fill="#ef4444"/>
             <text x="150" y="148" font-weight="bold" font-size="11" fill="#ef4444">P</text>
         </svg>
         <ul class="guide-list">
