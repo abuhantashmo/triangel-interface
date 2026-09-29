@@ -1,8 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
     <!-- 📊 GOOGLE ANALYTICS INTEGRATION -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5PZVW9QJT6"></script>
+    <script async src="https://googletagmanager.com"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
@@ -13,28 +14,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- 🌐 GOOGLE SEO OPTIMIZATION & SOCIAL SHARING (OG TAGS) -->
+    <!-- 🌐 GOOGLE SEO OPTIMIZATION & LINK PREVIEW -->
     <title>Advanced Triangle Counter - Combinatorics Equation by Eng. Md. Abu Hantash</title>
-    <meta name="description" content="Discover an innovative geometric combinatorics formula developed by Eng. Md. Abu Hantash to calculate the total number of triangles formed inside a main triangle. Fast, secure, and accurate.">
+    <meta name="description" content="Discover an innovative geometric combinatorics algorithm developed by Eng. Md. Abu Hantash to calculate the total number of triangles formed inside a main triangle. Fast, secure, and accurate.">
     <meta name="keywords" content="triangle counter, Eng. Md. Abu Hantash, Abu Hantash triangle formula, count triangles in a triangle formula, geometric combinatorics algorithm, triangle intersection counter, non-symmetric triangle formula">
     <meta name="author" content="Eng. Md. Abu Hantash">
     <meta name="robots" content="index, follow">
 
-    <!-- WhatsApp, Facebook & Social Media Preview Cards (Open Graph) -->
+    <!-- 📲 WHATSAPP & SOCIAL MEDIA PREVIEW TAGS (OPEN GRAPH) -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://triangel-server.onrender.com/">
-    <meta property="og:title" content="📐 Advanced Triangle Counter | Eng. Md. Abu Hantash">
-    <meta property="og:description" content="Calculate the total number of triangles instantly using a revolutionary mathematical equation with constant O(1) time complexity.">
-    <meta property="og:image" content="https://triangel-server.onrender.com/static/preview.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:image:type" content="image/png">
-
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="📐 Advanced Triangle Counter | Eng. Md. Abu Hantash">
-    <meta name="twitter:description" content="Calculate the total number of triangles instantly using a revolutionary mathematical equation with constant O(1) time complexity.">
-    <meta name="twitter:image" content="https://triangel-server.onrender.com/static/preview.png">
+    <meta property="og:url" content="https://onrender.com">
+    <meta property="og:title" content="Advanced Triangle Counter | Eng. Md. Abu Hantash">
+    <meta property="og:description" content="Calculate the total triangles formed instantly via the revolutionary constant-time geometric formulation.">
+    <meta property="og:image" content="https://onrender.comstatic/preview.svg">
 
     <style>
         :root {
@@ -315,137 +307,83 @@
             <input type="text" id="p_val" placeholder="0">
         </div>
         
-        <button onclick="calculateTriangles()">Calculate Total Triangles</button>
-        
-        <!-- Error Display Box -->
-        <div class="error-box" id="errorBox"></div>
-        
-        <div class="result-box" id="resultBox">
-            <h2>Total Triangles Formed:</h2>
-            <div class="result-value" id="resultValue">0</div>
-            
-            <!-- صندوق العداد العام للجمهور -->
-            <div id="callCounterBox" style="margin-top: 15px; font-size: 13.5px; color: #64748b; font-weight: 500; border-top: 1px dashed var(--border); padding-top: 12px; display: none;">
-                🚀 Total Executions: <span id="totalCallsValue" style="color: #2563eb; font-weight: 700;">0</span> times
-            </div>
-        </div>
-    </div>
-    <div class="diagram-side">
-        <div class="guide-title">📊 Geometric Input Guide</div>
-        
-        <svg width="280" height="240" viewBox="0 0 280 240" style="background: #fff; border-radius: 12px; border: 1px solid var(--border); box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);">
-            <polygon points="140,20 30,200 250,200" fill="none" stroke="#0f172a" stroke-width="3"/>
-            
-            <line x1="140" y1="20" x2="140" y2="200" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="4"/>
-            
-            <line x1="30" y1="200" x2="159.8" y2="52.5" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="4"/>
-            <line x1="30" y1="200" x2="195.0" y2="110.0" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="4"/>
-            
-            <line x1="250" y1="200" x2="120.2" y2="52.5" stroke="#ea580c" stroke-width="1.5" stroke-dasharray="4"/>
-            <line x1="250" y1="200" x2="85.0" y2="110.0" stroke="#ea580c" stroke-width="1.5" stroke-dasharray="4"/>
-            <line x1="250" y1="200" x2="51.4" y2="165.0" stroke="#ea580c" stroke-width="1.5" stroke-dasharray="4"/>
-            
-            <text x="110" y="14" font-weight="bold" font-size="12" fill="#2563eb">Vertex 1</text>
-            <text x="5" y="215" font-weight="bold" font-size="12" fill="#16a34a">Vertex 2</text>
-            <text x="230" y="215" font-weight="bold" font-size="12" fill="#ea580c">Vertex 3</text>
-            
-            <circle cx="140" cy="71" r="5" fill="#ef4444"/>
-            <text x="150" y="75" font-weight="bold" font-size="11" fill="#ef4444">P</text>
-            
-            <circle cx="140" cy="144" r="5" fill="#ef4444"/>
-            <text x="150" y="148" font-weight="bold" font-size="11" fill="#ef4444">P</text>
-        </svg>
-        <ul class="guide-list">
-            <li class="guide-item">🔹 <strong>Vertices:</strong> <span>Count lines drawn starting from each corner and landing on the opposite base side.</span></li>
-            <li class="guide-item">🔸 <strong>Point P:</strong> <span>Count only interior nodes where exactly three internal lines cross paths at one single point.</span></li>
-            <li class="guide-item">⚙️ <strong>Smart Auto:</strong> <span>The mathematical equation automatically sorts inputs behind the scenes to maintain mathematical precision.</span></li>
-        </ul>
-    </div>
-</div>
+Use code with caution.
+Calculate Total Triangles
+Total Triangles Formed:
+0
+🚀 Total Executions: 0 times
 
-<div class="seo-section">
-    <h2>About the Geometric Combinatorics Formulation</h2>
-    <p>
-        The <strong>Advanced Triangle Calculation System</strong> utilizes a revolutionary, high-performance geometric formulation discovered by <strong>Eng. Md. Abu Hantash</strong>. 
-        Unlike traditional counting algorithms that rely on heavy recursive parsing or loop-based node traversal—which scale poorly and consume vast system resources—this system implements a pure mathematical equation designed with <strong>Constant Time Complexity \(O(1)\)</strong> using strict <strong>Big O Notation</strong>.
-    </p>
-    <p>
-        In computer graphics, physics simulation, and game development, measuring sub-triangular fragments formed by intersecting cevian lines is computationally expensive. 
-        This formulation bypasses algorithmic iteration completely, delivering calculation results instantly in a flat execution window regardless of how high the input variables scale. 
-        By supplying the precise line frequencies from Vertex 1, Vertex 2, Vertex 3, and filtering concurrent multi-line cross points (Point P), graphic developers and graph theorists can lock structural data without processing delays.
-    </p>
-</div>
 
-<div class="author-card">
-    <div class="author-info">
-        <h3>Algorithm Invented by: Eng. Md. Abu Hantash</h3>
-        <p>Innovative Geometric Combinatorics Formulation © 2026. All rights reserved.</p>
-    </div>
-    <div class="contact-buttons">
-        <a href="mailto:abuhantashmo@gmail.com" class="btn-contact">📧 Email Me</a>
-        <a href="https://www.linkedin.com/in/mohammad-abu-hantash-6b8253170/" class="btn-contact" target="_blank">💼 LinkedIn</a>
-        <a href="https://www.youtube.com/@mohammadabuhantash4174" class="btn-contact btn-youtube" target="_blank">▶️ YouTube</a>
-    </div>
-</div>
 
-<div class="copyright-text">
-    Secure Cloud Calculation System • Powered by Flask, Render & Google Analytics
-</div>
 
-<script>
+📊 Geometric Input Guide
+🔹 Vertices: Count lines drawn starting from each corner and landing on the opposite base side.
+🔸 Point P: Count only interior nodes where exactly three internal lines cross paths at one single point.
+⚙️ Smart Auto: The mathematical equation automatically sorts inputs behind the scenes to maintain mathematical precision.
+
+
+About the Geometric Combinatorics Formulation
+
+The Advanced Triangle Calculation System utilizes a revolutionary, high-performance geometric formulation discovered by Engineer Mohamad Abu Hantash.
+Unlike traditional counting algorithms that rely on heavy recursive parsing or loop-based node traversal—which scale poorly and consume vast system resources—this system implements a pure mathematical equation designed with Constant Time Complexity \(O(1)\) using strict Big O Notation.
+
+
+In computer graphics, physics simulation, and game development, measuring sub-triangular fragments formed by intersecting cevian lines is computationally expensive.
+This formulation bypasses algorithmic iteration completely, delivering calculation results instantly in a flat execution window regardless of how high the input variables scale.
+By supplying the precise line frequencies from Vertex 1, Vertex 2, Vertex 3, and filtering concurrent multi-line cross points (Point P), graphic developers and graph theorists can lock structural data without processing delays.
+
+Algorithm Invented by: Eng. Md. Abu Hantash
+Innovative Geometric Combinatorics Formulation © 2026. All rights reserved.
+
+
+📧 Email Me
+💼 LinkedIn
+▶️ YouTube
+
+Secure Cloud Calculation System • Powered by Flask, Render & Google Analytics
 async function calculateTriangles() {
-    let v1 = document.getElementById('v1').value.trim();
-    let v2 = document.getElementById('v2').value.trim();
-    let v3 = document.getElementById('v3').value.trim();
-    let p_val = document.getElementById('p_val').value.trim();
-    
-    let errorBox = document.getElementById('errorBox');
-    let resultBox = document.getElementById('resultBox');
-    
-    errorBox.style.display = 'none';
-    resultBox.style.display = 'none';
-
-    if(!v1 || !v2 || !v3 || !p_val) {
-        errorBox.innerText = "Validation Error: All fields are required! Please fill in all variables.";
-        errorBox.style.display = 'block';
-        return;
-    }
-
-    const strictIntegerRegex = /^\d+$/;
-
-    if (!strictIntegerRegex.test(v1) || !strictIntegerRegex.test(v2) || !strictIntegerRegex.test(v3) || !strictIntegerRegex.test(p_val)) {
-        errorBox.innerText = "Invalid Input! Please enter positive whole numbers only (No decimals, signs, or symbols).";
-        errorBox.style.display = 'block';
-        return; 
-    }
-
-    try {
-        let response = await fetch('https://triangel-server.onrender.com/calculate', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ v1: v1, v2: v2, v3: v3, p_val: p_val })
-        });
-        
-        let data = await response.json();
-        if (data.success) {
-            document.getElementById('resultValue').innerText = data.result;
-            resultBox.style.display = 'block';
-            
-            if(data.total_calls) {
-                document.getElementById('totalCallsValue').innerText = data.total_calls;
-                document.getElementById('callCounterBox').style.display = 'block';
-            }
-            
-            gtag('event', 'calculate_success', { 'event_category': 'Engagement', 'event_label': 'Triangle Formula Calculation' });
-        } else {
-            errorBox.innerText = data.error;
-            errorBox.style.display = 'block';
-        }
-    } catch (error) {
-        errorBox.innerText = "Connection Error: Could not reach the secure calculation cloud.";
-        errorBox.style.display = 'block';
-    }
+let v1 = document.getElementById('v1').value.trim();
+let v2 = document.getElementById('v2').value.trim();
+let v3 = document.getElementById('v3').value.trim();
+let p_val = document.getElementById('p_val').value.trim();
+let errorBox = document.getElementById('errorBox');
+let resultBox = document.getElementById('resultBox');
+errorBox.style.display = 'none';
+resultBox.style.display = 'none';
+if(!v1 || !v2 || !v3 || !p_val) {
+errorBox.innerText = "Validation Error: All fields are required! Please fill in all variables.";
+errorBox.style.display = 'block';
+return;
 }
-</script>
-</body>
-</html>
+const strictIntegerRegex = /^\d+$/;
+if (!strictIntegerRegex.test(v1) || !strictIntegerRegex.test(v2) || !strictIntegerRegex.test(v3) || !strictIntegerRegex.test(p_val)) {
+errorBox.innerText = "Invalid Input! Please enter positive whole numbers only (No decimals, signs, or symbols).";
+errorBox.style.display = 'block';
+return;
+}
+try {
+let response = await fetch('onrender.com', {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({ v1: v1, v2: v2, v3: v3, p_val: p_val })
+});
+let data = await response.json();
+if (data.success) {
+document.getElementById('resultValue').innerText = data.result;
+resultBox.style.display = 'block';
+if(data.total_calls) {
+document.getElementById('totalCallsValue').innerText = data.total_calls;
+document.getElementById('callCounterBox').style.display = 'block';
+}
+gtag('event', 'calculate_success', { 'event_category': 'Engagement', 'event_label': 'Triangle Formula Calculation' });
+} else {
+errorBox.innerText = data.error;
+errorBox.style.display = 'block';
+}
+} catch (error) {
+errorBox.innerText = "Connection Error: Could not reach the secure calculation cloud.";
+errorBox.style.display = 'block';
+}
+}
+
+
