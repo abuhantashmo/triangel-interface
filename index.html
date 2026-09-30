@@ -27,355 +27,476 @@
     <meta property="og:description" content="Calculate the total triangles formed instantly via the revolutionary constant-time geometric formulation.">
     <meta property="og:image" content="https://onrender.comstatic/preview.png">
 
+    <!-- 🌟 FONT AWESOME FOR PROFESSIONAL ICONS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            --primary: #2563eb;
-            --primary-hover: #1d4ed8;
-            --bg: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --bg: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             --card-bg: #ffffff;
-            --text: #1e293b;
+            --text-main: #0f172a;
+            --text-muted: #475569;
             --border: #e2e8f0;
-            --accent: #0f172a;
+            --accent-bg: #f8fafc;
             --danger: #ef4444;
+            --success: #22c55e;
         }
+        
         body {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background: var(--bg);
-            color: var(--text);
+            color: #f8fafc;
             margin: 0;
-            padding: 20px;
+            padding: 40px 20px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
             min-height: 100vh;
             box-sizing: border-box;
         }
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+        }
+
         .main-wrapper {
             display: flex;
             background: var(--card-bg);
             border-radius: 24px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             width: 100%;
-            max-width: 1000px;
             overflow: hidden;
-            border: 1px solid var(--border);
+            color: var(--text-main);
         }
+
         .calculator-side {
-            flex: 1;
-            padding: 40px;
+            flex: 1.2;
+            padding: 45px;
             box-sizing: border-box;
         }
+
         .diagram-side {
-            flex: 1;
-            background-color: #fafafa;
+            flex: 0.8;
+            background-color: var(--accent-bg);
             border-left: 1px solid var(--border);
-            padding: 40px;
+            padding: 45px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             box-sizing: border-box;
         }
+
         h1 {
-            font-size: 26px;
-            margin: 0 0 6px 0;
-            color: var(--accent);
+            font-size: 28px;
+            margin: 0 0 8px 0;
+            color: #0f172a;
+            font-weight: 800;
+            letter-spacing: -0.5px;
         }
+
         .subtitle {
-            color: #64748b;
-            font-size: 14px;
-            margin-bottom: 30px;
+            color: var(--text-muted);
+            font-size: 15px;
+            margin-bottom: 35px;
+            font-weight: 500;
         }
+
+        .input-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
         .input-group {
-            margin-bottom: 18px;
+            display: flex;
+            flex-direction: column;
         }
+
+        .input-group.full-width {
+            grid-column: span 2;
+        }
+
         label {
-            display: block;
             font-weight: 600;
-            margin-bottom: 6px;
-            font-size: 14px;
-            color: #475569;
+            margin-bottom: 8px;
+            font-size: 13.5px;
+            color: #334155;
         }
+
         input {
             width: 100%;
-            padding: 12px;
-            border: 1px solid var(--border);
-            border-radius: 10px;
+            padding: 14px;
+            border: 1.5px solid var(--border);
+            border-radius: 12px;
             font-size: 16px;
             box-sizing: border-box;
-            background-color: #f8fafc;
-            transition: all 0.2s;
+            background-color: #fff;
+            transition: all 0.3s ease;
+            color: var(--text-main);
         }
+
         input:focus {
             outline: none;
             border-color: var(--primary);
-            background-color: #fff;
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
         }
+
         button {
             width: 100%;
             background-color: var(--primary);
             color: white;
             border: none;
-            padding: 14px;
+            padding: 16px;
             font-size: 16px;
-            font-weight: 600;
-            border-radius: 10px;
+            font-weight: 700;
+            border-radius: 12px;
             cursor: pointer;
-            transition: background-color 0.2s;
-            margin-top: 10px;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
         }
+
         button:hover {
             background-color: var(--primary-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 12px -2px rgba(59, 130, 246, 0.4);
         }
+
+        button:active {
+            transform: translateY(0);
+        }
+
         .error-box {
             margin-top: 20px;
-            padding: 15px;
+            padding: 15px 20px;
             background-color: #fef2f2;
             border: 1px solid #fca5a5;
-            border-radius: 10px;
+            border-radius: 12px;
             color: #b91c1c;
             font-size: 14px;
             font-weight: 600;
-            text-align: center;
             display: none;
+            align-items: center;
+            gap: 10px;
         }
+
         .result-box {
-            margin-top: 20px;
-            padding: 15px;
+            margin-top: 25px;
+            padding: 20px;
             background-color: #f0fdf4;
             border: 1px solid #bbf7d0;
-            border-radius: 10px;
+            border-radius: 16px;
             text-align: center;
             display: none;
+            animation: fadeIn 0.4s ease;
         }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .result-box h2 {
-            margin: 0 0 5px 0;
+            margin: 0 0 8px 0;
             color: #166534;
-            font-size: 16px;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
+
         .result-value {
-            font-size: 36px;
-            font-weight: 800;
+            font-size: 42px;
+            font-weight: 900;
             color: #15803d;
         }
+
+        .call-counter {
+            margin-top: 15px;
+            font-size: 13.5px;
+            color: #64748b;
+            font-weight: 500;
+            border-top: 1px dashed var(--border);
+            padding-top: 12px;
+        }
+
         .guide-title {
             font-size: 18px;
             font-weight: 700;
-            color: var(--accent);
+            color: var(--text-main);
             margin-bottom: 20px;
-            align-self: flex-start;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
         }
+
         .guide-list {
             padding: 0;
-            margin: 20px 0 0 0;
+            margin: 25px 0 0 0;
             list-style: none;
             width: 100%;
         }
+
         .guide-item {
             display: flex;
-            align-items: center;
-            margin-bottom: 14px;
-            font-size: 13.5px;
-            line-height: 1.6;
-            color: #475569;
-            white-space: nowrap;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 18px;
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--text-muted);
         }
-        .guide-item span {
-            margin-right: 5px;
-            margin-left: 5px;
+
+        .guide-item i {
+            margin-top: 3px;
+            font-size: 14px;
         }
+
+        .guide-item i.fa-circle-dot { color: #3b82f6; }
+        .guide-item i.fa-circle-nodes { color: #ef4444; }
+        .guide-item i.fa-bolt { color: #eab308; }
         
-        /* 📜 SECURE SEO DESCRIPTION SECTION */
+        /* 📜 SEO DESCRIPTION SECTION */
         .seo-section {
-            width: 100%;
-            max-width: 1000px;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            margin-top: 20px;
-            padding: 30px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            margin-top: 25px;
+            padding: 35px;
             box-sizing: border-box;
         }
+
         .seo-section h2 {
             font-size: 20px;
-            color: var(--accent);
+            color: #fff;
             margin-top: 0;
-            border-bottom: 2px solid var(--border);
-            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-weight: 700;
         }
+
         .seo-section p {
-            font-size: 14px;
+            font-size: 14.5px;
             line-height: 1.7;
-            color: #475569;
+            color: #cbd5e1;
+            margin-bottom: 15px;
         }
+        .seo-section p:last-child { margin-bottom: 0; }
         
+        /* AUTHOR CARD */
         .author-card {
-            width: 100%;
-            max-width: 1000px;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            margin-top: 20px;
-            padding: 20px;
+            background: #ffffff;
+            color: var(--text-main);
+            border-radius: 20px;
+            margin-top: 25px;
+            padding: 25px 35px;
             box-sizing: border-box;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.3);
         }
+
         .author-info h3 {
-            margin: 0 0 4px 0;
-            font-size: 16px;
-            color: var(--accent);
+            margin: 0 0 6px 0;
+            font-size: 17px;
+            color: #0f172a;
+            font-weight: 700;
         }
+
         .author-info p {
             margin: 0;
-            font-size: 13px;
-            color: #64748b;
+            font-size: 13.5px;
+            color: var(--text-muted);
         }
+
         .contact-buttons {
             display: flex;
-            gap: 10px;
+            gap: 12px;
         }
+
         .btn-contact {
-            padding: 8px 16px;
-            font-size: 13px;
+            padding: 10px 18px;
+            font-size: 13.5px;
             font-weight: 600;
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: 10px;
             background-color: #f1f5f9;
             color: #334155;
-            border: 1px solid var(--border);
-            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
         }
+
         .btn-contact:hover {
             background-color: var(--primary);
             color: white;
-            border-color: var(--primary);
         }
-        .btn-youtube:hover {
-            background-color: #ef4444 !important;
-            border-color: #ef4444 !important;
-        }
+
+        .btn-linkedin:hover { background-color: #0077b5; color: white; }
+        .btn-youtube:hover { background-color: #ff0000; color: white; }
+
         .copyright-text {
-            margin-top: 15px;
-            font-size: 12px;
-            color: #94a3b8;
+            margin-top: 25px;
+            font-size: 13px;
+            color: #64748b;
+            text-align: center;
+            width: 100%;
         }
-        @media (max-width: 850px) {
-            .main-wrapper, .author-card, .seo-section {
+
+        /* Responsive Breakpoints */
+        @media (max-width: 900px) {
+            .main-wrapper {
                 flex-direction: column;
-                gap: 15px;
-                text-align: center;
             }
             .diagram-side {
                 border-left: none;
                 border-top: 1px solid var(--border);
+                padding: 35px;
             }
-            .guide-item {
-                white-space: normal;
+            .author-card {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+                padding: 25px;
+            }
+            .contact-buttons {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .input-grid {
+                grid-template-columns: 1fr;
+            }
+            .input-group.full-width {
+                grid-column: span 1;
+            }
+            .calculator-side {
+                padding: 25px;
             }
         }
     </style>
 </head>
 <body>
-<div class="main-wrapper">
-    <!-- LEFT SIDE: THE CALCULATOR -->
-    <div class="calculator-side">
-        <h1>📐 Advanced Triangle Counter</h1>
-        <div class="subtitle">Next-Generation Geometric Calculation System</div>
-        
-        <div class="input-group">
-            <label>Lines from Vertex 1</label>
-            <input type="text" id="v1" placeholder="0">
-        </div>
-        
-        <div class="input-group">
-            <label>Lines from Vertex 2</label>
-            <input type="text" id="v2" placeholder="0">
-        </div>
-        
-        <div class="input-group">
-            <label>Lines from Vertex 3</label>
-            <input type="text" id="v3" placeholder="0">
-        </div>
-        
-        <div class="input-group">
-            <label>Triple Intersection Points (P)</label>
-            <input type="text" id="p_val" placeholder="0">
-        </div>
-        
-        <button onclick="calculateTriangles()">Calculate Total Triangles</button>
-        
-        <!-- Error Display Box -->
-        <div class="error-box" id="errorBox"></div>
-        
-        <div class="result-box" id="resultBox">
-            <h2>Total Triangles Formed:</h2>
-            <div class="result-value" id="resultValue">0</div>
+
+<div class="container">
+    <div class="main-wrapper">
+        <div class="calculator-side">
+            <h1>📐 Advanced Triangle Counter</h1>
+            <div class="subtitle">Next-Generation Geometric Calculation System</div>
             
-            <div id="callCounterBox" style="margin-top: 15px; font-size: 13.5px; color: #64748b; font-weight: 500; border-top: 1px dashed var(--border); padding-top: 12px; display: none;">
-                🚀 Total Executions: <span id="totalCallsValue" style="color: #2563eb; font-weight: 700;">0</span> times
+            <div class="input-grid">
+                <div class="input-group">
+                    <label for="v1">Lines from Vertex 1</label>
+                    <input type="text" id="v1" placeholder="0">
+                </div>
+                <div class="input-group">
+                    <label for="v2">Lines from Vertex 2</label>
+                    <input type="text" id="v2" placeholder="0">
+                </div>
+                <div class="input-group">
+                    <label for="v3">Lines from Vertex 3</label>
+                    <input type="text" id="v3" placeholder="0">
+                </div>
+                <div class="input-group">
+                    <label for="p_val">Triple Intersections (P)</label>
+                    <input type="text" id="p_val" placeholder="0">
+                </div>
+            </div>
+            
+            <button onclick="calculateTriangles()">Calculate Total Triangles</button>
+            
+            <div class="error-box" id="errorBox">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <span id="errorText"></span>
+            </div>
+            
+            <div class="result-box" id="resultBox">
+                <h2>Total Triangles Formed</h2>
+                <div class="result-value" id="resultValue">0</div>
+                
+                <div class="call-counter" id="callCounterBox" style="display: none;">
+                    <i class="fa-solid fa-chart-line"></i> Total Executions: <span id="totalCallsValue" style="color: #2563eb; font-weight: 700;">0</span> times
+                </div>
             </div>
         </div>
-    </div>
-    <div class="diagram-side">
-        <div class="guide-title">📊 Geometric Input Guide</div>
-        
-        <svg width="280" height="240" viewBox="0 0 280 240" style="background: #fff; border-radius: 12px; border: 1px solid var(--border); box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);">
-            <polygon points="140,20 30,200 250,200" fill="none" stroke="#0f172a" stroke-width="3"/>
-            
-            <line x1="140" y1="20" x2="140" y2="200" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="4"/>
-            
-            <line x1="30" y1="200" x2="159.8" y2="52.5" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="4"/>
-            <line x1="30" y1="200" x2="195.0" y2="110.0" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="4"/>
-            
-            <line x1="250" y1="200" x2="120.2" y2="52.5" stroke="#ea580c" stroke-width="1.5" stroke-dasharray="4"/>
-            <line x1="250" y1="200" x2="85.0" y2="110.0" stroke="#ea580c" stroke-width="1.5" stroke-dasharray="4"/>
-            <line x1="250" y1="200" x2="51.4" y2="165.0" stroke="#ea580c" stroke-width="1.5" stroke-dasharray="4"/>
-            
-            <text x="110" y="14" font-weight="bold" font-size="12" fill="#2563eb">Vertex 1</text>
-            <text x="5" y="215" font-weight="bold" font-size="12" fill="#16a34a">Vertex 2</text>
-            <text x="230" y="215" font-weight="bold" font-size="12" fill="#ea580c">Vertex 3</text>
-            
-            <circle cx="140" cy="71" r="5" fill="#ef4444"/>
-            <text x="150" y="75" font-weight="bold" font-size="11" fill="#ef4444">P</text>
-            
-            <circle cx="140" cy="144" r="5" fill="#ef4444"/>
-            <text x="150" y="148" font-weight="bold" font-size="11" fill="#ef4444">P</text>
-        </svg>
-        <ul class="guide-list">
-            <li class="guide-item">🔹 <strong>Vertices:</strong> <span>Count lines drawn starting from each corner and landing on the opposite base side.</span></li>
-            <li class="guide-item">🔸 <strong>Point P:</strong> <span>Count only interior nodes where exactly three internal lines cross paths at one single point.</span></li>
-            <li class="guide-item">⚙️ <strong>Smart Auto:</strong> <span>The mathematical equation automatically sorts inputs behind the scenes to maintain mathematical precision.</span></li>
-        </ul>
-    </div>
-</div>
 
-<div class="seo-section">
-    <h2>About the Geometric Combinatorics Formulation</h2>
-    <p>
-        The <strong>Advanced Triangle Calculation System</strong> utilizes a revolutionary, high-performance geometric formulation discovered by <strong>Eng. Md. Abu Hantash</strong>. 
-        Unlike traditional counting algorithms that rely on heavy recursive parsing or loop-based node traversal—which scale poorly and consume vast system resources—this system implements a pure mathematical equation designed with <strong>Constant Time Complexity \(O(1)\)</strong> using strict <strong>Big O Notation</strong>.
-    </p>
-    <p>
-        In computer graphics, physics simulation, and game development, measuring sub-triangular fragments formed by intersecting cevian lines is computationally expensive. 
-        This formulation bypasses algorithmic iteration completely, delivering calculation results instantly in a flat execution window regardless of how high the input variables scale. 
-        By supplying the precise line frequencies from Vertex 1, Vertex 2, Vertex 3, and filtering concurrent multi-line cross points (Point P), graphic developers and graph theorists can lock structural data without processing delays.
-    </p>
-</div>
-
-<div class="author-card">
-    <div class="author-info">
-        <h3>Algorithm Invented by: Eng. Md. Abu Hantash</h3>
-        <p>Innovative Geometric Combinatorics Formulation © 2026. All rights reserved.</p>
+        <div class="diagram-side">
+            <div class="guide-title">
+                <i class="fa-solid fa-circle-info" style="color: var(--primary);"></i> Geometric Input Guide
+            </div>
+            
+            <svg width="280" height="240" viewBox="0 0 280 240" style="background: #fff; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+                <polygon points="140,20 30,200 250,200" fill="none" stroke="#0f172a" stroke-width="3"/>
+                
+                <line x1="140" y1="20" x2="140" y2="200" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="4"/>
+                
+                <line x1="30" y1="200" x2="159.8" y2="52.5" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="4"/>
+                <line x1="30" y1="200" x2="195.0" y2="110.0" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="4"/>
+                
+                <line x1="250" y1="200" x2="120.2" y2="52.5" stroke="#ea580c" stroke-width="1.5" stroke-dasharray="4"/>
+                <line x1="250" y1="200" x2="85.0" y2="110.0" stroke="#ea580c" stroke-width="1.5" stroke-dasharray="4"/>
+                <line x1="250" y1="200" x2="51.4" y2="165.0" stroke="#ea580c" stroke-width="1.5" stroke-dasharray="4"/>
+                
+                <text x="110" y="14" font-weight="bold" font-size="12" fill="#2563eb">Vertex 1</text>
+                <text x="5" y="215" font-weight="bold" font-size="12" fill="#16a34a">Vertex 2</text>
+                <text x="230" y="215" font-weight="bold" font-size="12" fill="#ea580c">Vertex 3</text>
+                
+                <circle cx="140" cy="71" r="5" fill="#ef4444"/>
+                <text x="150" y="75" font-weight="bold" font-size="11" fill="#ef4444">P</text>
+                
+                <circle cx="140" cy="144" r="5" fill="#ef4444"/>
+                <text x="150" y="148" font-weight="bold" font-size="11" fill="#ef4444">P</text>
+            </svg>
+            
+            <ul class="guide-list">
+                <li class="guide-item">
+                    <i class="fa-solid fa-circle-dot"></i>
+                    <div><strong>Vertices:</strong> Count lines drawn starting from each corner and landing on the opposite base side.</div>
+                </li>
+                <li class="guide-item">
+                    <i class="fa-solid fa-circle-nodes"></i>
+                    <div><strong>Point P:</strong> Count only interior nodes where exactly three internal lines cross paths at one single point.</div>
+                </li>
+                <li class="guide-item">
+                    <i class="fa-solid fa-bolt"></i>
+                    <div><strong>Smart Auto:</strong> The mathematical equation automatically sorts inputs behind the scenes to maintain mathematical precision.</div>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div class="contact-buttons">
-        <a href="mailto:abuhantashmo@gmail.com" class="btn-contact">📧 Email Me</a>
-        <a href="https://www.linkedin.com/in/mohammad-abu-hantash-6b8253170/" class="btn-contact" target="_blank">💼 LinkedIn</a>
-        <a href="https://www.youtube.com/@mohammadabuhantash4174" class="btn-contact btn-youtube" target="_blank">▶️ YouTube</a>
+
+    <div class="seo-section">
+        <h2>About the Geometric Combinatorics Formulation</h2>
+        <p>
+            The <strong>Advanced Triangle Calculation System</strong> utilizes a revolutionary, high-performance geometric formulation discovered by <strong>Eng. Md. Abu Hantash</strong>. 
+            Unlike traditional counting algorithms that rely on heavy recursive parsing or loop-based node traversal—which scale poorly and consume vast system resources—this system implements a pure mathematical equation designed with <strong>Constant Time Complexity \(O(1)\)</strong> using strict <strong>Big O Notation</strong>.
+        </p>
+        <p>
+            In computer graphics, physics simulation, and game development, measuring sub-triangular fragments formed by intersecting cevian lines is computationally expensive. 
+            This formulation bypasses algorithmic iteration completely, delivering calculation results instantly in a flat execution window regardless of how high the input variables scale. 
+            By supplying the precise line frequencies from Vertex 1, Vertex 2, Vertex 3, and filtering concurrent multi-line cross points (Point P), graphic developers and graph theorists can lock structural data without processing delays.
+        </p>
+    </div>
+
+    <div class="author-card">
+        <div class="author-info">
+            <h3>Algorithm Invented by: Eng. Md. Abu Hantash</h3>
+            <p>Innovative Geometric Combinatorics Formulation © 2026. All rights reserved.</p>
+        </div>
+        <div class="contact-buttons">
+            <a href="mailto:abuhantashmo@gmail.com" class="btn-contact"><i class="fa-solid fa-envelope"></i> Email Me</a>
+            <a href="https://www.linkedin.com/in/mohammad-abu-hantash-6b8253170/" class="btn-contact btn-linkedin" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+            <a href="https://www.youtube.com/@mohammadabuhantash4174" class="btn-contact btn-youtube" target="_blank"><i class="fa-brands fa-youtube"></i> YouTube</a>
+        </div>
     </div>
 </div>
 
@@ -391,22 +512,23 @@ async function calculateTriangles() {
     let p_val = document.getElementById('p_val').value.trim();
     
     let errorBox = document.getElementById('errorBox');
+    let errorText = document.getElementById('errorText');
     let resultBox = document.getElementById('resultBox');
     
     errorBox.style.display = 'none';
     resultBox.style.display = 'none';
 
     if(!v1 || !v2 || !v3 || !p_val) {
-        errorBox.innerText = "Validation Error: All fields are required! Please fill in all variables.";
-        errorBox.style.display = 'block';
+        errorText.innerText = "Validation Error: All fields are required! Please fill in all variables.";
+        errorBox.style.display = 'flex';
         return;
     }
 
     const strictIntegerRegex = /^\d+$/;
 
     if (!strictIntegerRegex.test(v1) || !strictIntegerRegex.test(v2) || !strictIntegerRegex.test(v3) || !strictIntegerRegex.test(p_val)) {
-        errorBox.innerText = "Invalid Input! Please enter positive whole numbers only (No decimals, signs, or symbols).";
-        errorBox.style.display = 'block';
+        errorText.innerText = "Invalid Input! Please enter positive whole numbers only (No decimals, signs, or symbols).";
+        errorBox.style.display = 'flex';
         return; 
     }
 
@@ -429,12 +551,12 @@ async function calculateTriangles() {
             
             gtag('event', 'calculate_success', { 'event_category': 'Engagement', 'event_label': 'Triangle Formula Calculation' });
         } else {
-            errorBox.innerText = data.error;
-            errorBox.style.display = 'block';
+            errorText.innerText = data.error;
+            errorBox.style.display = 'flex';
         }
     } catch (error) {
-        errorBox.innerText = "Connection Error: Could not reach the secure calculation cloud.";
-        errorBox.style.display = 'block';
+        errorText.innerText = "Connection Error: Could not reach the secure calculation cloud.";
+        errorBox.style.display = 'flex';
     }
 }
 </script>
