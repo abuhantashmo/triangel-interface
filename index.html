@@ -14,8 +14,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- 🌐 GOOGLE SEO OPTIMIZATION & LINK PREVIEW -->
-    <title>Advanced Triangle Counter - Combinatorics Equation by Eng. Md. Abu Hantash</title>
-    <meta name="description" content="Discover an innovative geometric combinatorics algorithm developed by Eng. Md. Abu Hantash to calculate the total number of triangles formed inside a main triangle. Fast, secure, and accurate.">
+    <title id="metaTitle">Advanced Triangle Counter - Combinatorics Equation by Eng. Md. Abu Hantash</title>
+    <meta name="description" id="metaDesc" content="Discover an innovative geometric combinatorics algorithm developed by Eng. Md. Abu Hantash to calculate the total number of triangles formed inside a main triangle. Fast, secure, and accurate.">
     <meta name="keywords" content="triangle counter, Eng. Md. Abu Hantash, Abu Hantash triangle formula, count triangles in a triangle formula, geometric combinatorics algorithm, triangle intersection counter, non-symmetric triangle formula">
     <meta name="author" content="Eng. Md. Abu Hantash">
     <meta name="robots" content="index, follow">
@@ -23,8 +23,8 @@
     <!-- 📲 WHATSAPP & SOCIAL MEDIA PREVIEW TAGS (OPEN GRAPH - PERFECT 1200x630 DIMENSIONS) -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://triangel-server.onrender.com">
-    <meta property="og:title" content="Advanced Triangle Counter | Eng. Md. Abu Hantash">
-    <meta property="og:description" content="Calculate the total triangles formed instantly via the revolutionary constant-time geometric formulation.">
+    <meta property="og:title" id="ogTitle" content="Advanced Triangle Counter | Eng. Md. Abu Hantash">
+    <meta property="og:description" id="ogDesc" content="Calculate the total triangles formed instantly via the revolutionary constant-time geometric formulation.">
     <meta property="og:image" content="https://triangel-server.onrender.com/static/preview.png">
     <meta property="og:image:secure_url" content="https://triangel-server.onrender.com/static/preview.png">
     <meta property="og:image:type" content="image/png">
@@ -66,6 +66,42 @@
             max-width: 1000px;
         }
 
+        .top-bar {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+
+        .lang-select-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .lang-select-wrapper i {
+            color: #f8fafc;
+        }
+
+        .lang-select {
+            background: transparent;
+            color: #f8fafc;
+            border: none;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .lang-select option {
+            color: #0f172a;
+            background: #ffffff;
+        }
+
         .main-wrapper {
             display: flex;
             background: var(--card-bg);
@@ -86,12 +122,18 @@
             flex: 0.8;
             background-color: var(--accent-bg);
             border-left: 1px solid var(--border);
+            border-right: none;
             padding: 45px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             box-sizing: border-box;
+        }
+
+        body.rtl-mode .diagram-side {
+            border-right: 1px solid var(--border);
+            border-left: none;
         }
 
         h1 {
@@ -311,6 +353,21 @@
             color: #cbd5e1;
             margin-bottom: 15px;
         }
+        .seo-section ul {
+            color: #cbd5e1;
+            font-size: 14.5px;
+            line-height: 1.7;
+            margin-bottom: 15px;
+            padding-left: 20px;
+            padding-right: 0;
+        }
+        body.rtl-mode .seo-section ul {
+            padding-right: 20px;
+            padding-left: 0;
+        }
+        .seo-section li {
+            margin-bottom: 8px;
+        }
         .seo-section p:last-child { margin-bottom: 0; }
         
         .author-card {
@@ -323,7 +380,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 30px -10 rgba(0,0,0,0.3);
         }
 
         .author-info h3 {
@@ -377,6 +434,7 @@
         @media (max-width: 900px) {
             .main-wrapper { flex-direction: column; }
             .diagram-side { border-left: none; border-top: 1px solid var(--border); padding: 35px; }
+            body.rtl-mode .diagram-side { border-right: none; }
             .author-card { flex-direction: column; gap: 20px; text-align: center; padding: 25px; }
             .contact-buttons { width: 100%; justify-content: center; flex-wrap: wrap; }
         }
@@ -390,26 +448,42 @@
 <body>
 
 <div class="container">
+    <div class="top-bar">
+        <div class="lang-select-wrapper">
+            <i class="fa-solid fa-globe"></i>
+            <select id="langSelect" class="lang-select" onchange="changeLanguage(this.value)">
+                <option value="en">English</option>
+                <option value="ar">العربية</option>
+                <option value="zh">简体中文</option>
+                <option value="de">Deutsch</option>
+                <option value="ja">日本語</option>
+                <option value="ko">한국어</option>
+                <option value="fr">Français</option>
+                <option value="es">Español</option>
+            </select>
+        </div>
+    </div>
+
     <div class="main-wrapper">
         <div class="calculator-side">
-            <h1>📐 Advanced Triangle Counter</h1>
-            <div class="subtitle">Next-Generation Geometric Calculation System</div>
+            <h1 id="mainTitle">📐 Advanced Triangle Counter</h1>
+            <div class="subtitle" id="mainSubtitle">Next-Generation Geometric Calculation System</div>
             
             <div class="input-grid">
                 <div class="input-group">
-                    <label for="v1">Lines from Vertex 1</label>
+                    <label for="v1" id="lblV1">Lines from Vertex 1</label>
                     <input type="text" id="v1" placeholder="0">
                 </div>
                 <div class="input-group">
-                    <label for="v2">Lines from Vertex 2</label>
+                    <label for="v2" id="lblV2">Lines from Vertex 2</label>
                     <input type="text" id="v2" placeholder="0">
                 </div>
                 <div class="input-group">
-                    <label for="v3">Lines from Vertex 3</label>
+                    <label for="v3" id="lblV3">Lines from Vertex 3</label>
                     <input type="text" id="v3" placeholder="0">
                 </div>
                 <div class="input-group">
-                    <label for="p_val">Triple Intersections (P)</label>
+                    <label for="p_val" id="lblP">Triple Intersections (P)</label>
                     <input type="text" id="p_val" placeholder="0">
                 </div>
             </div>
@@ -418,7 +492,7 @@
             
             <div class="timer-box" id="timerBox">
                 <i class="fa-solid fa-spinner"></i> 
-                <span>If this is the first time please wait for (<strong id="secondsCount">10</strong>s)...</span>
+                <span id="timerText">If this is the first time please wait for (<strong id="secondsCount">25</strong>s)...</span>
             </div>
             
             <div class="error-box" id="errorBox">
@@ -427,17 +501,17 @@
             </div>
             
             <div class="result-box" id="resultBox">
-                <h2>Total Triangles Formed</h2>
+                <h2 id="resultTitle">Total Triangles Formed</h2>
                 <div class="result-value" id="resultValue">0</div>
                 
                 <div class="call-counter" id="callCounterBox" style="display: none;">
-                    <i class="fa-solid fa-chart-line"></i> Total Executions: <span id="totalCallsValue" style="color: #2563eb; font-weight: 700;">0</span> times
+                    <i class="fa-solid fa-chart-line"></i> <span id="executionText">Total Executions:</span> <span id="totalCallsValue" style="color: #2563eb; font-weight: 700;">0</span> <span id="executionTimesText">times</span>
                 </div>
             </div>
         </div>
 
         <div class="diagram-side">
-            <div class="guide-title">
+            <div class="guide-title" id="guideTitle">
                 <i class="fa-solid fa-circle-info" style="color: var(--primary);"></i> Geometric Input Guide
             </div>
             
@@ -466,37 +540,28 @@
             <ul class="guide-list">
                 <li class="guide-item">
                     <i class="fa-solid fa-circle-dot"></i>
-                    <div><strong>Vertices:</strong> Count lines drawn starting from each corner and landing on the opposite base side.</div>
+                    <div id="guideItem1"><strong>Vertices:</strong> Count lines drawn starting from each corner and landing on the opposite base side.</div>
                 </li>
                 <li class="guide-item">
                     <i class="fa-solid fa-circle-nodes"></i>
-                    <div><strong>Point P:</strong> Count only interior nodes where exactly three internal lines cross paths at one single point.</div>
+                    <div id="guideItem2"><strong>Point P:</strong> Count only interior nodes where exactly three internal lines cross paths at one single point.</div>
                 </li>
                 <li class="guide-item">
                     <i class="fa-solid fa-bolt"></i>
-                    <div><strong>Smart Auto:</strong> The mathematical equation automatically sorts inputs behind the scenes to maintain mathematical precision.</div>
+                    <div id="guideItem3"><strong>Smart Auto:</strong> The mathematical equation automatically sorts inputs behind the scenes to maintain mathematical precision.</div>
                 </li>
             </ul>
         </div>
     </div>
 
-    <div class="seo-section">
-        <h2>About the Geometric Combinatorics Formulation</h2>
-        <p>
-            The <strong>Advanced Triangle Calculation System</strong> utilizes a revolutionary, high-performance geometric formulation discovered by <strong>Eng. Md. Abu Hantash</strong>. 
-            Unlike traditional counting algorithms that rely on heavy recursive parsing or loop-based node traversal—which scale poorly and consume vast system resources—this system implements a pure mathematical equation designed with <strong>Constant Time Complexity \(O(1)\)</strong> using strict <strong>Big O Notation</strong>.
-        </p>
-        <p>
-            In computer graphics, physics simulation, and game development, measuring sub-triangular fragments formed by intersecting cevian lines is computationally expensive. 
-            This formulation bypasses algorithmic iteration completely, delivering calculation results instantly in a flat execution window regardless of how high the input variables scale. 
-            By supplying the precise line frequencies from Vertex 1, Vertex 2, Vertex 3, and filtering concurrent multi-line cross points (Point P), graphic developers and graph theorists can lock structural data without processing delays.
-        </p>
+    <div class="seo-section" id="seoSection">
+        <!-- Content will be fully populated via JavaScript translation matrix -->
     </div>
 
     <div class="author-card">
         <div class="author-info">
-            <h3>Algorithm Invented by: Eng. Md. Abu Hantash</h3>
-            <p>Innovative Geometric Combinatorics Formulation © 2026. All rights reserved.</p>
+            <h3 id="authorTitle">Algorithm Invented by: Eng. Md. Abu Hantash</h3>
+            <p id="authorCopyright">Innovative Geometric Combinatorics Formulation © 2026. All rights reserved.</p>
         </div>
         <div class="contact-buttons">
             <a href="mailto:abuhantashmo@gmail.com" class="btn-contact"><i class="fa-solid fa-envelope"></i> Email Me</a>
@@ -506,12 +571,369 @@
     </div>
 </div>
 
-<div class="copyright-text">
+<div class="copyright-text" id="footerText">
     Secure Cloud Calculation System • Powered by Flask, Render & Google Analytics
 </div>
 
 <script>
 let countdownInterval = null;
+
+const translations = {
+    en: {
+        dir: 'ltr',
+        metaTitle: 'Advanced Triangle Counter - Combinatorics Equation by Eng. Md. Abu Hantash',
+        metaDesc: 'Discover an innovative geometric combinatorics algorithm developed by Eng. Md. Abu Hantash to calculate the total number of triangles formed inside a main triangle.',
+        mainTitle: '📐 Advanced Triangle Counter',
+        mainSubtitle: 'Next-Generation Geometric Calculation System',
+        lblV1: 'Lines from Vertex 1',
+        lblV2: 'Lines from Vertex 2',
+        lblV3: 'Lines from Vertex 3',
+        lblP: 'Triple Intersections (P)',
+        calcBtn: 'Calculate Total Triangles',
+        timerText: 'If this is the first time please wait for (<strong id="secondsCount">25</strong>s)...',
+        resultTitle: 'Total Triangles Formed',
+        executionText: 'Total Executions:',
+        executionTimesText: 'times',
+        guideTitle: 'Geometric Input Guide',
+        guideItem1: '<strong>Vertices:</strong> Count lines drawn starting from each corner and landing on the opposite base side.',
+        guideItem2: '<strong>Point P:</strong> Count only interior nodes where exactly three internal lines cross paths at one single point.',
+        guideItem3: '<strong>Smart Auto:</strong> The mathematical equation automatically sorts inputs behind the scenes to maintain mathematical precision.',
+        authorTitle: 'Algorithm Invented by: Eng. Md. Abu Hantash',
+        authorCopyright: 'Innovative Geometric Combinatorics Formulation © 2026. All rights reserved.',
+        footerText: 'Secure Cloud Calculation System • Powered by Flask, Render & Google Analytics',
+        valError: 'Validation Error: All fields are required! Please fill in all variables.',
+        inputError: 'Invalid Input! Please enter positive whole numbers only (No decimals, signs, or symbols).',
+        connError: 'Connection Error: Could not reach the secure calculation cloud.',
+        seoHtml: `<h2>About the Geometric Combinatorics Formulation</h2>
+            <p>The <strong>Advanced Triangle Calculation System</strong> utilizes a revolutionary, high-performance geometric formulation discovered by <strong>Eng. Md. Abu Hantash</strong>. Built with <strong>Constant Time Complexity O(1)</strong> using strict <strong>Big O Notation</strong>, it bypasses algorithmic loop iterations entirely, delivering immediate architectural execution scales.</p>
+            <h2>Is there any benefit to applying this program anywhere?</h2>
+            <p>At first glance, the problem might seem like a mere "intelligence game" or a fun puzzle. However, the mathematical and computational principle used here (Computational Geometry and Combinatorics) has highly vital real-world applications:</p>
+            <ul>
+                <li><strong>Microchip Design & Semiconductors:</strong> In modern CPUs, millions of electrical paths intersect on a silicon chip. Similar algorithms calculate enclosed spaces and intersections to prevent interference and maximize performance.</li>
+                <li><strong>Network Topology & Telecommunications:</strong> Quantifying closed paths (triangles) between nodes helps engineers evaluate structural redundancy, analyze data transmission metrics, and secure communication failure fallbacks.</li>
+                <li><strong>3D Computer Graphics & Gaming:</strong> All 3D visual environments are rendering meshes formed by millions of small triangles. Instant multi-line intersection evaluations act as a mathematical backbone for major engines like Unreal Engine.</li>
+                <li><strong>Cryptography & Cyber Security:</strong> Advanced cryptographic schemes heavily utilize structural mathematical transformations that are computationally complex to solve but instantaneous to verify.</li>
+            </ul>
+            <p>In short, the designer transformed a massive geometric bottleneck into a lightning-fast software calculation system—the exact type of programming logic powering the world's greatest modern innovations.</` + `div>`
+    },
+    ar: {
+        dir: 'rtl',
+        metaTitle: 'عداد المثلثات المتقدم - معادلة التوافيق الهندسية للمهندس محمد أبو هنطش',
+        metaDesc: 'اكتشف خوارزمية التوافيق الهندسية المبتكرة التي طورها المهندس محمد أبو هنطش لحساب العدد الإجمالي للمثلثات المتكونة داخل مثلث رئيسي.',
+        mainTitle: '📐 عداد المثلثات المتقدم',
+        mainSubtitle: 'نظام الحساب الهندسي من الجيل القادم',
+        lblV1: 'الخطوط من الرأس 1',
+        lblV2: 'الخطوط من الرأس 2',
+        lblV3: 'الخطوط من الرأس 3',
+        lblP: 'التقاطعات الثلاثية (P)',
+        calcBtn: 'احسب إجمالي المثلثات',
+        timerText: 'إذا كانت هذه هي المرة الأولى، يرجى الانتظار لمدة (<strong id="secondsCount">25</strong> ثانية)...',
+        resultTitle: 'إجمالي المثلثات المتكونة',
+        executionText: 'إجمالي العمليات المنفذة:',
+        executionTimesText: 'مرات',
+        guideTitle: 'دليل المدخلات الهندسية',
+        guideItem1: '<strong>الرؤوس:</strong> احسب الخطوط المرسومة بدءاً من كل زاوية والواصلة إلى الضلع المقابل.',
+        guideItem2: '<strong>النقطة P:</strong> احسب فقط النقاط الداخلية التي تتقاطع فيها ثلاثة خطوط داخلية بالضبط في نقطة واحدة.',
+        guideItem3: '<strong>الترتيب الذكي:</strong> تقوم المعادلة الرياضية بترتيب المدخلات تلقائياً خلف الكواليس للحفاظ على الدقة الرياضية.',
+        authorTitle: 'الخوارزمية من اختراع: المهندس محمد أبو هنطش',
+        authorCopyright: 'تركيبة التوافيق الهندسية المبتكرة © 2026. جميع الحقوق محفوظة.',
+        footerText: 'نظام الحساب السحابي الآمن • مدعوم بواسطة Flask و Render و Google Analytics',
+        valError: 'خطأ في التحقق: جميع الحقول مطلوبة! يرجى ملء جميع المتغيرات.',
+        inputError: 'إدخال غير صحيح! يرجى إدخال أعداد صحيحة موجبة فقط (بدون كسور، إشارات أو رموز).',
+        connError: 'خطأ في الاتصال: تعذر الوصول إلى سحابة الحساب الآمنة.',
+        seoHtml: `<h2>حول صيغة التوافيق الهندسية</h2>
+            <p>يعتمد <strong>نظام حساب المثلثات المتقدم</strong> على صيغة هندسية ثورية وعالية الأداء تم اكتشافها من قبل <strong>المهندس محمد أبو هنطش</strong>. تم تصميم النظام بـ <strong>تعقيد زمني ثابت O(1)</strong> باستخدام ترميز <strong>Big O Notation</strong> الصارم، ليتجاوز التكرارات الخوارزمية تماماً ويوفر نتائج فورية.</p>
+            <h2>هل هناك فائدة من تطبيق هذا البرنامج في أي مكان؟</h2>
+            <p>قد تبدو المسألة للوهلة الأولى مجرد "لعبة ذكاء" أو لغز مسلٍ، لكن في الحقيقة، المبدأ الرياضي والبرمجي المستخدم هنا (الهندسة الحسابية - Computational Geometry) له تطبيقات حيوية جداً في العالم الحقيقي:</p>
+            <ul>
+                <li><strong>تصميم رقاقات أشباه الموصلات والدوائر الإلكترونية (Microchip Design):</strong> عند تصميم المعالجات (CPUs)، تتقاطع ملايين المسارات الكهربائية الدقيقة على شريحة السيليكون. تُستخدم خوارزميات مشابهة جداً لحساب المساحات المغلقة وتجنب التداخلات لضمان كفاءة الشريحة وسرعتها.</li>
+                <li><strong>الشبكات وأنظمة الاتصالات (Network Topology):</strong> حساب عدد المسارات المغلقة (المثلثات) بين نقاط الاتصال يساعد المهندسين في تحليل قوة الشبكة وضمان وجود مسارات بديلة في حال تعطل أحد الخطوط.</li>
+                <li><strong>الرسومات ثلاثية الأبعاد والألعاب (3D Computer Graphics):</strong> تتكون الرسوميات ثلاثية الأبعاد من ملايين المثلثات الصغيرة (Mesh). الخوارزميات التي تتعامل مع تداخل الخطوط بسرعة فائقة هي العمود الفقري لمحركات الألعاب مثل (Unreal Engine).</li>
+                <li><strong>الأمن السيبراني والتشفير (Cryptography):</strong> تعتمد بعض أنظمة التشفير المعقدة على مسائل هندسية صعبة الحل رياضياً وسهلة التحقق برمجياً، وتعتبر هذه البرامج نماذج مصغرة لبناء تلك الأنظمة.</li>
+            </ul>
+            <p>باختصار، حوّل المصمم معضلة هندسية معقدة إلى أداة برمجية فائقة السرعة، وهو نفس المنطق البرمجي الذي تُبنى به أعظم التقنيات الحديثة.</p>`
+    },
+    zh: {
+        dir: 'ltr',
+        metaTitle: '高级三角形计数器 - Eng. Md. Abu Hantash 组合学方程',
+        metaDesc: '探索由 Eng. Md. Abu Hantash 开发的创新几何组合算法，以计算主三角形内形成的三角形总数。',
+        mainTitle: '📐 高级三角形计数器',
+        mainSubtitle: '次世代几何计算系统',
+        lblV1: '从顶点 1 引出的线',
+        lblV2: '从顶点 2 引出的线',
+        lblV3: '从顶点 3 引出的线',
+        lblP: '三重交点 (P)',
+        calcBtn: '计算三角形总数',
+        timerText: '如果是第一次使用，请等待 (<strong id="secondsCount">25</strong> 秒)...',
+        resultTitle: '形成的三角形总数',
+        executionText: '总执行次数:',
+        executionTimesText: '次',
+        guideTitle: '几何输入指南',
+        guideItem1: '<strong>顶点：</strong> 计算从每个角开始并在对边底边结束的线条。',
+        guideItem2: '<strong>P 点：</strong> 仅计算三条内部线交汇于单一点的内部节点。',
+        guideItem3: '<strong>智能自动：</strong> 数学公式自动在后台对输入进行排序，以保持数学精确度。',
+        authorTitle: '算法发明人：Eng. Md. Abu Hantash',
+        authorCopyright: '创新几何组合学公式 © 2026。保留所有权利。',
+        footerText: '安全云端计算系统 • 由 Flask, Render 和 Google Analytics 提供支持',
+        valError: '验证错误：所有字段均为必填项！请填写所有变量。',
+        inputError: '输入无效！请仅输入正整数（无小数、正负号或符号）。',
+        connError: '连接错误：无法连接到安全计算云。',
+        seoHtml: `<h2>关于几何组合学公式</h2>
+            <p><strong>高级三角形计算系统</strong>采用由 <strong>Eng. Md. Abu Hantash</strong> 发现的革命性、高性能几何公式。该系统采用严格的 <strong>大 O 表示法</strong>，具有 <strong>常数时间复杂度 O(1)</strong>，完全跳过了算法循环迭代，在任何输入规模下均可瞬时输出结果。</p>
+            <h2>在实际应用中有什么好处吗？</h2>
+            <p>乍一看，这似乎只是一个“智力游戏”或有趣的谜题。但实际上，这里使用的数学和计算原理（计算几何与组合学）在现实世界中具有极其重要的关键应用：</p>
+            <ul>
+                <li><strong>微芯片设计与半导体：</strong> 在现代 CPU 设计中，数以百万计的电路线路在硅片上相互交错。类似的算法用于计算闭合空间和交点，以避免干扰并确保微芯片的效率和速度。</li>
+                <li><strong>网络拓扑与电信系统：</strong> 计算节点之间的闭合路径（三角形）有助于工程师分析网络强度，评估数据传输效率，并在网络某条线路发生故障时确保备用路由。</li>
+                <li><strong>3D 计算机图形与游戏引擎：</strong> 所有 3D 游戏和图形最终都由数百万个小三角形（网格 Mesh）组成。快速处理线条交叉和三角形生成的算法是 Unreal Engine 等游戏引擎的支柱。</li>
+                <li><strong>网络安全与密码学：</strong> 某些复杂的加密系统依赖于数学上难以求解但软件上易于验证的几何问题（例如椭圆曲线密码学），此类程序是构建这些系统的微型模型。</li>
+            </ul>
+            <p>简而言之，设计者将一个对人类来说极度复杂的几何难题转化为了一个超高速的软件计算工具，这正是构建现代最伟大科技的通用编程逻辑。</p>`
+    },
+    de: {
+        dir: 'ltr',
+        metaTitle: 'Erweiterter Dreiecksrechner - Kombinatorik-Gleichung von Eng. Md. Abu Hantash',
+        metaDesc: 'Entdecken Sie einen innovativen geometrischen Kombinatorik-Algorithmus von Eng. Md. Abu Hantash zur Berechnung der Gesamtzahl der Dreiecke.',
+        mainTitle: '📐 Erweiterter Dreiecksrechner',
+        mainSubtitle: 'Geometrisches Berechnungssystem der nächsten Generation',
+        lblV1: 'Linien von Scheitelpunkt 1',
+        lblV2: 'Linien von Scheitelpunkt 2',
+        lblV3: 'Linien von Scheitelpunkt 3',
+        lblP: 'Dreifache Schnittpunkte (P)',
+        calcBtn: 'Gesamtzahl der Dreiecke berechnen',
+        timerText: 'Wenn dies das erste Mal ist, warten Sie bitte (<strong id="secondsCount">25</strong>s)...',
+        resultTitle: 'Formierte Dreiecke insgesamt',
+        executionText: 'Gesamte Ausführungen:',
+        executionTimesText: 'Mal',
+        guideTitle: 'Leitfaden für geometrische Eingaben',
+        guideItem1: '<strong>Scheitelpunkte:</strong> Zählen Sie die Linien, die an jeder Ecke beginnen und auf der gegenüberliegenden Basisseite landen.',
+        guideItem2: '<strong>Punkt P:</strong> Zählen Sie nur innere Knoten, an denen sich genau drei interne Linien an einem einzigen Punkt kreuzen.',
+        guideItem3: '<strong>Smart Auto:</strong> Die mathematische Gleichung sortiert die Eingaben automatisch im Hintergrund, um die mathematische Präzision zu wahren.',
+        authorTitle: 'Algorithmus erfunden von: Eng. Md. Abu Hantash',
+        authorCopyright: 'Innovative geometrische Kombinatorik-Formulierung © 2026. Alle Rechte vorbehalten.',
+        footerText: 'Sicheres Cloud-Berechnungssystem • Unterstützt durch Flask, Render & Google Analytics',
+        valError: 'Validierungsfehler: Alle Felder sind Pflichtfelder! Bitte füllen Sie alle Variablen aus.',
+        inputError: 'Ungültige Eingabe! Bitte nur positive ganze Zahlen eingeben (Keine Dezimalstellen, Vorzeichen oder Symbole).',
+        connError: 'Verbindungsfehler: Die sichere Berechnungs-Cloud konnte nicht erreicht werden.',
+        seoHtml: `<h2>Über die geometrische Kombinatorik-Formulierung</h2>
+            <p>Das <strong>erweiterte Dreiecksberechnungssystem</strong> nutzt eine revolutionäre, hochperformante geometrische Formulierung, die von <strong>Eng. Md. Abu Hantash</strong> entdeckt wurde. Konzipiert mit <strong>konstanter Zeitkomplexität O(1)</strong> unter Verwendung der strikten <strong>Big-O-Notation</strong>, umgeht dieses System algorithmische Iterationen vollständig.</p>
+            <h2>Gibt es einen praktischen Nutzen für dieses Programm?</h2>
+            <p>Auf den ersten Blick mag das Problem wie ein bloßes „Intelligenzspiel“ oder ein unterhaltsames Rätsel erscheinen. In Wirklichkeit hat das hier verwendete mathematische und programmiertechnische Prinzip (Berechnungsgeometrie und Kombinatorik) jedoch lebenswichtige Anwendungen in der realen Welt:</p>
+            <ul>
+                <li><strong>Mikrochip-Design & Halbleiter:</strong> Bei der Entwicklung von modernen Prozessoren (CPUs) kreuzen sich Millionen von elektrischen Bahnen auf einem Siliziumchip. Ähnliche Algorithmen werden verwendet, um geschlossene Räume und Kreuzungen zu berechnen, um Interferenzen zu vermeiden.</li>
+                <li><strong>Netzwerktopologie & Telekommunikation:</strong> Die Berechnung geschlossener Pfade (Dreiecke) zwischen Knoten hilft Ingenieuren, die Netzwerkstärke zu analysieren, die Effizienz der Datenübertragung zu bewerten und Ausfallkapazitäten zu sichern.</li>
+                <li><strong>3D-Computergrafik & Gaming:</strong> Alle 3D-Spiele und Grafiken bestehen aus Millionen kleiner Dreiecke (Mesh). Algorithmen, die Linienüberschneidungen und Dreiecksbildungen in Windeseile verarbeiten, sind das Rückgrat von Spiele-Engines wie der Unreal Engine.</li>
+                <li><strong>Kryptographie & Cybersicherheit:</strong> Einige komplexe Verschlüsselungssysteme basieren auf geometrischen Problemen, die mathematisch schwer zu lösen, aber softwaretechnisch leicht zu überprüfen sind.</li>
+            </ul>
+            <p>Kurz gesagt: Der Entwickler hat ein komplexes geometrisches Problem in ein ultraschnelles Softwaretool verwandelt – genau die Programmierlogik, auf der die größten modernen Technologien basieren.</p>`
+    },
+    ja: {
+        dir: 'ltr',
+        metaTitle: '高度な三角形カウンター - Eng. Md. Abu Hantash による組合せ数学公式',
+        metaDesc: 'メインの三角形の内部に形成される三角形の総数を計算するために、Eng. Md. Abu Hantash によって開発された革新的な幾何学的組合せアルゴリズム。',
+        mainTitle: '📐 高度な三角形カウンター',
+        mainSubtitle: '次世代幾何学計算システム',
+        lblV1: '頂点 1 からの直線数',
+        lblV2: '頂点 2 からの直線数',
+        lblV3: '頂点 3 からの直線数',
+        lblP: '三重交点 (P)',
+        calcBtn: '三角形の総数を計算',
+        timerText: '初回アクセスの場合は、(<strong id="secondsCount">25</strong>秒) お待ちください...',
+        resultTitle: '形成された三角形の総数',
+        executionText: '総実行回数:',
+        executionTimesText: '回',
+        guideTitle: '幾何学的入力ガイド',
+        guideItem1: '<strong>頂点:</strong> 各コーナーから始まり、向かい合う底辺に着地する直線の数を数えます。',
+        guideItem2: '<strong>交点 P:</strong> ちょうど3つの内部直線が1つの点で交差する内部ノードのみを数えます。',
+        guideItem3: '<strong>スマート自動整列:</strong> 数学的な精度を維持するため、数式がバックグラウンドで入力を自動的にソートします。',
+        authorTitle: 'アルゴリズム開発者: Eng. Md. Abu Hantash',
+        authorCopyright: '革新的な幾何学的組合せ論公式 © 2026. All rights reserved.',
+        footerText: '安全なクラウド計算システム • Powered by Flask, Render & Google Analytics',
+        valError: '検証エラー: すべてのフィールドが必須です！すべての変数を入力してください。',
+        inputError: '無効な入力！正の整数のみを入力してください（小数、符号、記号は不可）。',
+        connError: '接続エラー: 安全な計算クラウドに到達できませんでした。',
+        seoHtml: `<h2>幾何学的組合せ論の数式について</h2>
+            <p><strong>高度な三角形計算システム</strong>は、<strong>Eng. Md. Abu Hantash</strong> によって発見された画期的で高性能な幾何学的公式を利用しています。厳密な <strong>Big O 記法</strong> に基づく <strong>定数時間計算量 O(1)</strong> で設計されており、アルゴリズムのループ反復を完全に回避し、あらゆる入力スケールで結果を即座に出力します。</p>
+            <h2>このプログラムを応用するメリットはどこにありますか？</h2>
+            <p>一見すると、この問題は単なる「知能ゲーム」や楽しいパズルのように見えるかもしれません。しかし実際には、ここで使用されている数学的およびプログラミング的原理（計算幾何学および組合せ論）は、現実世界で非常に重要な応用を持っています。</p>
+            <ul>
+                <li><strong>マイクロチップ設計と半導体:</strong> 現代のCPU設計では、シリコンチップ上で何百万もの電気経路が交差しています。干渉を防ぎ、チップの効率と速度を確保するために、囲まれた空間や交差の数を計算する非常によく似たアルゴリズムが使用されています。</li>
+                <li><strong>ネットワークトポロジと通信システム:</strong> ノード間の閉じた経路（三角形）の数を計算することは、エンジニアがネットワークの強度を分析し、データ転送効率を評価し、回線障害時の代替経路を確保するのに役立ちます。</li>
+                <li><strong>3Dコンピュータグラフィックスとゲーム:</strong> すべての3Dゲームやグラフィックスは、何百万もの小さな三角形（メッシュ Mesh）で構成されています。直線の交差や三角形の生成を非常に高速に処理するアルゴリズムは、Unreal Engine などのゲームエンジンのバックボーンです。</li>
+                <li><strong>暗号化とサイバーセキュリティ:</strong> 一部の複雑な暗号システムは、数学的には解くのが難しいが、ソフトウェア的には検証が容易な幾何学的問題（楕円曲線暗号など）に依存しており、これらのプログラムはそのようなシステムを構築するためのミニチュアモデルと言えます。</li>
+            </ul>
+            <p>要するに、開発者は人間にとって非常に複雑に見える幾何学的難問を、超高速のソフトウェア計算ツールへと変換したのです。これはまさに、世界で最も偉大な現代テクノロジーを構築している共通のプログラミングロジックそのものです。</p>`
+    },
+    ko: {
+        dir: 'ltr',
+        metaTitle: '고급 삼각형 카운터 - Eng. Md. Abu Hantash의 조합론 방정식',
+        metaDesc: '기본 삼각형 내부에 형성된 총 삼각형 수를 계산하기 위해 Eng. Md. Abu Hantash가 개발한 혁신적인 기하학적 조합 알고리즘을 만나보세요.',
+        mainTitle: '📐 고급 삼각형 카운터',
+        mainSubtitle: '차세대 기하학적 계산 시스템',
+        lblV1: '꼭짓점 1에서의 직선 수',
+        lblV2: '꼭짓점 2에서의 직선 수',
+        lblV3: '꼭짓점 3에서의 직선 수',
+        lblP: '삼중 교점 (P)',
+        calcBtn: '총 삼각형 수 계산',
+        timerText: '처음이신 경우 잠시만 기다려주십시오 (<strong id="secondsCount">25</strong>초)...',
+        resultTitle: '형성된 총 삼각형 수',
+        executionText: '총 실행 횟수:',
+        executionTimesText: '회',
+        guideTitle: '기하학적 입력 가이드',
+        guideItem1: '<strong>꼭짓점:</strong> 각 모서리에서 시작하여 반대편 밑변에 닿는 직선의 수를 세어줍니다.',
+        guideItem2: '<strong>교점 P:</strong> 정확히 3개의 내부 직선이 한 점에서 만나는 내부 노드만 계산합니다.',
+        guideItem3: '<strong>스마트 자동 정렬:</strong> 수학적 정밀도를 유지하기 위해 수학 방정식이 백그라운드에서 입력을 자동으로 정렬합니다.',
+        authorTitle: '알고리즘 발명자: Eng. Md. Abu Hantash',
+        authorCopyright: '혁신적인 기하학적 조합론 공식 © 2026. All rights reserved.',
+        footerText: '안전한 클라우드 계산 시스템 • Powered by Flask, Render & Google Analytics',
+        valError: '검증 오류: 모든 필드는 필수 항목입니다! 모든 변수를 채워주세요.',
+        inputError: '잘못된 입력! 양의 정수만 입력할 수 있습니다 (소수점, 부호, 기호 제외).',
+        connError: '연결 오류: 안전한 계산 클라우드에 도달할 수 없습니다.',
+        seoHtml: `<h2>기하학적 조합론 공식 소개</h2>
+            <p><strong>고급 삼각형 계산 시스템</strong>은 <strong>Eng. Md. Abu Hantash</strong>가 발견한 혁신적이고 고성능의 기하학적 공식을 활용합니다. 엄격한 <strong>Big O 표기법</strong>을 사용한 <strong>O(1) 상수 시간 복잡도</strong>로 설계되어 알고리즘 루프 반복을 완전히 배제하고 즉각적인 결과를 제공합니다.</p>
+            <h2>이 프로그램을 실무에서 적용할 때 어떤 이점이 있나요?</h2>
+            <p>언뜻 보기에 이 문제는 단순한 "지능 게임"이나 재미있는 퍼즐처럼 보일 수 있습니다. 하지만 실제로 여기에 사용된 수학적 및 프로그래밍 원리(계산 기하학 및 조합론)는 현실 세계에서 매우 중요한 핵심 응용 분야를 가지고 있습니다.</p>
+            <ul>
+                <li><strong>마이크로칩 디자인 및 반도체:</strong> 현대 CPU 설계에서는 실리콘 칩 위에 수백만 개의 전기 경로가 교차합니다. 신호 간섭을 방지하고 칩의 효율성과 속도를 보장하기 위해 닫힌 공간과 교차점의 수를 계산하는 매우 유사한 알고리즘이 사용됩니다.</li>
+                <li><strong>네트워크 토폴로지 및 통신 시스템:</strong> 노드 간의 닫힌 경로(삼각형)의 수를 계산하는 것은 엔지니어가 네트워크 강도를 분석하고, 데이터 전송 효율을 평가하며, 회선 장애 시 대체 경로를 확보하는 데 도움을 줍니다.</li>
+                <li><strong>3D 컴퓨터 그래픽 및 게임 엔진:</strong> 모든 3D 게임과 그래픽은 수백만 개의 작은 삼각형(메쉬 Mesh)으로 구성됩니다. 직선의 교차와 삼각형 생성을 초고속으로 처리하는 알고리즘은 Unreal Engine과 같은 게임 엔진의 중추 역할을 합니다.</li>
+                <li><strong>암호학 및 사이버 보안:</strong> 일부 복잡한 암호화 시스템은 수학적으로는 풀기 어렵지만 소프트웨어적으로는 검증하기 쉬운 기하학적 문제(예: 타원 곡선 암호학)에 의존하며, 이러한 프로그램은 해당 시스템을 구축하기 위한 미니어처 모델입니다.</li>
+            </ul>
+            <p>요약하자면, 개발자는 인간에게 극도로 복잡해 보이는 기하학적 난제를 초고속 소프트웨어 계산 도구로 전환해 냈습니다. 이는 전 세계에서 가장 위대한 현대 기술들을 구축하는 것과 동일한 프로그래밍 논리입니다.</p>`
+    },
+    fr: {
+        dir: 'ltr',
+        metaTitle: 'Compteur de Triangles Avancé - Équation Combinatoire par Eng. Md. Abu Hantash',
+        metaDesc: 'Découvrez un algorithme de combinatoire géométrique innovant développé par Eng. Md. Abu Hantash pour calculer le nombre total de triangles.',
+        mainTitle: '📐 Compteur de Triangles Avancé',
+        mainSubtitle: 'Système de Calcul Géométrique de Nouvelle Génération',
+        lblV1: 'Lignes du Sommet 1',
+        lblV2: 'Lignes du Sommet 2',
+        lblV3: 'Lignes du Sommet 3',
+        lblP: 'Intersections Triples (P)',
+        calcBtn: 'Calculer le Total des Triangles',
+        timerText: 'Si c'est la première fois, veuillez patienter (<strong id="secondsCount">25</strong>s)...',
+        resultTitle: 'Total des Triangles Formés',
+        executionText: 'Total des Exécutions:',
+        executionTimesText: 'fois',
+        guideTitle: 'Guide d'Entrée Géométrique',
+        guideItem1: '<strong>Sommets:</strong> Comptez les lignes tracées à partir de chaque coin et arrivant sur le côté opposé.',
+        guideItem2: '<strong>Point P:</strong> Comptez uniquement les nœuds intérieurs où exactement trois lignes internes se croisent en un seul point.',
+        guideItem3: '<strong>Smart Auto:</strong> L'équation mathématique trie automatiquement les entrées en arrière-plan pour maintenir la précision.',
+        authorTitle: 'Algorithme inventé par: Eng. Md. Abu Hantash',
+        authorCopyright: 'Formulation innovante de combinatoire géométrique © 2026. Tous droits réservés.',
+        footerText: 'Système de Calcul Cloud Sécurisé • Propulsé par Flask, Render & Google Analytics',
+        valError: 'Erreur de Validation: Tous les champs sont obligatoires ! Veuillez remplir toutes les variables.',
+        inputError: 'Entrée Invalide ! Veuillez saisir uniquement des nombres entiers positifs (Pas de décimales, de signes ou de symboles).',
+        connError: 'Erreur de Connexion: Impossible de joindre le cloud de calcul sécurisé.',
+        seoHtml: `<h2>À propos de la formulation de combinatoire géométrique</h2>
+            <p>Le <strong>Système Avancé de Calcul de Triangles</strong> utilise une formulation géométrique révolutionnaire et de haute performance découverte par <strong>Eng. Md. Abu Hantash</strong>. Conçu avec une <strong>complexité temporelle constante O(1)</strong> en utilisant la stricte <strong>notation Grand O</strong>, ce système contourne complètement les itérations algorithmiques.</p>
+            <h2>Y a-t-il un avantage à appliquer ce programme quelque part ?</h2>
+            <p>À première vue, le problème peut sembler être un simple « jeu d'intelligence » ou un puzzle amusant. Cependant, le principe mathématique et logiciel utilisé ici (géométrie algorithmique et combinatoire) présente des applications vitales dans le monde réel :</p>
+            <ul>
+                <li><strong>Conception de puces électroniques et semi-conducteurs:</strong> Dans les processeurs modernes (CPU), des millions de pistes électriques se croisent sur une puce de silicium. Des algorithmes similaires calculent les espaces clos et les intersections pour éviter les interférences et maximiser les performances.</li>
+                <li><strong>Topologie de réseau et télécommunications:</strong> Quantifier les chemins fermés (triangles) entre les nœuds aide les ingénieurs à évaluer la redondance structurelle, à analyser les métriques de transmission de données et à sécuriser les réseaux.</li>
+                <li><strong>Graphismes informatiques 3D et jeux vidéo:</strong> Tous les environnements 3D sont des maillages (Mesh) formés de millions de petits triangles. Les algorithmes qui traitent les intersections de lignes à la vitesse de l'éclair sont la colonne vertébrale de moteurs majeurs comme Unreal Engine.</li>
+                <li><strong>Cryptographie et cybersécurité:</strong> Certains schémas cryptographiques avancés reposent sur des problèmes géométriques difficiles à résoudre mathématiquement mais instantanés à vérifier par logiciel.</li>
+            </ul>
+            <p>En bref, le concepteur a transformé un goulot d'étranglement géométrique complexe en un outil logiciel ultra-rapide — le type exact de logique de programmation qui alimente les plus grandes innovations modernes.</p>`
+    },
+    es: {
+        dir: 'ltr',
+        metaTitle: 'Contador de Triángulos Avanzado - Ecuación Combinatoria por Eng. Md. Abu Hantash',
+        metaDesc: 'Descubra un innovador algoritmo de combinatoria geométrica desarrollado por Eng. Md. Abu Hantash para calcular el número total de triángulos.',
+        mainTitle: '📐 Contador de Triángulos Avanzado',
+        mainSubtitle: 'Sistema de Cálculo Geométrico de Próxima Generación',
+        lblV1: 'Líneas desde el Vértice 1',
+        lblV2: 'Líneas desde el Vértice 2',
+        lblV3: 'Líneas desde el Vértice 3',
+        lblP: 'Intersecciones Triples (P)',
+        calcBtn: 'Calcular Total de Triángulos',
+        timerText: 'Si es la primera vez, por favor espere (<strong id="secondsCount">25</strong>s)...',
+        resultTitle: 'Total de Triángulos Formados',
+        executionText: 'Total de Ejecuciones:',
+        executionTimesText: 'veces',
+        guideTitle: 'Guía de Entrada Geométrica',
+        guideItem1: '<strong>Vértices:</strong> Cuente las líneas trazadas comenzando desde cada esquina y terminando en el lado opuesto.',
+        guideItem2: '<strong>Punto P:</strong> Cuente solo los nodos interiores donde exactamente tres líneas internas se cruzan en un solo punto.',
+        guideItem3: '<strong>Smart Auto:</strong> La ecuación matemática ordena automáticamente las entradas en segundo plano para mantener la precisión.',
+        authorTitle: 'Algoritmo Inventado por: Eng. Md. Abu Hantash',
+        authorCopyright: 'Innovadora formulación de combinatoria geométrica © 2026. Todos los derechos reservados.',
+        footerText: 'Sistema de Cálculo en la Nube Seguro • Impulsado por Flask, Render & Google Analytics',
+        valError: 'Error de Validación: ¡Todos los campos son obligatorios! Por favor complete todas las variables.',
+        inputError: '¡Entrada Inválida! Por favor ingrese solo números enteros positivos (Sin decimales, signos ni símbolos).',
+        connError: 'Error de Conexión: No se pudo conectar con la nube de cálculo segura.',
+        seoHtml: `<h2>Acerca de la formulación de combinatoria geométrica</h2>
+            <p>El <strong>Sistema Avanzado de Cálculo de Triángulos</strong> utiliza una revolucionaria formulación geométrica de alto rendimiento descubierta por <strong>Eng. Md. Abu Hantash</strong>. Diseñado con una <strong>complejidad temporal constante O(1)</strong> utilizando la estricta <strong>notación Big O</strong>, este sistema evita por completo las iteraciones algorítmicas de bucles.</p>
+            <h2>¿Tiene alguna ventaja aplicar este programa en algún ámbito práctico?</h2>
+            <p>A primera vista, el problema puede parecer un simple "juego de inteligencia" o un acertijo divertido. Sin embargo, el principio matemático y de software utilizado aquí (geometría computacional y combinatoria) tiene aplicaciones vitales en el mundo real:</p>
+            <ul>
+                <li><strong>Diseño de microchips y semiconductores:</strong> En las CPU modernas, millones de rutas eléctricas se cruzan en un chip de silicio. Algoritmos similares calculan espacios cerrados e intersecciones para evitar interferencias y maximizar el rendimiento.</li>
+                <li><strong>Topología de redes y telecomunicaciones:</strong> Cuantificar las rutas cerradas (triángulos) entre nodos ayuda a los ingenieros a evaluar la redundancia estructural, analizar las métricas de transmisión de datos y asegurar alternativas ante fallos.</li>
+                <li><strong>Gráficos por computadora 3D y videojuegos:</strong> Todos los entornos 3D son mallas (Mesh) formadas por millones de pequeños triángulos. Los algoritmos que procesan intersecciones de líneas a la velocidad del rayo son la columna vertebral de motores principales como Unreal Engine.</li>
+                <li><strong>Criptografía y ciberseguridad:</strong> Ciertos esquemas criptográficos avanzados se basan en problemas geométricos difíciles de resolver matemáticamente pero instantáneos de verificar mediante software.</li>
+            </ul>
+            <p>En resumen, el diseñador transformó un cuello de botella geométrico complejo en una herramienta de software ultrarrápida, exactamente el tipo de lógica de programación que impulsa las mayores innovaciones modernas globales.</p>`
+    }
+};
+
+function changeLanguage(lang) {
+    const t = translations[lang] || translations['en'];
+    
+    // Set Direction and Global styles
+    document.documentElement.lang = lang;
+    document.documentElement.dir = t.dir;
+    if(t.dir === 'rtl') {
+        document.body.classList.add('rtl-mode');
+    } else {
+        document.body.classList.remove('rtl-mode');
+    }
+
+    // Update Texts safely
+    document.getElementById('metaTitle').innerText = t.metaTitle;
+    document.getElementById('metaDesc').setAttribute('content', t.metaDesc);
+    document.getElementById('ogTitle').setAttribute('content', t.metaTitle);
+    document.getElementById('ogDesc').setAttribute('content', t.metaDesc);
+    
+    document.getElementById('mainTitle').innerHTML = t.mainTitle;
+    document.getElementById('mainSubtitle').innerText = t.mainSubtitle;
+    
+    document.getElementById('lblV1').innerText = t.lblV1;
+    document.getElementById('lblV2').innerText = t.lblV2;
+    document.getElementById('lblV3').innerText = t.lblV3;
+    document.getElementById('lblP').innerText = t.lblP;
+    
+    document.getElementById('calcBtn').innerText = t.calcBtn;
+    document.getElementById('timerText').innerHTML = t.timerText;
+    document.getElementById('resultTitle').innerText = t.resultTitle;
+    document.getElementById('executionText').innerText = t.executionText;
+    document.getElementById('executionTimesText').innerText = t.executionTimesText;
+    
+    document.getElementById('guideTitle').innerHTML = `<i class="fa-solid fa-circle-info" style="color: var(--primary);"></i> ` + t.guideTitle;
+    document.getElementById('guideItem1').innerHTML = t.guideItem1;
+    document.getElementById('guideItem2').innerHTML = t.guideItem2;
+    document.getElementById('guideItem3').innerHTML = t.guideItem3;
+    
+    document.getElementById('seoSection').innerHTML = t.seoHtml;
+    document.getElementById('authorTitle').innerText = t.authorTitle;
+    document.getElementById('authorCopyright').innerText = t.authorCopyright;
+    document.getElementById('footerText').innerText = t.footerText;
+}
+
+// Auto detection block
+window.addEventListener('DOMContentLoaded', () => {
+    const userLang = navigator.language || navigator.userLanguage;
+    const langKey = userLang.startsWith('ar') ? 'ar' : 
+                    userLang.startsWith('zh') ? 'zh' : 
+                    userLang.startsWith('de') ? 'de' : 
+                    userLang.startsWith('ja') ? 'ja' : 
+                    userLang.startsWith('ko') ? 'ko' : 
+                    userLang.startsWith('fr') ? 'fr' : 
+                    userLang.startsWith('es') ? 'es' : 'en';
+    
+    document.getElementById('langSelect').value = langKey;
+    changeLanguage(langKey);
+});
 
 async function calculateTriangles() {
     let v1 = document.getElementById('v1').value.trim();
@@ -526,13 +948,16 @@ async function calculateTriangles() {
     let timerBox = document.getElementById('timerBox');
     let secondsCount = document.getElementById('secondsCount');
     
+    const currentLang = document.getElementById('langSelect').value;
+    const t = translations[currentLang] || translations['en'];
+    
     // Reset views
     errorBox.style.display = 'none';
     resultBox.style.display = 'none';
     if (countdownInterval) clearInterval(countdownInterval);
 
     if(!v1 || !v2 || !v3 || !p_val) {
-        errorText.innerText = "Validation Error: All fields are required! Please fill in all variables.";
+        errorText.innerText = t.valError;
         errorBox.style.display = 'flex';
         return;
     }
@@ -540,7 +965,7 @@ async function calculateTriangles() {
     const strictIntegerRegex = /^\d+$/;
 
     if (!strictIntegerRegex.test(v1) || !strictIntegerRegex.test(v2) || !strictIntegerRegex.test(v3) || !strictIntegerRegex.test(p_val)) {
-        errorText.innerText = "Invalid Input! Please enter positive whole numbers only (No decimals, signs, or symbols).";
+        errorText.innerText = t.inputError;
         errorBox.style.display = 'flex';
         return; 
     }
@@ -548,7 +973,7 @@ async function calculateTriangles() {
     // Start Timer UI & Disable Button
     calcBtn.disabled = true;
     timerBox.style.display = 'flex';
-    let timeLeft = 10;
+    let timeLeft = 25;
     secondsCount.innerText = timeLeft;
 
     countdownInterval = setInterval(() => {
@@ -585,14 +1010,14 @@ async function calculateTriangles() {
             
             gtag('event', 'calculate_success', { 'event_category': 'Engagement', 'event_label': 'Triangle Formula Calculation' });
         } else {
-            errorText.innerText = data.error;
+            errorText.innerText = data.error || data.message || "Error processing formulation.";
             errorBox.style.display = 'flex';
         }
     } catch (error) {
         clearInterval(countdownInterval);
         timerBox.style.display = 'none';
         calcBtn.disabled = false;
-        errorText.innerText = "Connection Error: Could not reach the secure calculation cloud.";
+        errorText.innerText = t.connError;
         errorBox.style.display = 'flex';
     }
 }
