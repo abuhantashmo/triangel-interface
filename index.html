@@ -13,18 +13,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- 🌐 GOOGLE SEO OPTIMIZATION & LINK PREVIEW -->
+    <!-- 🌐 GOOGLE SEO OPTIMIZATION (CLEANED FROM ENGINE) -->
     <title>Advanced Triangle Counter - Combinatorics Equation by Eng. Md. Abu Hantash</title>
-    <meta name="description" content="Discover an innovative geometric combinatorics algorithm developed by Eng. Md. Abu Hantash to calculate the total number of triangles formed inside a main triangle. Fast, secure, and accurate.">
-    <meta name="keywords" content="triangle counter, Eng. Md. Abu Hantash, Abu Hantash triangle formula, count triangles in a triangle formula, geometric combinatorics algorithm, triangle intersection counter, non-symmetric triangle formula">
+    <meta name="description" content="Discover an innovative geometric combinatorics algorithm developed by Eng. Md. Abu Hantash to calculate the total number of triangles formed inside a main triangle using a revolutionary equation. Fast, secure, and accurate.">
+    <meta name="keywords" content="triangle counter, Eng. Md. Abu Hantash, Abu Hantash triangle formula, count triangles in a triangle formula, geometric combinatorics algorithm, triangle intersection counter, non-symmetric triangle formula, combinatorics equation">
     <meta name="author" content="Eng. Md. Abu Hantash">
     <meta name="robots" content="index, follow">
 
-    <!-- 📲 WHATSAPP & SOCIAL MEDIA PREVIEW TAGS -->
+    <!-- 📲 SOCIAL MEDIA PREVIEW TAGS (FIXED TO EQUATION) -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://triangel-server.onrender.com">
     <meta property="og:title" content="Advanced Triangle Counter | Eng. Md. Abu Hantash">
-    <meta property="og:description" content="Calculate the total triangles formed instantly via the revolutionary constant-time geometric formulation.">
+    <meta property="og:description" content="Calculate the total triangles formed instantly via the revolutionary constant-time geometric equation formulation.">
     <meta property="og:image" content="https://triangel-server.onrender.com/static/preview.png">
     <meta property="og:image:secure_url" content="https://triangel-server.onrender.com/static/preview.png">
     <meta property="og:image:type" content="image/png">
@@ -47,7 +47,6 @@
             --danger: #ef4444;
             --success: #22c55e;
         }
-        
         body {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background: var(--bg);
@@ -60,445 +59,66 @@
             min-height: 100vh;
             box-sizing: border-box;
         }
-
-        .container {
-            width: 100%;
-            max-width: 1000px;
+        .container { width: 100%; max-width: 1000px; }
+        .header-controls { width: 100%; display: flex; justify-content: flex-end; margin-bottom: 15px; }
+        .lang-select {
+            padding: 10px 15px; font-size: 14px; font-weight: 600; border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.2); background-color: #1e293b; color: #fff; cursor: pointer;
         }
-
-        /* Language Selector Header */
-        .header-actions {
-            width: 100%;
-            display: flex;
-            justify-content: flex-end;
-            margin-bottom: 20px;
-        }
-
-        .lang-select-wrapper {
-            position: relative;
-            display: inline-block;
-        }
-
-        .lang-select-wrapper i {
-            position: absolute;
-            left: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #64748b;
-            pointer-events: none;
-            font-size: 16px;
-        }
-
-        body[dir="rtl"] .lang-select-wrapper i {
-            left: auto;
-            right: 12px;
-        }
-
-        .lang-dropdown {
-            padding: 10px 16px 10px 36px;
-            font-size: 14px;
-            font-weight: 600;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background-color: rgba(30, 41, 59, 0.8);
-            color: #f8fafc;
-            cursor: pointer;
-            outline: none;
-            appearance: none;
-            -webkit-appearance: none;
-            transition: all 0.3s ease;
-            min-width: 140px;
-        }
-
-        body[dir="rtl"] .lang-dropdown {
-            padding: 10px 36px 10px 16px;
-        }
-
-        .lang-dropdown:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
-        }
-
-        .lang-dropdown option {
-            background-color: #1e293b;
-            color: #f8fafc;
-        }
-
-        .main-wrapper {
-            display: flex;
-            background: var(--card-bg);
-            border-radius: 24px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            width: 100%;
-            overflow: hidden;
-            color: var(--text-main);
-        }
-
-        .calculator-side {
-            flex: 1.2;
-            padding: 45px;
-            box-sizing: border-box;
-        }
-
-        .diagram-side {
-            flex: 0.8;
-            background-color: var(--accent-bg);
-            border-left: 1px solid var(--border);
-            border-right: none;
-            padding: 45px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            box-sizing: border-box;
-        }
-
-        body[dir="rtl"] .diagram-side {
-            border-left: none;
-            border-right: 1px solid var(--border);
-        }
-
-        h1 {
-            font-size: 28px;
-            margin: 0 0 8px 0;
-            color: #0f172a;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
-
-        .subtitle {
-            color: var(--text-muted);
-            font-size: 15px;
-            margin-bottom: 35px;
-            font-weight: 500;
-        }
-
-        .input-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 25px;
-        }
-
-        .input-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        label {
-            font-weight: 600;
-            margin-bottom: 8px;
-            font-size: 13.5px;
-            color: #334155;
-        }
-
-        input {
-            width: 100%;
-            padding: 14px;
-            border: 1.5px solid var(--border);
-            border-radius: 12px;
-            font-size: 16px;
-            box-sizing: border-box;
-            background-color: #fff;
-            transition: all 0.3s ease;
-            color: var(--text-main);
-        }
-
-        input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
-        }
-
-        button {
-            width: 100%;
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 16px;
-            font-size: 16px;
-            font-weight: 700;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
-        }
-
-        button:hover {
-            background-color: var(--primary-hover);
-            transform: translateY(-1px);
-            box-shadow: 0 6px 12px -2px rgba(59, 130, 246, 0.4);
-        }
-
-        button:disabled {
-            background-color: #94a3b8;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-
-        .timer-box {
-            margin-top: 15px;
-            padding: 12px;
-            background-color: #f8fafc;
-            border: 1px dashed #cbd5e1;
-            border-radius: 12px;
-            color: #475569;
-            font-size: 14px;
-            font-weight: 600;
-            text-align: center;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        .timer-box i {
-            color: var(--primary);
-            animation: spin 2s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .error-box {
-            margin-top: 20px;
-            padding: 15px 20px;
-            background-color: #fef2f2;
-            border: 1px solid #fca5a5;
-            border-radius: 12px;
-            color: #b91c1c;
-            font-size: 14px;
-            font-weight: 600;
-            display: none;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .result-box {
-            margin-top: 25px;
-            padding: 20px;
-            background-color: #f0fdf4;
-            border: 1px solid #bbf7d0;
-            border-radius: 16px;
-            text-align: center;
-            display: none;
-            animation: fadeIn 0.4s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .result-box h2 {
-            margin: 0 0 8px 0;
-            color: #166534;
-            font-size: 15px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .result-value {
-            font-size: 42px;
-            font-weight: 900;
-            color: #15803d;
-        }
-
-        .call-counter {
-            margin-top: 15px;
-            font-size: 13.5px;
-            color: #64748b;
-            font-weight: 500;
-            border-top: 1px dashed var(--border);
-            padding-top: 12px;
-        }
-
-        .guide-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            width: 100%;
-        }
-
-        .guide-list {
-            padding: 0;
-            margin: 25px 0 0 0;
-            list-style: none;
-            width: 100%;
-        }
-
-        .guide-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 18px;
-            font-size: 14px;
-            line-height: 1.5;
-            color: var(--text-muted);
-            text-align: initial;
-        }
-
-        .guide-item i {
-            margin-top: 3px;
-            font-size: 14px;
-        }
-
-        .guide-item i.fa-circle-dot { color: #3b82f6; }
-        .guide-item i.fa-circle-nodes { color: #ef4444; }
-        .guide-item i.fa-bolt { color: #eab308; }
-        
-        .seo-section {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 24px;
-            margin-top: 25px;
-            padding: 35px;
-            box-sizing: border-box;
-            text-align: initial;
-        }
-
-        .seo-section h2 {
-            font-size: 20px;
-            color: #fff;
-            margin-top: 0;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        .seo-section p {
-            font-size: 14.5px;
-            line-height: 1.7;
-            color: #cbd5e1;
-            margin-bottom: 15px;
-        }
-
-        .seo-section ul {
-            margin: 10px 0 20px 20px;
-            padding: 0;
-            color: #cbd5e1;
-            font-size: 14.5px;
-            line-height: 1.7;
-        }
-        
-        body[dir="rtl"] .seo-section ul {
-            margin: 10px 20px 20px 0;
-        }
-
-        .seo-section li {
-            margin-bottom: 10px;
-        }
-
-        .seo-section p:last-child { margin-bottom: 0; }
-        
-        .author-card {
-            background: #ffffff;
-            color: var(--text-main);
-            border-radius: 20px;
-            margin-top: 25px;
-            padding: 25px 35px;
-            box-sizing: border-box;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.3);
-        }
-
-        .author-info {
-            text-align: initial;
-        }
-
-        .author-info h3 {
-            margin: 0 0 6px 0;
-            font-size: 17px;
-            color: #0f172a;
-            font-weight: 700;
-        }
-
-        .author-info p {
-            margin: 0;
-            font-size: 13.5px;
-            color: var(--text-muted);
-        }
-
-        .contact-buttons {
-            display: flex;
-            gap: 12px;
-        }
-
-        .btn-contact {
-            padding: 10px 18px;
-            font-size: 13.5px;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 10px;
-            background-color: #f1f5f9;
-            color: #334155;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.2s ease;
-        }
-
-        .btn-contact:hover {
-            background-color: var(--primary);
-            color: white;
-        }
-
-        .btn-linkedin:hover { background-color: #0077b5; color: white; }
-        .btn-youtube:hover { background-color: #ff0000; color: white; }
-
-        .copyright-text {
-            margin-top: 25px;
-            font-size: 13px;
-            color: #64748b;
-            text-align: center;
-            width: 100%;
-        }
-
-        @media (max-width: 900px) {
-            .main-wrapper { flex-direction: column; }
-            .diagram-side { border-left: none; border-right: none; border-top: 1px solid var(--border); padding: 35px; }
-            body[dir="rtl"] .diagram-side { border-right: none; }
-            .author-card { flex-direction: column; gap: 20px; text-align: center; padding: 25px; }
-            .author-info { text-align: center; }
-            .contact-buttons { width: 100%; justify-content: center; flex-wrap: wrap; }
-        }
-
-        @media (max-width: 500px) {
-            .input-grid { grid-template-columns: 1fr; }
-            .calculator-side { padding: 25px; }
-        }
+        .main-wrapper { display: flex; background: var(--card-bg); border-radius: 24px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); width: 100%; overflow: hidden; color: var(--text-main); }
+        .calculator-side { flex: 1.2; padding: 45px; box-sizing: border-box; }
+        .diagram-side { flex: 0.8; background-color: var(--accent-bg); border-left: 1px solid var(--border); border-right: none; padding: 45px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-sizing: border-box; }
+        body.rtl-mode .diagram-side { border-right: 1px solid var(--border); border-left: none; }
+        h1 { font-size: 28px; margin: 0 0 8px 0; color: #0f172a; font-weight: 800; letter-spacing: -0.5px; }
+        .subtitle { color: var(--text-muted); font-size: 15px; margin-bottom: 35px; font-weight: 500; }
+        .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px; }
+        .input-group { display: flex; flex-direction: column; }
+        label { font-weight: 600; margin-bottom: 8px; font-size: 13.5px; color: #334155; }
+        input { width: 100%; padding: 14px; border: 1.5px solid var(--border); border-radius: 12px; font-size: 16px; box-sizing: border-box; background-color: #fff; color: var(--text-main); }
+        button { width: 100%; background-color: var(--primary); color: white; border: none; padding: 16px; font-size: 16px; font-weight: 700; border-radius: 12px; cursor: pointer; box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3); }
+        button:disabled { background-color: #94a3b8; cursor: not-allowed; }
+        .timer-box { margin-top: 15px; padding: 12px; background-color: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 12px; color: #475569; font-size: 14px; font-weight: 600; text-align: center; display: none; align-items: center; justify-content: center; gap: 8px; }
+        .timer-box i { color: var(--primary); animation: spin 2s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .error-box { margin-top: 20px; padding: 15px 20px; background-color: #fef2f2; border: 1px solid #fca5a5; border-radius: 12px; color: #b91c1c; font-size: 14px; font-weight: 600; display: none; align-items: center; gap: 10px; }
+        .result-box { margin-top: 25px; padding: 20px; background-color: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; text-align: center; display: none; }
+        .result-value { font-size: 42px; font-weight: 900; color: #15803d; }
+        .call-counter { margin-top: 15px; font-size: 13.5px; color: #64748b; font-weight: 500; border-top: 1px dashed var(--border); padding-top: 12px; }
+        .guide-title { font-size: 18px; font-weight: 700; color: var(--text-main); margin-bottom: 20px; display: flex; align-items: center; gap: 8px; width: 100%; }
+        .guide-list { padding: 0; margin: 25px 0 0 0; list-style: none; width: 100%; }
+        .guide-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 18px; font-size: 14px; line-height: 1.5; color: var(--text-muted); }
+        .seo-section { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 24px; margin-top: 25px; padding: 35px; box-sizing: border-box; width: 100%; }
+        .seo-section h2 { font-size: 20px; color: #fff; margin-top: 0; margin-bottom: 15px; }
+        .seo-section p, .seo-section ul { font-size: 14.5px; line-height: 1.7; color: #cbd5e1; }
+        .seo-section ul { padding-left: 20px; }
+        body.rtl-mode .seo-section ul { padding-left: 0; padding-right: 20px; }
+        .author-card { background: #ffffff; color: var(--text-main); border-radius: 20px; margin-top: 25px; padding: 25px 35px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.3); width: 100%; }
+        .contact-buttons { display: flex; gap: 12px; }
+        .btn-contact { padding: 10px 18px; font-size: 13.5px; font-weight: 600; text-decoration: none; border-radius: 10px; background-color: #f1f5f9; color: #334155; display: inline-flex; align-items: center; gap: 8px; }
+        .copyright-text { margin-top: 25px; font-size: 13px; color: #64748b; text-align: center; width: 100%; }
+        @media (max-width: 900px) { .main-wrapper { flex-direction: column; } .diagram-side { border-left: none; border-top: 1px solid var(--border); padding: 35px; } body.rtl-mode .diagram-side { border-right: none; } .author-card { flex-direction: column; gap: 20px; } }
+        @media (max-width: 500px) { .input-grid { grid-template-columns: 1fr; } .calculator-side { padding: 25px; } }
     </style>
 </head>
 <body>
-
 <div class="container">
-    <div class="header-actions">
-        <div class="lang-select-wrapper">
-            <i class="fa-solid fa-globe"></i>
-            <select class="lang-dropdown" id="langSelector" onchange="changeLanguage(this.value)">
-                <option value="en">English</option>
-                <option value="ar">العربية</option>
-                <option value="zh">中文 (简体)</option>
-                <option value="de">Deutsch</option>
-                <option value="ja">日本語</option>
-                <option value="ko">한국어</option>
-                <option value="fr">Français</option>
-                <option value="es">Español</option>
-            </select>
-        </div>
+    <div class="header-controls">
+        <select class="lang-select" id="langSelect" onchange="changeLanguage(this.value)">
+            <option value="en">English</option>
+            <option value="ar">العربية</option>
+            <option value="zh">简体中文</option>
+            <option value="de">Deutsch</option>
+            <option value="ja">日本語</option>
+            <option value="ko">한국어</option>
+            <option value="fr">Français</option>
+            <option value="es">Español</option>
+        </select>
     </div>
 
     <div class="main-wrapper">
         <div class="calculator-side">
-            <h1 id="txtTitle">Advanced Triangle Counter</h1>
-            <div class="subtitle" id="txtSubtitle">Next-Generation Geometric Calculation System</div>
+            <h1 id="mainTitle">Advanced Triangle Counter</h1>
+            <div class="subtitle" id="mainSubtitle">Next-Generation Geometric Calculation System</div>
             
             <div class="input-grid">
                 <div class="input-group">
@@ -514,7 +134,7 @@
                     <input type="text" id="v3" placeholder="0">
                 </div>
                 <div class="input-group">
-                    <label for="p_val" id="lblPVal">Triple Intersections (P)</label>
+                    <label for="p_val" id="lblP">Triple Intersections (P)</label>
                     <input type="text" id="p_val" placeholder="0">
                 </div>
             </div>
@@ -523,7 +143,7 @@
             
             <div class="timer-box" id="timerBox">
                 <i class="fa-solid fa-spinner"></i> 
-                <span id="timerFullText">If this is the first time please wait for (<strong id="secondsCount">25</strong>s)...</span>
+                <span id="timerText">If this is the first time please wait for (<strong id="secondsCount">25</strong>s)...</span>
             </div>
             
             <div class="error-box" id="errorBox">
@@ -532,457 +152,181 @@
             </div>
             
             <div class="result-box" id="resultBox">
-                <h2 id="txtResultHeading">Total Triangles Formed</h2>
+                <h2 id="lblResultTitle">Total Triangles Formed</h2>
                 <div class="result-value" id="resultValue">0</div>
-                
                 <div class="call-counter" id="callCounterBox" style="display: none;">
-                    <i class="fa-solid fa-chart-line"></i> <span id="txtExecutions">Total Executions:</span> <span id="totalCallsValue" style="color: #2563eb; font-weight: 700;">0</span>
+                    <i class="fa-solid fa-chart-line"></i> <span id="lblExecutions">Total Executions:</span> <span id="totalCallsValue" style="color: #2563eb; font-weight: 700;">0</span> <span id="lblTimes">times</span>
                 </div>
             </div>
         </div>
 
         <div class="diagram-side">
-            <div class="guide-title" id="txtGuideTitle">
-                <i class="fa-solid fa-circle-info" style="color: var(--primary);"></i> Geometric Input Guide
-            </div>
-            
-            <svg width="280" height="240" viewBox="0 0 280 240" style="background: #fff; border-radius: 12px; border: 1px solid var(--border); box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);">
+            <div class="guide-title" id="lblGuideTitle"><i class="fa-solid fa-circle-info"></i> Geometric Input Guide</div>
+            <svg width="280" height="240" viewBox="0 0 280 240" style="background: #fff; border-radius: 12px; border: 1px solid var(--border);">
                 <polygon points="140,20 30,200 250,200" fill="none" stroke="#0f172a" stroke-width="3"/>
-                
                 <line x1="140" y1="20" x2="140" y2="200" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="4"/>
-                
                 <line x1="30" y1="200" x2="159.8" y2="52.5" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="4"/>
                 <line x1="30" y1="200" x2="195.0" y2="110.0" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="4"/>
-                
                 <line x1="250" y1="200" x2="120.2" y2="52.5" stroke="#ea580c" stroke-width="1.5" stroke-dasharray="4"/>
                 <line x1="250" y1="200" x2="85.0" y2="110.0" stroke="#ea580c" stroke-width="1.5" stroke-dasharray="4"/>
-                <line x1="250" y1="200" x2="51.4" y2="165.0" stroke="#ea580c" stroke-width="1.5" stroke-dasharray="4"/>
-                
                 <text x="110" y="14" font-weight="bold" font-size="12" fill="#2563eb">Vertex 1</text>
                 <text x="5" y="215" font-weight="bold" font-size="12" fill="#16a34a">Vertex 2</text>
                 <text x="230" y="215" font-weight="bold" font-size="12" fill="#ea580c">Vertex 3</text>
-                
-                <circle cx="140" cy="71" r="5" fill="#ef4444"/>
-                <text x="150" y="75" font-weight="bold" font-size="11" fill="#ef4444">P</text>
-                
-                <circle cx="140" cy="144" r="5" fill="#ef4444"/>
-                <text x="150" y="148" font-weight="bold" font-size="11" fill="#ef4444">P</text>
+                <circle cx="140" cy="71" r="5" fill="#ef4444"/><text x="150" y="75" font-weight="bold" font-size="11" fill="#ef4444">P</text>
             </svg>
             <ul class="guide-list">
-                <li class="guide-item">
-                    <i class="fa-solid fa-circle-dot"></i>
-                    <div id="txtGuideItem1"><strong>Vertices:</strong> Count lines drawn starting from each corner and landing on the opposite base side.</div>
-                </li>
-                <li class="guide-item">
-                    <i class="fa-solid fa-circle-nodes"></i>
-                    <div id="txtGuideItem2"><strong>Point P:</strong> Count only interior nodes where exactly three internal lines cross paths at one single point.</div>
-                </li>
-                <li class="guide-item">
-                    <i class="fa-solid fa-bolt"></i>
-                    <div id="txtGuideItem3"><strong>Smart Auto:</strong> The mathematical equation automatically sorts inputs behind the scenes to maintain mathematical precision.</div>
-                </li>
+                <li class="guide-item"><i class="fa-solid fa-circle-dot" style="color:#3b82f6"></i><div id="guideItem1">Vertices</div></li>
+                <li class="guide-item"><i class="fa-solid fa-circle-nodes" style="color:#ef4444"></i><div id="guideItem2">Point P</div></li>
+                <li class="guide-item"><i class="fa-solid fa-bolt" style="color:#eab308"></i><div id="guideItem3">Smart Auto</div></li>
             </ul>
         </div>
     </div>
 
-    <!-- 📑 DYNAMIC EXPLANATION / SEO SECTION -->
-    <div class="seo-section" id="seoContainer">
-        <!-- Will be populated dynamically by JavaScript -->
-    </div>
+    <div class="seo-section" id="seoContainer"></div>
 
     <div class="author-card">
         <div class="author-info">
-            <h3 id="txtAuthorHeading">Algorithm Invented by: Eng. Md. Abu Hantash</h3>
-            <p id="txtAuthorSub">Innovative Geometric Combinatorics Formulation © 2026. All rights reserved.</p>
+            <h3 id="lblAuthorTitle">Algorithm Invented by: Eng. Md. Abu Hantash</h3>
+            <p id="lblCopyright">© 2026. All rights reserved.</p>
         </div>
         <div class="contact-buttons">
-            <a href="mailto:abuhantashmo@gmail.com" class="btn-contact" id="btnEmail"><i class="fa-solid fa-envelope"></i> Email Me</a>
+            <a href="mailto:abuhantashmo@gmail.com" class="btn-contact"><i class="fa-solid fa-envelope"></i> <span id="lblEmailMe">Email Me</span></a>
             <a href="https://www.linkedin.com/in/mohammad-abu-hantash-6b8253170/" class="btn-contact btn-linkedin" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-            <a href="https://www.youtube.com/@mohammadabuhantash4174" class="btn-contact btn-youtube" target="_blank"><i class="fa-brands fa-youtube"></i> YouTube</a>
         </div>
     </div>
 </div>
-
-<div class="copyright-text" id="txtCopyright">
-    Secure Cloud Calculation System • Powered by Flask, Render & Google Analytics
-</div>
+<div class="copyright-text" id="lblFooterSystem">Secure Cloud Calculation System</div>
 
 <script>
 let countdownInterval = null;
+let currentLang = 'en';
 
-// Multi-language Translation Dictionary
 const translations = {
     en: {
-        dir: "ltr",
-        title: "📐 Advanced Triangle Counter",
-        subtitle: "Next-Generation Geometric Calculation System",
-        lblV1: "Lines from Vertex 1",
-        lblV2: "Lines from Vertex 2",
-        lblV3: "Lines from Vertex 3",
-        lblPVal: "Triple Intersections (P)",
-        calcBtn: "Calculate Total Triangles",
-        timerFullText: 'If this is the first time please wait for (<strong id="secondsCount">25</strong>s)...',
-        txtResultHeading: "Total Triangles Formed",
-        txtExecutions: "Total Executions:",
-        txtGuideTitle: '<i class="fa-solid fa-circle-info" style="color: var(--primary);"></i> Geometric Input Guide',
-        txtGuideItem1: '<strong>Vertices:</strong> Count lines drawn starting from each corner and landing on the opposite base side.',
-        txtGuideItem2: '<strong>Point P:</strong> Count only interior nodes where exactly three internal lines cross paths at one single point.',
-        txtGuideItem3: '<strong>Smart Auto:</strong> The mathematical equation automatically sorts inputs behind the scenes to maintain mathematical precision.',
-        txtAuthorHeading: "Algorithm Invented by: Eng. Md. Abu Hantash",
-        txtAuthorSub: "Innovative Geometric Combinatorics Formulation © 2026. All rights reserved.",
-        btnEmail: '<i class="fa-solid fa-envelope"></i> Email Me',
-        txtCopyright: "Secure Cloud Calculation System • Powered by Flask, Render & Google Analytics",
-        validationError: "Validation Error: All fields are required! Please fill in all variables.",
-        invalidInput: "Invalid Input! Please enter positive whole numbers only (No decimals, signs, or symbols).",
-        connectionError: "Connection Error: Could not reach the secure calculation cloud.",
-        seo: `<h2>About the Geometric Combinatorics Formulation</h2>
-              <p>The <strong>Advanced Triangle Calculation System</strong> utilizes a revolutionary, high-performance geometric formulation discovered by <strong>Eng. Md. Abu Hantash</strong>. Unlike traditional counting algorithms that rely on heavy recursive parsing or loop-based node traversal—which scale poorly and consume vast system resources—this system implements a pure mathematical equation designed with <strong>Constant Time Complexity O(1)</strong> using strict <strong>Big O Notation</strong>.</p>
-              <p>Is there a practical benefit to implementing this program anywhere? At first glance, the problem might seem like a mere "intelligence game" or a fun puzzle, but in reality, the mathematical and programming principle used here (Computational Geometry) has highly vital applications in the real world:</p>
-              <ul>
-                  <li><strong>Microchip & Semiconductor Design:</strong> When designing processors (CPUs), millions of tiny electrical pathways and lines intersect on the silicon wafer. Highly similar algorithms are used to calculate the number of intersections, closed areas, and avoid interferences to ensure microchip efficiency and speed.</li>
-                  <li><strong>Network Topology & Telecommunications:</strong> Calculating the number of closed loops (triangles) between connection nodes or cell towers helps engineers analyze network strength, determine data transmission efficiency, and guarantee redundant fallback routes if a line fails.</li>
-                  <li><strong>3D Computer Graphics & Gaming:</strong> All 3D games and graphics rendered on screens are originally composed of millions of tiny triangles (Mesh). Algorithms that handle intersecting lines and compute triangles with lightning-fast speeds are the backbone of modern game engines like Unreal Engine.</li>
-                  <li><strong>Cybersecurity & Cryptography:</strong> Certain advanced encryption systems rely on geometric problems that are mathematically difficult to solve but simple to verify programmatically (such as elliptic curve cryptography). These programs serve as compact models for building such robust systems.</li>
-              </ul>
-              <p>In short, the designer took a geometric dilemma that would appear extremely complex to humans and transformed it into a lightning-fast software tool. This is the exact same programming logic upon which the greatest modern technologies are built.</p>`
+        title: "📐 Advanced Triangle Counter", subtitle: "Next-Generation Geometric Calculation System",
+        v1: "Lines from Vertex 1", v2: "Lines from Vertex 2", v3: "Lines from Vertex 3", p: "Triple Intersections (P)",
+        btn: "Calculate Total Triangles", timer: "If this is the first time please wait for (<strong id='secondsCount'>25</strong>s)...",
+        resultTitle: "Total Triangles Formed", executions: "Total Executions:", times: "times", guideTitle: "Geometric Input Guide",
+        g1: "<strong>Vertices:</strong> Count lines drawn starting from each corner and landing on the opposite base side.",
+        g2: "<strong>Point P:</strong> Count only interior nodes where exactly three internal lines cross paths at one single point.",
+        g3: "<strong>Smart Auto:</strong> The mathematical equation automatically sorts inputs behind the scenes to maintain precision.",
+        author: "Algorithm Invented by: Eng. Md. Abu Hantash", copyright: "Innovative Geometric Combinatorics Formulation © 2026. All rights reserved.",
+        email: "Email Me", footer: "Secure Cloud Calculation System • Powered by Flask, Render & Google Analytics",
+        valError: "Validation Error: All fields are required! Please fill in all variables.",
+        invError: "Invalid Input! Positive whole numbers only.", connError: "Connection Error: Could not reach the cloud.",
+        seo: `<h2>About the Geometric Combinatorics Formulation</h2><p>The <strong>Advanced Triangle Calculation System</strong> utilizes a revolutionary, high-performance geometric formulation discovered by <strong>Eng. Md. Abu Hantash</strong>. Built with <strong>Constant Time Complexity O(1)</strong> using strict <strong>Big O Notation</strong>.</p><p>Is there a benefit to applying this program anywhere? The principle used here (Combinatorics and Computational Geometry) has vital real-world applications:</p><ul><li><strong>Microchip Design:</strong> Intersecting tracks on processor chips (CPUs). Algorithms calculate closed areas to ensure speed.</li><li><strong>Network Topology:</strong> Calculating closed triangle tracks between connection towers protects network strength.</li><li><strong>3D Computer Graphics & Games:</strong> Backbones of modern engines like Unreal Engine depend on swift triangular mesh processing.</li><li><strong>Cybersecurity & Cryptography:</strong> Complex systems rely on complex geometric puzzles.</li></ul>`
     },
     ar: {
-        dir: "rtl",
-        title: "📐 مُعِدّ المثلثات المتقدم",
-        subtitle: "نظام الحساب الهندسي من الجيل القادم",
-        lblV1: "الخطوط من الرأس 1",
-        lblV2: "الخطوط من الرأس 2",
-        lblV3: "الخطوط من الرأس 3",
-        lblPVal: "التقاطعات الثلاثية (P)",
-        calcBtn: "احسب إجمالي المثلثات",
-        timerFullText: 'إذا كانت هذه هي المرة الأولى يرجى الانتظار لـ (<strong id="secondsCount">25</strong> ثانية)...',
-        txtResultHeading: "إجمالي المثلثات المتكونة",
-        txtExecutions: "إجمالي عمليات التنفيذ:",
-        txtGuideTitle: '<i class="fa-solid fa-circle-info" style="color: var(--primary);"></i> دليل الإدخال الهندسي',
-        txtGuideItem1: '<strong>الرؤوس:</strong> احسب الخطوط المرسومة بدءاً من كل زاوية والهابطة على الضلع المقابل.',
-        txtGuideItem2: '<strong>النقطة P:</strong> احسب فقط العقد الداخلية حيث تتقاطع ثلاثة خطوط داخلية بالضبط عند نقطة واحدة.',
-        txtGuideItem3: '<strong>التلقائي الذكي:</strong> تقوم المعادلة الرياضية بترتيب المدخلات تلقائياً خلف الكواليس للحفاظ على الدقة الرياضية.',
-        txtAuthorHeading: "الخوارزمية مخترعة بواسطة: المهندس محمد أبو حنتش",
-        txtAuthorSub: "صيغة التراكيب الهندسية المبتكرة © 2026. جميع الحقوق محفوظة.",
-        btnEmail: '<i class="fa-solid fa-envelope"></i> راسلني بريدياً',
-        txtCopyright: "نظام الحساب السحابي الآمن • مشغل بواسطة Flask, Render & Google Analytics",
-        validationError: "خطأ في التحقق: جميع الحقول مطلوبة! يرجى ملء جميع المتغيرات.",
-        invalidInput: "إدخال غير صحيح! يرجى إدخال أعداد صحيحة موجبة فقط (بدون كسور، إشارات أو رموز).",
-        connectionError: "خطأ في الاتصال: تعذر الوصول إلى سحابة الحساب الآمنة.",
-        seo: `<h2>حول صيغة التراكيب الهندسية</h2>
-              <p>يستخدم <strong>نظام حساب المثلثات المتقدم</strong> صيغة هندسية ثورية وعالية الأداء اكتشفها <strong>المهندس محمد أبو حنتش</strong>. على عكس خوارزميات العد التقليدية التي تعتمد على التحليل العودي الثقيل أو تتبع العقد القائم على الحلقات—والتي تتوسع بشكل ضعيف وتستهلك موارد نظام هائلة—ينفذ هذا النظام معادلة رياضية نقية مصممة بـ <strong>تعقيد زمني ثابت O(1)</strong> باستخدام <strong>ترميز Big O</strong> الصارم.</p>
-              <p>هل هناك فائدة من تطبيق هذا البرنامج في أي مكان؟ قد تبدو المسألة للوهلة الأولى مجرد "لعبة ذكاء" أو لغز مسلٍ، لكن في الحقيقة، المبدأ الرياضي والبرمجي المستخدم هنا (وهو علم التركيبات والهندسة الحسابية - Computational Geometry) له تطبيقات حيوية جداً في العالم الحقيقي:</p>
-              <ul>
-                  <li><strong>تصميم رقاقات أشباه الموصلات والدوائر الإلكترونية (Microchip Design):</strong> عند تصميم المعالجات (CPUs)، تتقاطع ملايين المسارات والخطوط الكهربائية الدقيقة على شريحة السيليكون. تُستخدم خوارزميات مشابهة جداً لحساب عدد التقاطعات، والمساحات المغلقة، وتجنب التداخلات لضمان كفاءة الشريحة وسرعتها.</li>
-                  <li><strong>الشبكات وأنظمة الاتصالات (Network Topology):</strong> حساب عدد المسارات المغلقة (المثلثات) بين نقاط الاتصال أو الأبراج يساعد المهندسين في تحليل قوة الشبكة، ومعرفة مدى كفاءة نقل البيانات، وضمان وجود مسارات بديلة في حال تعطل أحد الخطوط.</li>
-                  <li><strong>الرسومات ثلاثية الأبعاد والألعاب (3D Computer Graphics):</strong> جميع الألعاب والرسومات ثلاثية الأبعاد التي نراها على الشاشات تتكون في الأصل من ملايين المثلثات الصغيرة (Mesh). الخوارزميات التي تتعامل مع تداخل الخطوط وتكوين المثلثات بسرعة فائقة هي العمود الفقري لمحركات الألعاب (مثل Unreal Engine).</li>
-                  <li><strong>الأمن السيبراني والتشفير (Cryptography):</strong> بعض أنظمة التشفير المعقدة تعتمد على مسائل هندسية صعبة الحل رياضياً وسهلة التحقق برمجياً (مثل منحنيات التشفير)، وهذه البرامج تعتبر نماذج مصغرة لبناء تلك الأنظمة.</li>
-              </ul>
-              <p>باختصار، المصمم أخذ معضلة هندسية قد تبدو معقدة جداً للبشر، وحولها إلى أداة برمجية فائقة السرعة، وهو نفس المنطق البرمجي الذي تُبنى به أعظم التقنيات الحديثة.</p>`
+        title: "📐 الحاسب المتقدم للمثلثات", subtitle: "نظام الحساب الهندسي من الجيل القادم",
+        v1: "الخطوط من الرأس 1", v2: "الخطوط من الرأس 2", v3: "الخطوط من الرأس 3", p: "التقاطعات الثلاثية (P)",
+        btn: "احسب إجمالي المثلثات", timer: "إذا كانت هذه هي المرة الأولى، يرجى الانتظار لمدة (<strong id='secondsCount'>25</strong> ثانية)...",
+        resultTitle: "إجمالي المثلثات المتكونة", executions: "إجمالي العمليات المنفذة:", times: "مرات", guideTitle: "دليل المدخلات الهندسية",
+        g1: "<strong>الرؤوس:</strong> احسب الخطوط المرسومة بدءاً من كل زاوية والتي تنتهي عند الضلع المقابل لها.",
+        g2: "<strong>النقطة P:</strong> احسب فقط العقد الداخلية حيث تتقاطع ثلاثة خطوط داخلية بالضبط عند نقطة واحدة.",
+        g3: "<strong>التنظيم الذكي:</strong> تقوم المعادلة الرياضية تلقائياً بفرز المدخلات للحفاظ على الدقة الرياضية الصارمة.",
+        author: "المعادلة من اختراع المهندس: محمد أبو حنتش", copyright: "صيغة التراكيب الهندسية المبتكرة © 2026. جميع الحقوق محفوظة.",
+        email: "راسلني بريدياً", footer: "نظام الحساب السحابي الآمن • مدعوم بواسطة Flask, Render و Google Analytics",
+        valError: "خطأ في التحقق: جميع الحقول مطلوبة!", invError: "إدخال غير صحيح! يرجى إدخال أرقام صحيحة موجبة فقط.", connError: "خطأ في الاتصال: تعذر الوصول إلى السحابة الآمنة.",
+        seo: `<h2>حول صيغة التراكيب الهندسية التوافقيّة</h2><p>يعتمد <strong>نظام حساب المثلثات المتقدم</strong> على معادلة هندسية ثورية وعالية الأداء اكتشفها <strong>المهندس محمد أبو حنتش</strong> مصممة بـ <strong>زمن تنفيذ ثابت O(1)</strong> باستخدام <strong>رمز تدوين Big O</strong>.</p><p>هل هناك فائدة من تطبيق هذا البرنامج في أي مكان؟ في الحقيقة، المبدأ البرمجي المستخدم هنا (وهو علم التركيبات والهندسة الحسابية - Computational Geometry) له تطبيقات حيوية في العالم الحقيقي:</p><ul><li><strong>تصميم رقاقات أشباه الموصلات والدوائر الإلكترونية (Microchip Design):</strong> تتقاطع ملايين المسارات الكهربائية الدقيقة على شريحة السيليكون عند تصميم المعالجات (CPUs)، وتُستخدم هذه الخوارزميات لضمان كفاءة الشريحة وسرعتها.</li><li><strong>الشبكات وأنظمة الاتصالات (Network Topology):</strong> حساب المثلثات المغلقة بين أبراج الاتصال يساعد في تحليل قوة الشبكة وكفاءة نقل البيانات وضمان وجود مسارات بديلة.</li><li><strong>الرسومات ثلاثية الأبعاد والألعاب (3D Computer Graphics):</strong> تتكون رسومات الألعاب من ملايين المثلثات الصغيرة (Mesh)، والخوارزميات فائقة السرعة هي العمود القبلي لمحركات الألعاب مثل (Unreal Engine).</li><li><strong>الأمن السيبراني والتشفير (Cryptography):</strong> أنظمة التشفير المعقدة تعتمد على مسائل هندسية صعبة الحل رياضياً وسهلة التحقق برمجياً.</li></ul>`
     },
-    zh: {
-        dir: "ltr",
-        title: "📐 高级三角形计数器",
-        subtitle: "次世代几何计算系统",
-        lblV1: "顶点 1 发出的线数",
-        lblV2: "顶点 2 发出的线数",
-        lblV3: "顶点 3 发出的线数",
-        lblPVal: "三线交点 (P)",
-        calcBtn: "计算总三角形数",
-        timerFullText: '如果是第一次运行，请等待 (<strong id="secondsCount">25</strong> 秒)...',
-        txtResultHeading: "生成的总三角形数",
-        txtExecutions: "总执行次数:",
-        txtGuideTitle: '<i class="fa-solid fa-circle-info" style="color: var(--primary);"></i> 几何输入指南',
-        txtGuideItem1: '<strong>顶点：</strong> 计算从每个角开始并落在对边底部的线条数。',
-        txtGuideItem2: '<strong>P 点：</strong> 仅计算三条内部线条恰好交于一点的内部节点。',
-        txtGuideItem3: '<strong>智能自动：</strong> 数学公式在后台自动对输入进行排序，以保持数学精确度。',
-        txtAuthorHeading: "算法发明人: Eng. Md. Abu Hantash",
-        txtAuthorSub: "创新几何组合学公式 © 2026。保留所有权利。",
-        btnEmail: '<i class="fa-solid fa-envelope"></i> 给我在邮件',
-        txtCopyright: "安全云计算系统 • 由 Flask, Render 和 Google Analytics 驱动",
-        validationError: "验证错误：所有字段均为必填项！请填写所有变量。",
-        invalidInput: "无效输入！请仅输入正整数（无小数、正负号或符号）。",
-        connectionError: "连接错误：无法连接到安全的计算云。",
-        seo: `<h2>关于几何组合学公式</h2>
-              <p><strong>高级三角形计算系统</strong>利用了由 <strong>Eng. Md. Abu Hantash</strong> 发现的革命性、高性能几何公式。与依赖重度递归解析或基于循环的节点遍历的传统计数算法（这些算法扩展性差且消耗大量系统资源）不同，该系统实现了使用严格 <strong>大 O 表示法</strong> 设计的具有 <strong>常数时间复杂度 O(1)</strong> 的纯数学方程。</p>
-              <p>在微芯片设计（设计 CPU 时，硅片上有数百万条电气路径交叉）、网络拓扑、3D 计算机图形学（游戏引擎）以及网络安全中，该算法跳过了迭代，瞬间交付结果。设计师将一个对人类来说极度复杂的几何难题，转变成了一个闪电般快速的软件工具。</p>`
-    },
-    de: {
-        dir: "ltr",
-        title: "📐 Erweiterter Dreiecksrechner",
-        subtitle: "Geometrisches Berechnungssystem der nächsten Generation",
-        lblV1: "Linien von Scheitelpunkt 1",
-        lblV2: "Linien von Scheitelpunkt 2",
-        lblV3: "Linien von Scheitelpunkt 3",
-        lblPVal: "Dreifache Schnittpunkte (P)",
-        calcBtn: "Gesamte Dreiecke berechnen",
-        timerFullText: 'Wenn dies das erste Mal ist, warten Sie bitte (<strong id="secondsCount">25</strong>s)...',
-        txtResultHeading: "Gesamtzahl gebildeter Dreiecke",
-        txtExecutions: "Ausführungen gesamt:",
-        txtGuideTitle: '<i class="fa-solid fa-circle-info" style="color: var(--primary);"></i> Leitfaden für geometrische Eingaben',
-        txtGuideItem1: '<strong>Scheitelpunkte:</strong> Zählen Sie die Linien, die an jeder Ecke beginnen und auf der gegenüberliegenden Basisseite landen.',
-        txtGuideItem2: '<strong>Punkt P:</strong> Zählen Sie nur innere Knoten, an denen sich genau drei interne Linien an einem einzigen Punkt kreuzen.',
-        txtGuideItem3: '<strong>Smart Auto:</strong> Die mathematische Gleichung sortiert Eingaben im Hintergrund automatisch, um die mathematische Präzision zu wahren.',
-        txtAuthorHeading: "Algorithmus erfunden von: Eng. Md. Abu Hantash",
-        txtAuthorSub: "Innovative geometrische Kombinatorik-Formel © 2026. Alle Rechte vorbehalten.",
-        btnEmail: '<i class="fa-solid fa-envelope"></i> E-Mail an mich',
-        txtCopyright: "Sicheres Cloud-Berechnungssystem • Unterstützt durch Flask, Render & Google Analytics",
-        validationError: "Validierungsfehler: Alle Felder sind erforderlich! Bitte füllen Sie alle Variablen aus.",
-        invalidInput: "Ungültige Eingabe! Bitte nur positive ganze Zahlen eingeben (keine Dezimalzahlen, Vorzeichen oder Symbole).",
-        connectionError: "Verbindungsfehler: Die sichere Berechnungs-Cloud konnte nicht erreicht werden.",
-        seo: `<h2>Über die geometrische Kombinatorik-Formulierung</h2>
-              <p>Das <strong>Advanced Triangle Calculation System</strong> nutzt eine revolutionäre, hochperformante geometrische Formulierung, die von <strong>Eng. Md. Abu Hantash</strong> entdeckt wurde. Im Gegensatz zu traditionellen Zählalgorithmen, die auf rechenintensives rekursives Parsen oder schleifenbasierte Knotendurchläufe setzen, implementiert dieses System eine reine mathematische Gleichung mit <strong>konstanter Zeitkomplexität O(1)</strong> unter Verwendung der strikten <strong>O-Notation</strong>.</p>
-              <p>Dies hat lebenswichtige Anwendungen beim Mikrochip-Design (CPUs), in der Netzwerktopologie, bei 3D-Computergrafiken (Unreal Engine) und in der Kryptographie. Der Entwickler hat ein für Menschen hochkomplexes geometrisches Problem in ein blitzschnelles Software-Werkzeug verwandelt.</p>`
-    },
-    ja: {
-        dir: "ltr",
-        title: "📐 高度な三角形カウンター",
-        subtitle: "次世代幾何学計算システム",
-        lblV1: "頂点 1 からの直線数",
-        lblV2: "頂点 2 からの直線数",
-        lblV3: "頂点 3 からの直線数",
-        lblPVal: "3重交点 (P)",
-        calcBtn: "総三角形数を計算",
-        timerFullText: '初めての場合は、(<strong id="secondsCount">25</strong>秒) お待ちください...',
-        txtResultHeading: "形成された総三角形数",
-        txtExecutions: "総実行回数:",
-        txtGuideTitle: '<i class="fa-solid fa-circle-info" style="color: var(--primary);"></i> 幾何学的入力ガイド',
-        txtGuideItem1: '<strong>頂点:</strong> 各コーナーから始まり、反対側の底辺に着地する直線を数えます。',
-        txtGuideItem2: '<strong>交点 P:</strong> 正確に3本の内部直線が1つの点で交差する内部ノードのみを数えます。',
-        txtGuideItem3: '<strong>スマート自動:</strong> 数学的精度を維持するため、数式がバックグラウンドで入力を自動的にソートします。',
-        txtAuthorHeading: "アルゴリズム発明者: Eng. Md. Abu Hantash",
-        txtAuthorSub: "革新的な幾何学的組合せ論公式 © 2026。All rights reserved.",
-        btnEmail: '<i class="fa-solid fa-envelope"></i> メールを送る',
-        txtCopyright: "セキュアクラウド計算システム • Powered by Flask, Render & Google Analytics",
-        validationError: "検証エラー：すべてのフィールドが必須です！すべての変数を入力してください。",
-        invalidInput: "無効な入力です！正の整数のみを入力してください（小数、符号、記号は不可）。",
-        connectionError: "接続エラー：安全な計算クラウドに到達できませんでした。",
-        seo: `<h2>幾何学的組合せ論の公式について</h2>
-              <p><strong>Advanced Triangle Calculation System</strong>は、<strong>Eng. Md. Abu Hantash</strong>によって発見された、革新的で高パフォーマンスな幾何学的公式を利用しています。ループや再帰処理に依存する従来のアルゴリズムとは異なり、厳密な<strong>ランダウの記号 (Big O)</strong>を用いた<strong>定数時間計算量 O(1)</strong>で設計された純粋な数式を実装しています。</p>
-              <p>このアプローチは、マイクロチップ設計（CPU）、ネットワークトポロジ、3Dコンピュータグラフィックス（ゲームエンジン）、暗号技術など、現実世界の高度な技術分野で非常に重要な応用例を持っています。</p>`
-    },
-    ko: {
-        dir: "ltr",
-        title: "📐 고급 삼각형 카운터",
-        subtitle: "차세대 기하학적 계산 시스템",
-        lblV1: "꼭짓점 1에서의 직선 수",
-        lblV2: "꼭짓점 2에서의 직선 수",
-        lblV3: "꼭짓점 3에서의 직선 수",
-        lblPVal: "삼중 교점 (P)",
-        calcBtn: "총 삼각형 수 계산",
-        timerFullText: '처음인 경우 (<strong id="secondsCount">25</strong>초) 동안 기다려 주십시오...',
-        txtResultHeading: "형성된 총 삼각형 수",
-        txtExecutions: "총 실행 횟수:",
-        txtGuideTitle: '<i class="fa-solid fa-circle-info" style="color: var(--primary);"></i> 기하학적 입력 가이드',
-        txtGuideItem1: '<strong>꼭짓점:</strong> 각 모서리에서 시작하여 반대쪽 밑면에 닿는 직선의 수를 셉니다.',
-        txtGuideItem2: '<strong>교점 P:</strong> 정확히 3개의 내부 직선이 하나의 지점에서 교차하는 내부 노드만 셉니다.',
-        txtGuideItem3: '<strong>스마트 자동:</strong> 수학적 정밀도를 유지하기 위해 기하학적 방정식이 백그라운드에서 입력을 자동으로 정렬합니다.',
-        txtAuthorHeading: "알고리즘 발명자: Eng. Md. Abu Hantash",
-        txtAuthorSub: "혁신적인 기하학적 조합론 공식 © 2026. All rights reserved.",
-        btnEmail: '<i class="fa-solid fa-envelope"></i> 이메일 보내기',
-        txtCopyright: "보안 클라우드 계산 시스템 • Powered by Flask, Render & Google Analytics",
-        validationError: "유효성 검사 오류: 모든 필드는 필수입니다! 모든 변수를 입력해주세요.",
-        invalidInput: "잘못된 입력! 양의 정수만 입력하십시오 (소수점, 부호, 기호 불가능).",
-        connectionError: "연결 오류: 보안 계산 클라우드에 연결할 수 없습니다.",
-        seo: `<h2>기하학적 조합론 공식 정보</h2>
-              <p><strong>고급 삼각형 계산 시스템</strong>은 <strong>Eng. Md. Abu Hantash</strong>가 발견한 혁신적인 고성능 기하학적 공식을 활용합니다. 대규모 재귀 알고리즘이나 루프 기반 탐색 대신, 엄격한 <strong>Big O 표기법</strong>을 따르는 <strong>상수 시간 복잡도 O(1)</strong>의 순수 수학 방정식을 구현합니다.</p>
-              <p>이 원리는 마이크로칩 및 반도체 설계(CPU), 네트워크 토폴로지, 3D 컴퓨터 그래픽 및 게임 엔진(Unreal Engine), 그리고 암호학 등 현대 기술의 핵심 인프라에 직접적인 응용 분야를 가집니다.</p>`
-    },
-    fr: {
-        dir: "ltr",
-        title: "📐 Compteur de Triangles Avancé",
-        subtitle: "Système de calcul géométrique de nouvelle génération",
-        lblV1: "Lignes du Sommet 1",
-        lblV2: "Lignes du Sommet 2",
-        lblV3: "Lignes du Sommet 3",
-        lblPVal: "Intersections Triples (P)",
-        calcBtn: "Calculer le Total des Triangles",
-        timerFullText: "S'il s'agit de la première fois, veuillez patienter (<strong id="secondsCount">25</strong>s)...",
-        txtResultHeading: "Total des Triangles Formés",
-        txtExecutions: "Total des exécutions :",
-        txtGuideTitle: '<i class="fa-solid fa-circle-info" style="color: var(--primary);"></i> Guide d'entrée géométrique',
-        txtGuideItem1: '<strong>Sommets:</strong> Comptez les lignes tracées à partir de chaque coin et arrivant sur le côté de base opposé.',
-        txtGuideItem2: '<strong>Point P:</strong> Comptez uniquement les nœuds intérieurs où exactement trois lignes internes se croisent en un seul point.',
-        txtGuideItem3: '<strong>Auto Intelligent:</strong> L'équation mathématique trie automatiquement les entrées en arrière-plan pour maintenir la précision mathématique.',
-        txtAuthorHeading: "Algorithme inventé par : Eng. Md. Abu Hantash",
-        txtAuthorSub: "Formulation innovante en combinatoire géométrique © 2026. Tous droits réservés.",
-        btnEmail: '<i class="fa-solid fa-envelope"></i> Envoyez-moi un e-mail',
-        txtCopyright: "Système de calcul cloud sécurisé • Propulsé par Flask, Render & Google Analytics",
-        validationError: "Erreur de validation : Tous les champs sont obligatoires ! Veuillez remplir toutes les variables.",
-        invalidInput: "Entrée non valide ! Veuillez saisir uniquement des nombres entiers positifs (pas de décimales, de signes ou de symboles).",
-        connectionError: "Erreur de connexion : Impossible de joindre le cloud de calcul sécurisé.",
-        seo: `<h2>À propos de la formulation en combinatoire géométrique</h2>
-              <p>Le <strong>Système Avancé de Calcul de Triangles</strong> utilise une formulation géométrique révolutionnaire et performante découverte par <strong>Eng. Md. Abu Hantash</strong>. Contrairement aux algorithmes traditionnels, ce système implémente une équation mathématique pure conçue avec une <strong>complexité temporelle constante O(1)</strong> en notation <strong>Big O</strong>.</p>
-              <p>Ses applications incluent la conception de puces électroniques (CPU), les topologies de réseaux, l'infographie 3D (moteurs de jeux comme Unreal Engine) et la cryptographie.</p>`
-    },
-    es: {
-        dir: "ltr",
-        title: "📐 Contador de Triángulos Avanzado",
-        subtitle: "Sistema de cálculo geométrico de próxima generación",
-        lblV1: "Líneas desde el Vértice 1",
-        lblV2: "Líneas desde el Vértice 2",
-        lblV3: "Líneas desde el Vértice 3",
-        lblPVal: "Intersecciones Triples (P)",
-        calcBtn: "Calcular Total de Triángulos",
-        timerFullText: 'Si es la primera vez, por favor espere (<strong id="secondsCount">25</strong>s)...',
-        txtResultHeading: "Total de Triángulos Formados",
-        txtExecutions: "Ejecuciones totales:",
-        txtGuideTitle: '<i class="fa-solid fa-circle-info" style="color: var(--primary);"></i> Guía de Entrada Geométrica',
-        txtGuideItem1: '<strong>Vértices:</strong> Cuente las líneas dibujadas comenzando desde cada esquina y aterrizando en el lado de la base opuesto.',
-        txtGuideItem2: '<strong>Punto P:</strong> Cuente solo los nodos interiores donde exactamente tres líneas internas se cruzan en un solo punto.',
-        txtGuideItem3: '<strong>Auto Inteligente:</strong> La ecuación matemática ordena automáticamente las entradas entre bastidores para mantener la precisión matemática.',
-        txtAuthorHeading: "Algoritmo Inventado por: Eng. Md. Abu Hantash",
-        txtAuthorSub: "Formulación innovadora de combinatoria geométrica © 2026. Todos los derechos reservados.",
-        btnEmail: '<i class="fa-solid fa-envelope"></i> Envíame un correo',
-        txtCopyright: "Sistema seguro de cálculo en la nube • Desarrollado por Flask, Render y Google Analytics",
-        validationError: "Error de validación: ¡Todos los campos son obligatorios! Por favor complete todas las variables.",
-        invalidInput: "¡Entrada inválida! Por favor ingrese solo números enteros positivos (sin decimales, signos ni símbolos).",
-        connectionError: "Error de conexión: No se pudo conectar con la nube de cálculo segura.",
-        seo: `<h2>Acerca de la formulación de combinatoria geométrica</h2>
-              <p>El <strong>Sistema de Cálculo de Triángulos Avanzado</strong> utiliza una formulación geométrica revolucionaria y de alto rendimiento descubierta por <strong>Eng. Md. Abu Hantash</strong>. Implementa una ecuación matemática pura diseñada con una <strong>complejidad temporal constante O(1)</strong> utilizando la notación <strong>Big O</strong>.</p>
-              <p>Tiene aplicaciones vitales en el diseño de microchips (CPU), topología de redes, gráficos 3D por computadora (motores de juegos) y criptografía de vanguardia.</p>`
-    }
+    zh: { title: "📐 高级三角形计数器", subtitle: "次世代几何组合计算系统", v1: "从顶点 1 引出的线", v2: "从顶点 2 引出的线", v3: "从顶点 3 引出的线", p: "三重交点 (P)", btn: "计算三角形总数", timer: "请等待 (<strong id='secondsCount'>25</strong> 秒)...", resultTitle: "生成的三角形总数", executions: "总执行次数:", times: "次", guideTitle: "几何输入指南", g1: "顶点线计数", g2: "三重交点P", g3: "算法自动精确排序", author: "算法发明人: Eng. Md. Abu Hantash", copyright: "© 2026. 保留所有权利。", email: "电邮联系我", footer: "安全云端计算系统", valError: "验证错误：所有字段均为必填项！", invError: "无效输入！请输入正整数。", connError: "连接错误：无法连接到计算云端。", seo: `<h2>关于几何组合学公式</h2><p>本系统实现了一个纯数学公式，利用具有 <strong>常数时间复杂度 O(1)</strong> 的 <strong>大O表示法</strong> 设计。</p>` },
+    de: { title: "📐 Dreiecksrechner", subtitle: "Geometrisches Kombinatorik-Berechnungssystem", v1: "Linien v1", v2: "Linien v2", v3: "Linien v3", p: "Schnittpunkte (P)", btn: "Berechnen", timer: "Bitte warten (<strong id='secondsCount'>25</strong>s)...", resultTitle: "Dreiecke Gesamt", executions: "Ausführungen:", times: "Mal", guideTitle: "Eingabe-Leitfaden", g1: "Linien", g2: "Knoten P", g3: "Smart Auto", author: "Eng. Md. Abu Hantash", copyright: "© 2026", email: "E-Mail", footer: "Secure Cloud System", valError: "Pflichtfelder fehlen!", invError: "Nur positive ganze Zahlen!", connError: "Verbindungsfehler!", seo: `<h2>Kombinatorik-Formulierung</h2><p>Konstante Zeitkomplexität <strong>O(1)</strong>.</p>` },
+    ja: { title: "📐 三角形カウンター", subtitle: "幾何学的組合せ論計算システム", v1: "頂点1直線数", v2: "頂点2直線数", v3: "頂点3直線数", p: "交点 (P)", btn: "計算する", timer: "(<strong id='secondsCount'>25</strong>秒) お待ちください...", resultTitle: "形成された総数", executions: "実行回数:", times: "回", guideTitle: "入力ガイド", g1: "直線数", g2: "交点P", g3: "自動ソート", author: "Eng. Md. Abu Hantash", copyright: "© 2026", email: "メール", footer: "クラウド計算システム", valError: "必須入力です", invError: "正の整数のみ", connError: "接続エラーが発生しました", seo: `<h2>幾何学的組合せ論公式</h2><p>定数時間計算量 <strong>O(1)</strong> 設計。</p>` },
+    ko: { title: "📐 삼각형 카운터", subtitle: "기하 조합론 계산 시스템", v1: "꼭짓점 1 선", v2: "꼭짓점 2 선", v3: "꼭짓점 3 선", p: "삼중 교점 (P)", btn: "계산하기", timer: "(<strong id='secondsCount'>25</strong>초) 기다려주십시오...", resultTitle: "총 삼각형 수", executions: "실행 횟수:", times: "회", guideTitle: "입력 가이드", g1: "꼭짓점 선", g2: "교점 P", g3: "자동 정렬", author: "Eng. Md. Abu Hantash", copyright: "© 2026", email: "이메일", footer: "보안 클라우드 시스템", valError: "모든 필드 필수 입력", invError: "양의 정수만 가능", connError: "연결 오류 발생", seo: `<h2>기하 조합론 공식 정보</h2><p>상수 시간 복잡도 <strong>O(1)</strong> 설계 공식을 구현합니다.</p>` },
+    fr: { title: "📐 Compteur de Triangles", subtitle: "Système de Calcul de Combinatoire", v1: "Sommet 1", v2: "Sommet 2", v3: "Sommet 3", p: "Intersections (P)", btn: "Calculer", timer: "Veuillez patienter (<strong id='secondsCount'>25</strong>s)...", resultTitle: "Total des Triangles", executions: "Exécutions:", times: "fois", guideTitle: "Guide d'entrée", g1: "Lignes", g2: "Point P", g3: "Ajustement Auto", author: "Eng. Md. Abu Hantash", copyright: "© 2026", email: "Contact", footer: "Système Cloud Sécurisé", valError: "Champs obligatoires !", invError: "Entiers positifs uniquement.", connError: "Erreur de connexion.", seo: `<h2>Formulation combinatoire</h2><p>Complexité temporelle constante <strong>O(1)</strong>.</p>` },
+    es: { title: "📐 Contador de Triángulos", subtitle: "Sistema de Combinatoria Geométrica", v1: "Vértice 1", v2: "Vértice 2", v3: "Vértice 3", p: "Intersecciones (P)", btn: "Calcular", timer: "Espere por favor (<strong id='secondsCount'>25</strong>s)...", resultTitle: "Total Triángulos", executions: "Ejecuciones:", times: "veces", guideTitle: "Guía de entrada", g1: "Líneas", g2: "Punto P", g3: "Auto Orden", author: "Eng. Md. Abu Hantash", copyright: "© 2026", email: "Correo", footer: "Sistema Seguro", valError: "Campos obligatorios", invError: "Solo enteros positivos.", connError: "Error de conexión.", seo: `<h2>Formulación de combinatoria</h2><p>Complejidad temporal constante <strong>O(1)</strong>.</p>` }
 };
 
-// Global active language string
-let activeLang = 'en';
-
-// Change language dynamically
-function changeLanguage(langKey) {
-    if (!translations[langKey]) return;
-    activeLang = langKey;
-    const t = translations[langKey];
-    
-    // Set layout direction
-    document.body.setAttribute('dir', t.dir);
-    
-    // Translate text tokens safely
-    document.getElementById('txtTitle').innerText = t.title;
-    document.getElementById('txtSubtitle').innerText = t.subtitle;
-    document.getElementById('lblV1').innerText = t.lblV1;
-    document.getElementById('lblV2').innerText = t.lblV2;
-    document.getElementById('lblV3').innerText = t.lblV3;
-    document.getElementById('lblPVal').innerText = t.lblPVal;
-    document.getElementById('calcBtn').innerText = t.calcBtn;
-    document.getElementById('txtResultHeading').innerText = t.txtResultHeading;
-    document.getElementById('txtExecutions').innerText = t.txtExecutions;
-    document.getElementById('txtGuideTitle').innerHTML = t.txtGuideTitle;
-    document.getElementById('txtGuideItem1').innerHTML = t.txtGuideItem1;
-    document.getElementById('txtGuideItem2').innerHTML = t.txtGuideItem2;
-    document.getElementById('txtGuideItem3').innerHTML = t.txtGuideItem3;
-    document.getElementById('txtAuthorHeading').innerText = t.txtAuthorHeading;
-    document.getElementById('txtAuthorSub').innerText = t.txtAuthorSub;
-    document.getElementById('btnEmail').innerHTML = t.btnEmail;
-    document.getElementById('txtCopyright').innerText = t.txtCopyright;
-    
-    // Safely update timer HTML layout keeping the inner counter structure intact
-    document.getElementById('timerBox').innerHTML = `<i class="fa-solid fa-spinner"></i> <span id="timerFullText">${t.timerFullText}</span>`;
-    
-    // Populate the explanation / SEO container HTML structure completely
+function changeLanguage(lang) {
+    currentLang = lang; const t = translations[lang];
+    document.getElementById('mainTitle').innerHTML = t.title;
+    document.getElementById('mainSubtitle').innerText = t.subtitle;
+    document.getElementById('lblV1').innerText = t.v1;
+    document.getElementById('lblV2').innerText = t.v2;
+    document.getElementById('lblV3').innerText = t.v3;
+    document.getElementById('lblP').innerText = t.p;
+    document.getElementById('calcBtn').innerText = t.btn;
+    document.getElementById('lblResultTitle').innerText = t.resultTitle;
+    document.getElementById('lblExecutions').innerText = t.executions;
+    document.getElementById('lblTimes').innerText = t.times;
+    document.getElementById('lblGuideTitle').innerHTML = `<i class="fa-solid fa-circle-info"></i> ` + t.guideTitle;
+    document.getElementById('guideItem1').innerHTML = t.g1;
+    document.getElementById('guideItem2').innerHTML = t.g2;
+    document.getElementById('guideItem3').innerHTML = t.g3;
+    document.getElementById('lblAuthorTitle').innerText = t.author;
+    document.getElementById('lblCopyright').innerText = t.copyright;
+    document.getElementById('lblEmailMe').innerText = t.email;
+    document.getElementById('lblFooterSystem').innerText = t.footer;
     document.getElementById('seoContainer').innerHTML = t.seo;
+    
+    if (lang === 'ar') {
+        document.body.style.direction = 'rtl'; document.body.classList.add('rtl-mode');
+        document.getElementById('langSelect').parentElement.style.justifyContent = 'flex-start';
+    } else {
+        document.body.style.direction = 'ltr'; document.body.classList.remove('rtl-mode');
+        document.getElementById('langSelect').parentElement.style.justifyContent = 'flex-end';
+    }
 }
 
-// Auto-detect client locale on document mount
-window.addEventListener('DOMContentLoaded', () => {
+function autoDetectLanguage() {
     const userLang = navigator.language || navigator.userLanguage;
     if (userLang && userLang.startsWith('ar')) {
-        document.getElementById('langSelector').value = 'ar';
-        changeLanguage('ar');
+        document.getElementById('langSelect').value = 'ar'; changeLanguage('ar');
     } else {
-        document.getElementById('langSelector').value = 'en';
-        changeLanguage('en');
+        document.getElementById('langSelect').value = 'en'; changeLanguage('en');
     }
-});
+}
+window.onload = autoDetectLanguage;
 
-// Primary asynchronous API logic runner
 async function calculateTriangles() {
     let v1 = document.getElementById('v1').value.trim();
     let v2 = document.getElementById('v2').value.trim();
     let v3 = document.getElementById('v3').value.trim();
     let p_val = document.getElementById('p_val').value.trim();
-    
     let errorBox = document.getElementById('errorBox');
     let errorText = document.getElementById('errorText');
     let resultBox = document.getElementById('resultBox');
     let calcBtn = document.getElementById('calcBtn');
     let timerBox = document.getElementById('timerBox');
+    const t = translations[currentLang];
     
-    // Clear old visual states
-    errorBox.style.display = 'none';
-    resultBox.style.display = 'none';
+    errorBox.style.display = 'none'; resultBox.style.display = 'none';
     if (countdownInterval) clearInterval(countdownInterval);
 
-    const t = translations[activeLang];
+    if(!v1 || !v2 || !v3 || !p_val) { errorText.innerText = t.valError; errorBox.style.display = 'flex'; return; }
+    if (!/^\d+$/.test(v1) || !/^\d+$/.test(v2) || !/^\d+$/.test(v3) || !/^\d+$/.test(p_val)) { errorText.innerText = t.invError; errorBox.style.display = 'flex'; return; }
 
-    if(!v1 || !v2 || !v3 || !p_val) {
-        errorText.innerText = t.validationError;
-        errorBox.style.display = 'flex';
-        return;
-    }
-
-    const strictIntegerRegex = /^\d+$/;
-
-    if (!strictIntegerRegex.test(v1) || !strictIntegerRegex.test(v2) || !strictIntegerRegex.test(v3) || !strictIntegerRegex.test(p_val)) {
-        errorText.innerText = t.invalidInput;
-        errorBox.style.display = 'flex';
-        return; 
-    }
-
-    // Immediately trigger timer UI display and safely lock form button interaction
-    timerBox.style.display = 'flex';
-    calcBtn.disabled = true;
-    
+    calcBtn.disabled = true; timerBox.style.display = 'flex';
+    document.getElementById('timerText').innerHTML = t.timer;
     let timeLeft = 25;
-    const secCountEl = document.getElementById('secondsCount');
-    if (secCountEl) secCountEl.innerText = timeLeft;
+    document.getElementById('secondsCount').innerText = timeLeft;
 
     countdownInterval = setInterval(() => {
         timeLeft--;
-        const currentSecEl = document.getElementById('secondsCount');
-        if (currentSecEl) {
-            currentSecEl.innerText = timeLeft >= 0 ? timeLeft : "0";
-        }
-        if (timeLeft <= 0) {
-            clearInterval(countdownInterval);
-        }
+        const liveSpan = document.getElementById('secondsCount');
+        if (liveSpan) { if (timeLeft >= 0) { liveSpan.innerText = timeLeft; } else { liveSpan.innerText = "0"; } }
     }, 1000);
 
     try {
         let response = await fetch('https://triangel-server.onrender.com/calculate', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ v1: v1, v2: v2, v3: v3, p_val: p_val })
         });
-        
         let data = await response.json();
-        
-        // Clean interaction locks
-        clearInterval(countdownInterval);
-        timerBox.style.display = 'none';
-        calcBtn.disabled = false;
+        clearInterval(countdownInterval); timerBox.style.display = 'none'; calcBtn.disabled = false;
 
         if (data.success) {
             document.getElementById('resultValue').innerText = data.result;
             resultBox.style.display = 'block';
-            
             if(data.total_calls) {
                 document.getElementById('totalCallsValue').innerText = data.total_calls;
                 document.getElementById('callCounterBox').style.display = 'block';
             }
-            
-            if (typeof gtag === 'function') {
-                gtag('event', 'calculate_success', { 'event_category': 'Engagement', 'event_label': 'Triangle Formula Calculation' });
-            }
-        } else {
-            errorText.innerText = data.error || "API Error";
-            errorBox.style.display = 'flex';
-        }
+            gtag('event', 'calculate_success', { 'event_category': 'Engagement', 'event_label': 'Triangle Formula Calculation' });
+        } else { errorText.innerText = data.error; errorBox.style.display = 'flex'; }
     } catch (error) {
-        clearInterval(countdownInterval);
-        timerBox.style.display = 'none';
-        calcBtn.disabled = false;
-        errorText.innerText = t.connectionError;
-        errorBox.style.display = 'flex';
+        clearInterval(countdownInterval); timerBox.style.display = 'none'; calcBtn.disabled = false;
+        errorText.innerText = t.connError; errorBox.style.display = 'flex';
     }
 }
 </script>
