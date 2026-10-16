@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
+    <!-- 📊 GOOGLE ANALYTICS INTEGRATION -->
     <script async src="https://googletagmanager.com/gtag/js?id=G-5PZVW9QJT6"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -12,22 +13,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- 🌐 GOOGLE SEO OPTIMIZATION & LINK PREVIEW -->
     <title>Advanced Triangle Counter - Combinatorics Equation by Eng. Md. Abu Hantash</title>
-    <meta name="description" content="Discover an innovative geometric combinatorics algorithm developed by Eng. Md. Abu Hantash to calculate the total number of triangles formed inside a main triangle using a revolutionary equation. Fast, secure, and accurate.">
-    <meta name="keywords" content="triangle counter, Eng. Md. Abu Hantash, Abu Hantash triangle formula, count triangles in a triangle formula, geometric combinatorics algorithm, triangle intersection counter, non-symmetric triangle formula, combinatorics equation">
+    <meta name="description" content="Discover an innovative geometric combinatorics algorithm developed by Eng. Md. Abu Hantash to calculate the total number of triangles formed inside a main triangle. Fast, secure, and accurate.">
+    <meta name="keywords" content="triangle counter, Eng. Md. Abu Hantash, Abu Hantash triangle formula, count triangles in a triangle formula, geometric combinatorics algorithm, triangle intersection counter, non-symmetric triangle formula">
     <meta name="author" content="Eng. Md. Abu Hantash">
     <meta name="robots" content="index, follow">
 
+    <!-- 📲 WHATSAPP & SOCIAL MEDIA PREVIEW TAGS -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://triangel-server.onrender.com">
     <meta property="og:title" content="Advanced Triangle Counter | Eng. Md. Abu Hantash">
-    <meta property="og:description" content="Calculate the total triangles formed instantly via the revolutionary constant-time geometric equation formulation.">
+    <meta property="og:description" content="Calculate the total triangles formed instantly via the revolutionary constant-time geometric formulation.">
     <meta property="og:image" content="https://triangel-server.onrender.com/static/preview.png">
     <meta property="og:image:secure_url" content="https://triangel-server.onrender.com/static/preview.png">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
+    <!-- 🌟 FONT AWESOME FOR PROFESSIONAL ICONS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -438,23 +442,21 @@
             <div class="subtitle" id="mainSubtitle">Next-Generation Geometric Calculation System</div>
             
             <div class="input-grid">
-                <div class="input-grid">
-                    <div class="input-group">
-                        <label for="v1" id="lblV1">Lines from Vertex 1</label>
-                        <input type="text" id="v1" placeholder="0">
-                    </div>
-                    <div class="input-group">
-                        <label for="v2" id="lblV2">Lines from Vertex 2</label>
-                        <input type="text" id="v2" placeholder="0">
-                    </div>
-                    <div class="input-group">
-                        <label for="v3" id="lblV3">Lines from Vertex 3</label>
-                        <input type="text" id="v3" placeholder="0">
-                    </div>
-                    <div class="input-group">
-                        <label for="p_val" id="lblP">Triple Intersections (P)</label>
-                        <input type="text" id="p_val" placeholder="0">
-                    </div>
+                <div class="input-group">
+                    <label for="v1" id="lblV1">Lines from Vertex 1</label>
+                    <input type="text" id="v1" placeholder="0">
+                </div>
+                <div class="input-group">
+                    <label for="v2" id="lblV2">Lines from Vertex 2</label>
+                    <input type="text" id="v2" placeholder="0">
+                </div>
+                <div class="input-group">
+                    <label for="v3" id="lblV3">Lines from Vertex 3</label>
+                    <input type="text" id="v3" placeholder="0">
+                </div>
+                <div class="input-group">
+                    <label for="p_val" id="lblP">Triple Intersections (P)</label>
+                    <input type="text" id="p_val" placeholder="0">
                 </div>
             </div>
             
@@ -577,12 +579,17 @@ const translations = {
                 Unlike traditional counting algorithms that rely on heavy recursive parsing or loop-based node traversal—which scale poorly and consume vast system resources—this system implements a pure mathematical equation designed with <strong>Constant Time Complexity O(1)</strong> using strict <strong>Big O Notation</strong>.
             </p>
             <p>
+                In computer graphics, physics simulation, and game development, measuring sub-triangular fragments formed by intersecting cevian lines is computationally expensive. 
+                This formulation bypasses algorithmic iteration completely, delivering calculation results instantly in a flat execution window regardless of how high the input variables scale. 
+                By supplying the precise line frequencies from Vertex 1, Vertex 2, Vertex 3, and filtering concurrent multi-line cross points (Point P), graphic developers and graph theorists can lock structural data without processing delays.
+            </p>
+            <p>
                 Is there a benefit to applying this program anywhere? 
                 The principle used here (Combinatorics and Computational Geometry) has vital real-world applications:
             </p>
             <ul>
-                <li><strong>Microchip Design:</strong> Intersecting tracks on processor chips (CPUs). Algorithms calculate closed areas to ensure speed.</li>
-                <li><strong>Network Topology:</strong> Calculating closed triangle tracks between connection towers protects network strength.</li>
+                <li><strong>Microchip Design (CPU Design):</strong> Intersecting tracks on processor chips. Algorithms calculate closed areas to ensure speed and bypass resource consumption.</li>
+                <li><strong>Network Topology:</strong> Calculating closed triangle tracks between connection towers protects network strength and guarantees alternative routes.</li>
                 <li><strong>3D Computer Graphics & Games:</strong> Backbones of modern engines like Unreal Engine depend on swift triangular mesh processing.</li>
                 <li><strong>Cybersecurity & Cryptography:</strong> Complex systems rely on complex geometric puzzles.</li>
             </ul>`
@@ -633,73 +640,130 @@ const translations = {
         v1: "从顶点 1 引出的线", v2: "从顶点 2 引出的线", v3: "从顶点 3 引出的线", p: "三重交点 (P)",
         btn: "计算三角形总数", timer: "请等待 (<strong id='secondsCount'>25</strong> 秒)...",
         resultTitle: "生成的三角形总数", executions: "总执行次数:", times: "次", guideTitle: "几何输入指南",
-        g1: "顶点线计数", g2: "三重交点P", g3: "算法自动精确排序",
+        g1: "<strong>顶点线：</strong> 计算从每个角开始并在相对底边结束的线。",
+        g2: "<strong>P点：</strong> 仅计算三条内部线在单点相交的内部节点。",
+        g3: "<strong>智能排序：</strong> 数学公式自动在后台进行排序以保持精确性。",
         author: "算法发明人: Eng. Md. Abu Hantash", copyright: "© 2026. 保留所有权利。",
         email: "电邮联系我", footer: "安全云端计算系统",
         valError: "Validation Error: All fields are required! Please fill in all variables.",
         invError: "Invalid Input! Please enter positive whole numbers only (No decimals, signs, or symbols).",
         connError: "Connection Error: Could not reach the secure calculation cloud.",
-        seo: `<h2>关于几何组合学公式</h2><p>本系统实现了一个纯数学公式，利用具有 <strong>常数时间复杂度 O(1)</strong> 的 <strong>大O表示法</strong> 设计。</p>`
+        seo: `<h2>关于几何组合学公式</h2>
+            <p>本系统实现了一个纯数学公式，利用具有 <strong>常数时间复杂度 O(1)</strong> 的 <strong>大O表示法</strong> 设计。发明人：<strong>Eng. Md. Abu Hantash</strong>。</p>
+            <p>该方法在现实世界中具有极其重要的应用价值：</p>
+            <ul>
+                <li><strong>微芯片与集成电路设计：</strong> 处理处理器（CPU）上数以百万计的微型电轨交叉点，通过计算闭合区域确保其工作效率。</li>
+                <li><strong>网络拓扑结构：</strong> 计算基站间的闭合三角形路径，用以优化数据传输和网络稳定性。</li>
+                <li><strong>3D计算机图形与游戏引擎：</strong> 如虚幻引擎（Unreal Engine）的核心架构中对三角网格的快速渲染。</li>
+                <li><strong>网络安全与密码学：</strong> 许多高级加密技术依赖于极其复杂的几何学难题。</li>
+            </ul>`
     },
     de: {
         title: "📐 Dreiecksrechner", subtitle: "Geometrisches Kombinatorik-Berechnungssystem",
         v1: "Linien v1", v2: "Linien v2", v3: "Linien v3", p: "Schnittpunkte (P)",
         btn: "Berechnen", timer: "Bitte warten (<strong id='secondsCount'>25</strong>s)...",
         resultTitle: "Dreiecke Gesamt", executions: "Ausführungen:", times: "Mal", guideTitle: "Eingabe-Leitfaden",
-        g1: "Linien", g2: "Knoten P", g3: "Smart Auto",
+        g1: "<strong>Eckpunkte:</strong> Linien zählen, die von einer Ecke ausgehen und auf der gegenüberliegenden Basis landen.",
+        g2: "<strong>Punkt P:</strong> Nur interne Knoten zählen, an denen sich genau drei interne Linien an einem Punkt kreuzen.",
+        g3: "<strong>Smart Auto:</strong> Die mathematische Gleichung sortiert die Eingaben automatisch, um Präzision zu gewährleisten.",
         author: "Eng. Md. Abu Hantash", copyright: "© 2026", email: "E-Mail", footer: "Secure Cloud System",
         valError: "Validation Error: All fields are required! Please fill in all variables.",
         invError: "Invalid Input! Please enter positive whole numbers only (No decimals, signs, or symbols).",
         connError: "Connection Error: Could not reach the secure calculation cloud.",
-        seo: `<h2>Kombinatorik-Formulierung</h2><p>Konstante Zeitkomplexität <strong>O(1)</strong>.</p>`
+        seo: `<h2>Über die geometrische Kombinatorik-Formulierung</h2>
+            <p>Konstante Zeitkomplexität <strong>O(1)</strong> mithilfe der <strong>Big-O-Notation</strong>, entdeckt von <strong>Eng. Md. Abu Hantash</strong>.</p>
+            <p>Wichtige reale Anwendungen dieser Methode:</p>
+            <ul>
+                <li><strong>Mikrochip-Design:</strong> Optimierung sich kreuzender elektrischer Bahnen auf CPUs zur Vermeidung von Verzögerungen.</li>
+                <li><strong>Netzwerktopologie:</strong> Berechnung geschlossener Pfade zur Stärkung der Datenübertragungseffizienz.</li>
+                <li><strong>3D-Computergrafik:</strong> Das Fundament moderner Spiele-Engines wie der Unreal Engine basiert auf Dreiecksnetzen.</li>
+                <li><strong>Kryptographie & Cybersicherheit:</strong> Verwendung komplexer geometrischer Rätsel für sichere Verschlüsselungssysteme.</li>
+            </ul>`
     },
     ja: {
         title: "📐 三角形カウンター", subtitle: "幾何学的組合せ論計算システム",
         v1: "頂点1直線数", v2: "頂点2直線数", v3: "頂点3直線数", p: "交点 (P)",
         btn: "計算する", timer: "(<strong id='secondsCount'>25</strong>秒) お待ちください...",
         resultTitle: "形成された総数", executions: "実行回数:", times: "回", guideTitle: "入力ガイド",
-        g1: "直線数", g2: "交点P", g3: "自動ソート",
+        g1: "<strong>頂点：</strong> 各コーナーから引かれ、対向する底辺に着地する直線の数。",
+        g2: "<strong>交点P：</strong> 正確に3本の内部直線が1つの点で交差する内部ノードのみをカウント。",
+        g3: "<strong>自動調整：</strong> 数学公式がバックグラウンドで入力を自動的にソートし、精度を維持します。",
         author: "Eng. Md. Abu Hantash", copyright: "© 2026", email: "メール", footer: "クラウド計算システム",
         valError: "Validation Error: All fields are required! Please fill in all variables.",
         invError: "Invalid Input! Please enter positive whole numbers only (No decimals, signs, or symbols).",
         connError: "Connection Error: Could not reach the secure calculation cloud.",
-        seo: `<h2>幾何学的組合せ論公式</h2><p>定数時間計算量 <strong>O(1)</strong> 設計。</p>`
+        seo: `<h2>幾何学的組合せ論公式について</h2>
+            <p><strong>Eng. Md. Abu Hantash</strong>によって発見された、厳密な<strong>Big O表記法</strong>による定数時間計算量 <strong>O(1)</strong> の画期的な数式を実装しています。</p>
+            <p>このプログラムは実世界で非常に重要な用途を持っています：</p>
+            <ul>
+                <li><strong>マイクロチップおよび半導体設計：</strong> CPU内部の無数の配線交差を最適化し、回路の処理効率と速度を向上させます。</li>
+                <li><strong>ネットワーク・トポロジー：</strong> 基地局間の閉路（三角形）を計算することで、通信の冗長性と最適経路を確保します。</li>
+                <li><strong>3Dコンピュータグラフィックス：</strong> Unreal Engineなどの最新ゲームエンジンにおける三角形メッシュ（Mesh）の超高速処理を支えます。</li>
+                <li><strong>サイバーセキュリティと暗号論：</strong> 高度な暗号化システムは、計算困難な幾何学的問題に基づき構築されています。</li>
+            </ul>`
     },
     ko: {
         title: "📐 삼각형 카운터", subtitle: "기하 조합론 계산 시스템",
         v1: "꼭짓점 1 선", v2: "꼭짓점 2 선", v3: "꼭짓점 3 선", p: "삼중 교점 (P)",
         btn: "계산하기", timer: "(<strong id='secondsCount'>25</strong>초) 기다려주십시오...",
         resultTitle: "총 삼각형 수", executions: "실행 횟수:", times: "회", guideTitle: "입력 가이드",
-        g1: "꼭짓점 선", g2: "교점 P", g3: "자동 정렬",
+        g1: "<strong>꼭짓점 선:</strong> 각 모서리에서 시작하여 맞은편 밑변에 닿는 직선의 수입니다.",
+        g2: "<strong>교점 P:</strong> 정확히 세 개의 내부 직선이 한 점에서 만나는 내부 노드만 계산합니다.",
+        g3: "<strong>스마트 자동화:</strong> 기하학적 정밀성을 유지하기 위해 수학 방정식이 백그라운드에서 입력을 자동으로 정렬합니다.",
         author: "Eng. Md. Abu Hantash", copyright: "© 2026", email: "이메일", footer: "보안 클라우드 시스템",
         valError: "Validation Error: All fields are required! Please fill in all variables.",
         invError: "Invalid Input! Please enter positive whole numbers only (No decimals, signs, or symbols).",
         connError: "Connection Error: Could not reach the secure calculation cloud.",
-        seo: `<h2>기하 조합론 공식 정보</h2><p>상수 시간 복잡도 <strong>O(1)</strong> 설계 공식을 구현합니다.</p>`
+        seo: `<h2>기하 조합론 공식 정보</h2>
+            <p><strong>Eng. Md. Abu Hantash</strong>가 발견한 상수 시간 복잡도 <strong>O(1)</strong>의 획기적인 조합론 방정식을 구현하고 있습니다.</p>
+            <p>이 프로그램의 원리는 실제 산업계에서 다음과 같이 필수적으로 사용됩니다:</p>
+            <ul>
+                <li><strong>반도체 마이크로칩 디자인:</strong> 프로세서(CPU) 칩 위의 수백만 개의 미세 회로 교차점을 계산하여 전송 속도와 효율을 극대화합니다.</li>
+                <li><strong>네트워크 토폴로지:</strong> 통신 기지국 간의 폐쇄 경로를 계산하여 데이터 전송 강도를 분석하고 대체 경로를 파악합니다.</li>
+                <li><strong>3D 컴퓨터 그래픽 및 게임 엔진:</strong> 언리얼 엔진(Unreal Engine) 등 현대 게임 아키텍처의 핵심인 삼각형 메쉬(Mesh)의 고속 처리를 가능하게 합니다.</li>
+                <li><strong>사이버 보안 및 암호학:</strong> 고도의 암호화 시스템은 풀기 어려운 복잡한 기하학적 난제를 수학적 모델로 삼아 구축됩니다.</li>
+            </ul>`
     },
     fr: {
         title: "📐 Compteur de Triangles", subtitle: "Système de Calcul de Combinatoire",
         v1: "Sommet 1", v2: "Sommet 2", v3: "Sommet 3", p: "Intersections (P)",
         btn: "Calculer", timer: "Veuillez patienter (<strong id='secondsCount'>25</strong>s)...",
         resultTitle: "Total des Triangles", executions: "Exécutions:", times: "fois", guideTitle: "Guide d'entrée",
-        g1: "Lignes", g2: "Point P", g3: "Ajustement Auto",
+        g1: "<strong>Sommets:</strong> Lignes tracées depuis un angle vers la base opposée.",
+        g2: "<strong>Point P:</strong> Nœuds internes où exactement trois lignes se croisent.",
+        g3: "<strong>Ajustement Auto:</strong> L'équation trie les données automatiquement pour maintenir la précision.",
         author: "Eng. Md. Abu Hantash", copyright: "© 2026", email: "Contact", footer: "Système Cloud Sécurisé",
         valError: "Validation Error: All fields are required! Please fill in all variables.",
         invError: "Invalid Input! Please enter positive whole numbers only (No decimals, signs, or symbols).",
         connError: "Connection Error: Could not reach the secure calculation cloud.",
-        seo: `<h2>Formulation combinatoire</h2><p>Complexité temporelle constante <strong>O(1)</strong>.</p>`
+        seo: `<h2>À propos de la formulation de combinatoire</h2><p>Complexité temporelle constante <strong>O(1)</strong> via la notation <strong>Big O</strong>.</p>
+            <p>Applications concrètes :</p>
+            <ul>
+                <li><strong>Design de micropuces :</strong> Gestion des pistes de traitement électrique sur les processeurs (CPU).</li>
+                <li><strong>Topologie de réseau :</strong> Traitement des chemins fermés entre les antennes de transmission.</li>
+                <li><strong>Graphismes 3D :</strong> Maillage triangulaire essentiel aux moteurs de jeux vidéo comme Unreal Engine.</li>
+                <li><strong>Cryptographie :</strong> Fondement de puzzles géométriques pour sécuriser les données.</li>
+            </ul>`
     },
     es: {
         title: "📐 Contador de Triángulos", subtitle: "Sistema de Combinatoria Geométrica",
         v1: "Vértice 1", v2: "Vértice 2", v3: "Vértice 3", p: "Intersecciones (P)",
         btn: "Calcular", timer: "Espere por favor (<strong id='secondsCount'>25</strong>s)...",
         resultTitle: "Total Triángulos", executions: "Ejecuciones:", times: "veces", guideTitle: "Guía de entrada",
-        g1: "Líneas", g2: "Punto P", g3: "Auto Orden",
+        g1: "<strong>Vértices:</strong> Líneas trazadas desde cada esquina hacia el lado opuesto.",
+        g2: "<strong>Punto P:</strong> Nodos interiores donde se cruzan exactamente tres líneas.",
+        g3: "<strong>Auto Orden:</strong> La ecuación ordena automáticamente las entradas para mantener precisión.",
         author: "Eng. Md. Abu Hantash", copyright: "© 2026", email: "Correo", footer: "Sistema Seguro",
         valError: "Validation Error: All fields are required! Please fill in all variables.",
         invError: "Invalid Input! Please enter positive whole numbers only (No decimals, signs, or symbols).",
         connError: "Connection Error: Could not reach the secure calculation cloud.",
-        seo: `<h2>Formulación de combinatoria</h2><p>Complejidad temporal constante <strong>O(1)</strong>.</p>`
+        seo: `<h2>Sobre la formulación combinatoria</h2><p>Complejidad temporal constante <strong>O(1)</strong>.</p>
+            <ul>
+                <li><strong>Diseño de microchips:</strong> Circuitos en CPU y procesamiento rápido.</li>
+                <li><strong>Topología de redes:</strong> Rutas alternativas de telecomunicación.</li>
+                <li><strong>Gráficos 3D:</strong> Mallas triangulares en Unreal Engine.</li>
+                <li><strong>Criptografía:</strong> Seguridad computacional compleja.</li>
+            </ul>`
     }
 };
 
