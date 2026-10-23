@@ -46,6 +46,9 @@
             --accent-bg: #f8fafc;
             --danger: #ef4444;
             --success: #22c55e;
+            --warning-border: #fef08a;
+            --warning-bg: #fefce8;
+            --warning-text: #854d0e;
         }
         body {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
@@ -60,7 +63,9 @@
             box-sizing: border-box;
         }
         .container { width: 100%; max-width: 1000px; }
-        .header-controls { width: 100%; display: flex; justify-content: flex-end; margin-bottom: 15px; }
+        .header-controls { width: 100%; display: flex; justify-content: flex-end; margin-bottom: 15px; gap: 15px; align-items: center; }
+        .usage-badge { background-color: rgba(255, 255, 255, 0.1); padding: 10px 15px; border-radius: 10px; font-size: 13.5px; font-weight: 600; border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; gap: 8px; color: #e2e8f0; }
+        .usage-badge i { color: #38bdf8; }
         .lang-select {
             padding: 10px 15px; font-size: 14px; font-weight: 600; border-radius: 10px;
             border: 1px solid rgba(255,255,255,0.2); background-color: #1e293b; color: #fff; cursor: pointer;
@@ -75,15 +80,27 @@
         .input-group { display: flex; flex-direction: column; }
         label { font-weight: 600; margin-bottom: 8px; font-size: 13.5px; color: #334155; }
         input { width: 100%; padding: 14px; border: 1.5px solid var(--border); border-radius: 12px; font-size: 16px; box-sizing: border-box; background-color: #fff; color: var(--text-main); }
-        button { width: 100%; background-color: var(--primary); color: white; border: none; padding: 16px; font-size: 16px; font-weight: 700; border-radius: 12px; cursor: pointer; box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3); }
+        
+        /* 🛡️ CAPTCHA BOX STYLING */
+        .captcha-wrapper { grid-column: span 2; display: none; flex-direction: column; background: var(--warning-bg); border: 1px solid var(--warning-border); border-radius: 14px; padding: 16px; box-sizing: border-box; margin-bottom: 5px; }
+        .captcha-header { display: flex; align-items: center; gap: 8px; color: var(--warning-text); font-weight: 700; font-size: 14px; margin-bottom: 12px; }
+        .captcha-container { display: flex; gap: 12px; align-items: center; }
+        .captcha-box { background: #e2e8f0; color: #0f172a; font-weight: 800; font-size: 20px; padding: 10px 20px; border-radius: 10px; letter-spacing: 4px; font-style: italic; user-select: none; border: 1.5px dashed #94a3b8; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
+        .captcha-input-field { flex: 1; }
+        @media (max-width: 500px) { .captcha-wrapper { grid-column: span 1; } .captcha-container { flex-direction: column; align-items: stretch; } .captcha-box { text-align: center; } }
+
+        button { width: 100%; background-color: var(--primary); color: white; border: none; padding: 16px; font-size: 16px; font-weight: 700; border-radius: 12px; cursor: pointer; box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3); transition: background-color 0.2s; }
+        button:hover:not(:disabled) { background-color: var(--primary-hover); }
         button:disabled { background-color: #94a3b8; cursor: not-allowed; }
         .timer-box { margin-top: 15px; padding: 12px; background-color: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 12px; color: #475569; font-size: 14px; font-weight: 600; text-align: center; display: none; align-items: center; justify-content: center; gap: 8px; }
         .timer-box i { color: var(--primary); animation: spin 2s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         .error-box { margin-top: 20px; padding: 15px 20px; background-color: #fef2f2; border: 1px solid #fca5a5; border-radius: 12px; color: #b91c1c; font-size: 14px; font-weight: 600; display: none; align-items: center; gap: 10px; }
-        .result-box { margin-top: 25px; padding: 20px; background-color: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; text-align: center; display: none; }
-        .result-value { font-size: 42px; font-weight: 900; color: #15803d; }
+        
+        .result-box { margin-top: 25px; padding: 20px; background-color: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; text-align: center; display: none; overflow: hidden; }
+        .result-value { font-size: 42px; font-weight: 900; color: #15803d; word-wrap: break-word; word-break: break-all; transition: font-size 0.15s ease-out; line-height: 1.2; padding: 5px 0; }
         .call-counter { margin-top: 15px; font-size: 13.5px; color: #64748b; font-weight: 500; border-top: 1px dashed var(--border); padding-top: 12px; }
+        
         .guide-title { font-size: 18px; font-weight: 700; color: var(--text-main); margin-bottom: 20px; display: flex; align-items: center; gap: 8px; width: 100%; }
         .guide-list { padding: 0; margin: 25px 0 0 0; list-style: none; width: 100%; }
         .guide-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 18px; font-size: 14px; line-height: 1.5; color: var(--text-muted); }
@@ -94,15 +111,23 @@
         body.rtl-mode .seo-section ul { padding-left: 0; padding-right: 20px; }
         .author-card { background: #ffffff; color: var(--text-main); border-radius: 20px; margin-top: 25px; padding: 25px 35px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.3); width: 100%; }
         .contact-buttons { display: flex; gap: 12px; }
-        .btn-contact { padding: 10px 18px; font-size: 13.5px; font-weight: 600; text-decoration: none; border-radius: 10px; background-color: #f1f5f9; color: #334155; display: inline-flex; align-items: center; gap: 8px; }
+        .btn-contact { padding: 10px 18px; font-size: 13.5px; font-weight: 600; text-decoration: none; border-radius: 10px; background-color: #f1f5f9; color: #334155; display: inline-flex; align-items: center; gap: 8px; transition: background-color 0.2s; }
+        .btn-contact:hover { background-color: #e2e8f0; }
+        .btn-contact.highlight { background-color: #fef08a; color: #854d0e; border: 1px solid #eab308; animation: pulse 2s infinite; }
+        .btn-contact.highlight:hover { background-color: #fef08a; opacity: 0.9; }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(234, 179, 8, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(234, 179, 8, 0); } 100% { box-shadow: 0 0 0 0 rgba(234, 179, 8, 0); } }
         .copyright-text { margin-top: 25px; font-size: 13px; color: #64748b; text-align: center; width: 100%; }
-        @media (max-width: 900px) { .main-wrapper { flex-direction: column; } .diagram-side { border-left: none; border-top: 1px solid var(--border); padding: 35px; } body.rtl-mode .diagram-side { border-right: none; } .author-card { flex-direction: column; gap: 20px; } }
+        @media (max-width: 900px) { .header-controls { flex-direction: column-reverse; align-items: flex-end; } .main-wrapper { flex-direction: column; } .diagram-side { border-left: none; border-top: 1px solid var(--border); padding: 35px; } body.rtl-mode .diagram-side { border-right: none; } .author-card { flex-direction: column; gap: 20px; } }
         @media (max-width: 500px) { .input-grid { grid-template-columns: 1fr; } .calculator-side { padding: 25px; } }
     </style>
 </head>
 <body>
 <div class="container">
     <div class="header-controls">
+        <div class="usage-badge" id="usageBadge">
+            <i class="fa-solid fa-gauge-high"></i>
+            <span id="lblUsageText">Remaining calls today: --</span>
+        </div>
         <select class="lang-select" id="langSelect" onchange="changeLanguage(this.value)">
             <option value="en">English</option>
             <option value="ar">العربية</option>
@@ -136,6 +161,18 @@
                 <div class="input-group">
                     <label for="p_val" id="lblP">Triple Intersections (P)</label>
                     <input type="text" id="p_val" placeholder="0">
+                </div>
+
+                <div class="captcha-wrapper" id="captchaWrapper">
+                    <div class="captcha-header" id="lblCaptchaHeader">
+                        <i class="fa-solid fa-shield-halved"></i> Security Verification Required
+                    </div>
+                    <div class="captcha-container">
+                        <div class="captcha-box" id="captchaBoxText">1234</div>
+                        <div class="captcha-input-field">
+                            <input type="text" id="captcha_input" placeholder="Type token here">
+                        </div>
+                    </div>
                 </div>
             </div>
             
@@ -184,15 +221,13 @@
         </div>
     </div>
 
-    <div class="seo-section" id="seoContainer"></div>
-
     <div class="author-card">
         <div class="author-info">
             <h3 id="lblAuthorTitle">Algorithm Invented by: Eng. Md. Abu Hantash</h3>
             <p id="lblCopyright">© 2026. All rights reserved.</p>
         </div>
         <div class="contact-buttons">
-            <a href="mailto:abuhantashmo@gmail.com" class="btn-contact"><i class="fa-solid fa-envelope"></i> <span id="lblEmailMe">Email Me</span></a>
+            <a href="mailto:abuhantashmo@gmail.com" class="btn-contact" id="btnContactEmail"><i class="fa-solid fa-envelope"></i> <span id="lblEmailMe">Email Me</span></a>
             <a href="https://www.linkedin.com/in/mohammad-abu-hantash-6b8253170/" class="btn-contact btn-linkedin" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
             <a href="https://www.youtube.com/@mohammadabuhantash4174" class="btn-contact btn-youtube" target="_blank"><i class="fa-brands fa-youtube"></i> YouTube</a>
         </div>
@@ -203,6 +238,7 @@
 <script>
 let countdownInterval = null;
 let currentLang = 'en';
+let globalCaptchaToken = "1234";
 
 const translations = {
     en: {
@@ -217,6 +253,10 @@ const translations = {
         email: "Email Me", footer: "Secure Cloud Calculation System • Powered by Flask, Render & Google Analytics",
         valError: "Validation Error: All fields are required! Please fill in all variables.",
         invError: "Invalid Input! Please enter positive whole numbers only (No decimals, signs, or symbols).", connError: "Connection Error: Could not reach the secure calculation cloud.",
+        usage: "Remaining calls today: <strong>{rem}</strong> of 50",
+        captchaHeader: "<i class='fa-solid fa-shield-halved'></i> Security Verification Required",
+        captchaPlaceholder: "Type token here",
+        bypassText: "Bypass Limit / Contact Developer",
         seo: `<h2>About the Geometric Combinatorics Formulation</h2><p>The <strong>Advanced Triangle Calculation System</strong> utilizes a revolutionary, high-performance geometric formulation discovered by <strong>Eng. Md. Abu Hantash</strong>. Built with <strong>Constant Time Complexity O(1)</strong> using strict <strong>Big O Notation</strong>.</p><p>Is there a benefit to applying this program anywhere? The principle used here (Combinatorics and Computational Geometry) has vital real-world applications:</p><ul><li><strong>Microchip Design:</strong> Intersecting tracks on processor chips (CPUs). Algorithms calculate closed areas to ensure speed.</li><li><strong>Network Topology:</strong> Calculating closed triangle tracks between connection towers protects network strength.</li><li><strong>3D Computer Graphics & Games:</strong> Backbones of modern engines like Unreal Engine depend on swift triangular mesh processing.</li><li><strong>Cybersecurity & Cryptography:</strong> Complex systems rely on complex geometric puzzles.</li></ul>`
     },
     ar: {
@@ -229,9 +269,13 @@ const translations = {
         g3: "<strong>التنظيم الذكي:</strong> تقوم المعادلة الرياضية تلقائياً بفرز المدخلات للحفاظ على الدقة الرياضية الصارمة.",
         author: "المعادلة من اختراع المهندس: محمد أبو هنطش", copyright: "صيغة التراكيب الهندسية المبتكرة © 2026. جميع الحقوق محفوظة.",
         email: "راسلني بريدياً", footer: "نظام الحساب السحابي الآمن • مدعوم بواسطة Flask, Render و Google Analytics",
-        valError: "Validation Error: All fields are required! Please fill in all variables.",
-        invError: "Invalid Input! Please enter positive whole numbers only (No decimals, signs, or symbols).", connError: "Connection Error: Could not reach the secure calculation cloud.",
-        seo: `<h2>حول صيغة التراكيب الهندسية التوافقيّة</h2><p>يعتمد <strong>نظام حساب المثلثات المتقدم</strong> على معادلة هندسية ثورية وعالية الأداء اكتشفها <strong>المهندس محمد أبو هنطش</strong> تم تصميمه بـ <strong>زمن تنفيذ ثابت O(1)</strong> باستخدام <strong>رمز تدوين Big O</strong> الصارم.</p><p>هل هناك فائدة من تطبيق هذا البرنامج في أي مكان؟ في الحقيقة، المبدأ الرياضي والبرمجي المستخدم هنا (وهو علم التركيبات والهندسة الحسابية - Computational Geometry) له تطبيقات حيوية جداً في العالم الحقيقي:</p><ul><li><strong>تصميم رقاقات أشباه الموصلات والدوائر الإلكترونية (Microchip Design):</strong> تتقاطع ملايين المسارات والخطوط الكهربائية الدقيقة على شريحة السيليكون عند تصميم المعالجات (CPUs)، وتُستخدم هذه الخوارزميات لضمان كفاءة الشريحة وسرعتها.</li><li><strong>الشبكات وأنظمة الاتصالات (Network Topology):</strong> حساب عدد المسارات المغلقة بين نقاط الاتصال أو الأبراج يساعد المهندسين في تحليل قوة الشبكة وكفاءة نقل البيانات وضمان وجود مسارات بديلة.</li><li><strong>الرسومات ثلاثية الأبعاد والألعاب (3D Computer Graphics):</strong> تتكون رسومات الألعاب من ملايين المثلثات الصغيرة (Mesh)، والخوارزميات فائقة السرعة هي العمود الفقري لمحركات الألعاب مثل (Unreal Engine).</li><li><strong>الأمن السيبراني والتشفير (Cryptography):</strong> بعض أنظمة التشفير المعقدة تعتمد على مسائل هندسية صعبة الحل رياضياً وسهلة التحقق برمجياً.</li></ul>`
+        valError: "خطأ في التحقق: جميع الحقول مطلوبة! يرجى إدخال جميع المتغيرات.",
+        invError: "إدخال غير صحيح! يرجى إدخال أعداد صحيحة موجبة فقط (بدون فواصل، إشارات أو رموز).", connError: "خطأ في الاتصال: تعذر الوصول إلى خادم الحساب السحابي الآمن.",
+        usage: "المحاولات المتبقية اليوم: <strong>{rem}</strong> من أصل 50",
+        captchaHeader: "<i class='fa-solid fa-shield-halved'></i> يرجى إدخال رمز التحقق الأمني",
+        captchaPlaceholder: "اكتب الرمز هنا",
+        bypassText: "للتخطي / تواصل مع المطور",
+        seo: `<h2>حول صيغة التراكيب الهندسية التوافقيّة</h2><p>يعتمد <strong>نظام حساب المثلثات المتقدم</strong> على معادلة هندسية ثورية وعالية الأداء اكتشفها <strong>المهندس محمد أبو هنطش</strong> تم تصميمه بـ <strong>زمن تنفيذ ثابت O(1)</strong> باستخدام <strong>رمز تدوين Big O</strong> الصارم.</p><p>هل هناك فائدة من تطبيق هذا البرنامج في أي مكان؟ في الحقيقة، المبدأ الرياضي والبرمجي المستخدم هنا (وهو علم التركيبات والهندسة الحسابية - Computational Geometry) له تطبيقات حيوية جداً في العالم الحقيقي:</p><ul><li><strong>تصميم رقاقات أشباه الموصلات والدوائر الإلكترونية (Microchip Design):</strong> تتقاطع ملايين المسارات والخطوط الكهربائية الدقيقة على شريحة السيليكون عند تصميم المعالجات (CPUs)، وتُستخدم هذه الخوارزميات لضشان كفاءة الشريحة وسرعتها.</li><li><strong>الشبكات وأنظمة الاتصالات (Network Topology):</strong> حساب عدد المسارات المغلقة بين نقاط الاتصال أو الأبراج يساعد المهندسين في تحليل قوة الشبكة وكفاءة نقل البيانات وضمان وجود مسارات بديلة.</li><li><strong>الرسومات ثلاثية الأبعاد والألعاب (3D Computer Graphics):</strong> تتكون رسومات الألعاب من ملايين المثلثات الصغيرة (Mesh)، والخوارزميات فائقة السرعة هي العمود الفقري لمحركات الألعاب مثل (Unreal Engine).</li><li><strong>الأمن السيبراني والتشفير (Cryptography):</strong> بعض أنظمة التشفير المعقدة تعتمد على مسائل هندسية صعبة الحل رياضياً وسهلة التحقق برمجياً.</li></ul>`
     },
     zh: {
         title: "📐 高级三角形计数器", subtitle: "次世代几何组合计算系统",
@@ -245,6 +289,10 @@ const translations = {
         email: "电邮联系我", footer: "安全云端计算系统 • 由 Flask, Render 和 Google Analytics 驱动",
         valError: "Validation Error: All fields are required! Please fill in all variables.",
         invError: "Invalid Input! Please enter positive whole numbers only (No decimals, signs, or symbols).", connError: "Connection Error: Could not reach the secure calculation cloud.",
+        usage: "今日剩余调用次数: <strong>{rem}</strong> / 50",
+        captchaHeader: "<i class='fa-solid fa-shield-halved'></i> 需要安全验证",
+        captchaPlaceholder: "在此输入验证码",
+        bypassText: "跳过限制 / 联系开发者",
         seo: `<h2>关于几何组合学公式</h2><p><strong>高级三角形计算系统</strong>利用了 <strong>Eng. Md. Abu Hantash</strong> 发现的具有革命性、高性能的几何公式。利用具有 <strong>常数时间复杂度 O(1)</strong> 的严格 <strong>大O表示法</strong> 设计。</p><p>在任何地方应用这个程序有什么好处吗？这里使用的原理（组合数学和计算几何）具有至关重要的现实应用：</p><ul><li><strong>微芯片设计：</strong> 处理器芯片（CPU）上的交叉轨道。算法计算封闭区域以确保速度。</li><li><strong>网络拓扑结构：</strong> 计算连接塔之间的封闭三角形轨迹可保护网络强度。</li><li><strong>3D 计算机图形与游戏：</strong> 像 Unreal Engine 这样的现代引擎的骨干依赖于快速的三角形网格处理。</li><li><strong>网络安全与密码学：</strong> 复杂的系统依赖于复杂的几何谜题。</li></ul>`
     },
     de: {
@@ -259,7 +307,11 @@ const translations = {
         email: "E-Mail an mich", footer: "Sicheres Cloud-Berechnungssystem • Unterstützt durch Flask, Render & Google Analytics",
         valError: "Validation Error: All fields are required! Please fill in all variables.",
         invError: "Invalid Input! Please enter positive whole numbers only (No decimals, signs, or symbols).", connError: "Connection Error: Could not reach the secure calculation cloud.",
-        seo: `<h2>Über die Formulierung der geometrischen Kombinatorik</h2><p>Das <strong>erweiterte Dreiecksberechnungssystem</strong> nutzt eine revolutionäre, hochperformante geometrische Formulierung, die von <strong>Eng. Md. Abu Hantash</strong> entdeckt wurde. Entwickelt mit <strong>konstanter Zeitkomplexität O(1)</strong> unter Verwendung strenger <strong>Big O Notation</strong>.</p><p>Gibt es einen Vorteil, dieses Programm irgendwo anzuwenden? Das hier verwendete Prinzip (Kombinatorik und Computergometrie) hat lebenswichtige reale Anwendungen:</p><ul><li><strong>Mikrochip-Design:</strong> Kreuzende Spuren auf Prozessorchips (CPUs). Algorithmen berechnen geschlossene Bereiche, um die Geschwindigkeit sicherzustellen.</li><li><strong>Netzwerktopologie:</strong> Die Berechnung geschlossener Dreiecksspuren zwischen Verbindungsmasten schützt die Netzwerkstärke.</li><li><strong>3D-Computergraphik & Spiele:</strong> Die Grundlagen moderner Engines wie der Unreal Engine hängen von der schnellen Verarbeitung dreieckiger Meshes ab.</li><li><strong>Cybersicherheit & Kryptographie:</strong> Komplexe Systeme beruhen auf komplexen geometrischen Rätseln.</li></ul>`
+        usage: "Verbleibende Anrufe heute: <strong>{rem}</strong> von 50",
+        captchaHeader: "<i class='fa-solid fa-shield-halved'></i> Sicherheitsüberprüfung erforderlich",
+        captchaPlaceholder: "Token hier eingeben",
+        bypassText: "Limit umgehen / Entwickler kontaktieren",
+        seo: `<h2>Über die Formulierung der geometrischen Kombinatorik</h2><p>Das <strong>erweiterte Dreiecksberechnungssystem</strong> nutzt eine revolutionäre, hochperformante geometrische Formulierung, die von <strong>Eng. Md. Abu Hantash</strong> entdeckt wurde. Entwickelt mit <strong>konstanter Zeitkomplexität O(1)</strong> unter Verwendung strenger <strong>Big O Notation</strong>.</p><p>Gibt es einen Vorteil, dieses Programm irgendwo anzuwenden? Das hier verwendet Prinzip (Kombinatorik und Computergometrie) hat lebenswichtige reale Anwendungen:</p><ul><li><strong>Mikrochip-Design:</strong> Kreuzende Spuren auf Prozessorchips (CPUs). Algorithmen berechnen geschlossene Bereiche, um die Geschwindigkeit sicherzustellen.</li><li><strong>Netzwerktopologie:</strong> Die Berechnung geschlossener Dreiecksspuren zwischen Verbindungsmasten schützt die Netzwerkstärke.</li><li><strong>3D-Computergraphik & Spiele:</strong> Die Grundlagen moderner Engines wie der Unreal Engine hängen von der schnellen Verarbeitung dreieckiger Meshes ab.</li><li><strong>Cybersicherheit & Kryptographie:</strong> Komplexe Systeme beruhen auf komplexen geometrischen Rätseln.</li></ul>`
     },
     ja: {
         title: "📐 高度な三角形カウンター", subtitle: "次世代幾何学的組合せ論計算システム",
@@ -273,6 +325,10 @@ const translations = {
         email: "メールを送る", footer: "安全なクラウド計算システム • Powered by Flask, Render & Google Analytics",
         valError: "Validation Error: All fields are required! Please fill in all variables.",
         invError: "Invalid Input! Please enter positive whole numbers only (No decimals, signs, or symbols).", connError: "Connection Error: Could not reach the secure calculation cloud.",
+        usage: "本日の残り呼び出し回数: <strong>{rem}</strong> / 50",
+        captchaHeader: "<i class='fa-solid fa-shield-halved'></i> セキュリティ検証が必要です",
+        captchaPlaceholder: "トークンを入力",
+        bypassText: "制限を回避 / 開発者に連絡",
         seo: `<h2>幾何学的組合せ論の公式について</h2><p><strong>高度な三角形計算システム</strong>は、<strong>Eng. Md. Abu Hantash</strong>によって発見された、革新的で高性能な幾何学的公式を利用しています。厳密な<strong>ビッグオー記法</strong>を使用した<strong>定数時間計算量 O(1)</strong>で設計されています。</p><p>このプログラムをどこかに適用することにメリットはありますか？ここで使用されている原理（組合せ論と計算幾何学）には、現実世界における極めて重要な応用があります。</p><ul><li><strong>マイクロチップ設計：</strong> プロセッサチップ（CPU）上の交差するトラック。アルゴリズムが閉じた領域を計算して速度を確保します。</li><li><strong>ネットワークトポロジ：</strong> 接続タワー間の閉じた三角形の軌道を計算することで、ネットワークの強度を保護します。</li><li><strong>3Dコンピュータグラフィックス＆ゲーム：</strong> Unreal Engineのような最新エンジンの骨格は、迅速な三角形メッシュ処理に依存しています。</li><li><strong>サイバーセキュリティ＆暗号：</strong> 複雑なシステムは複雑な幾何学的パズルに依存しています。</li></ul>`
     },
     ko: {
@@ -287,6 +343,10 @@ const translations = {
         email: "이메일 보내기", footer: "보안 클라우드 계산 시스템 • Powered by Flask, Render & Google Analytics",
         valError: "Validation Error: All fields are required! Please fill in all variables.",
         invError: "Invalid Input! Please enter positive whole numbers only (No decimals, signs, or symbols).", connError: "Connection Error: Could not reach the secure calculation cloud.",
+        usage: "오늘 남은 요청 횟수: <strong>{rem}</strong> / 50",
+        captchaHeader: "<i class='fa-solid fa-shield-halved'></i> 보안 보안 인증 필요",
+        captchaPlaceholder: "보안 문자 입력",
+        bypassText: "제한 우회 / 개발자 문의",
         seo: `<h2>기하 조합론 공식 정보</h2><p><strong>고급 삼각형 계산 시스템</strong>은 <strong>Eng. Md. Abu Hantash</strong>가 발견한 혁신적이고 고성능인 기하학적 공식을 활용합니다. 엄격한 <strong>Big O 표기법</strong>을 사용한 <strong>상수 시간 복잡도 O(1)</strong>로 설계되었습니다.</p><p>이 프로그램을 어디에나 적용하는 것이 유익합니까? 여기에 사용된 원리(조합론 및 계산 기하학)는 실제 세계에서 매우 중요한 응용 분야를 가지고 있습니다.</p><ul><li><strong>마이크로칩 디자인:</strong> 프로세서 칩(CPU)의 교차 트랙. 알고리즘은 속도를 보장하기 위해 폐쇄된 영역을 계산합니다.</li><li><strong>네트워크 토폴로지:</strong> 연결 타워 사이의 폐쇄된 삼각형 트랙을 계산하면 네트워크 강도가 보호됩니다.</li><li><strong>3D 컴퓨터 그래픽 및 게임:</strong> Unreal Engine과 같은 최신 엔진의 중추는 신속한 삼각형 메쉬 처리에 의존합니다.</li><li><strong>사이버 보안 및 암호화:</strong> 복잡한 시스템은 복잡한 기하학적 퍼즐에 의존합니다.</li></ul>`
     },
     fr: {
@@ -301,7 +361,11 @@ const translations = {
         email: "Envoyez-moi un e-mail", footer: "Système de Calcul Cloud Sécurisé • Propulsé par Flask, Render & Google Analytics",
         valError: "Validation Error: All fields are required! Please fill in all variables.",
         invError: "Invalid Input! Please enter positive whole numbers only (No decimals, signs, or symbols).", connError: "Connection Error: Could not reach the secure calculation cloud.",
-        seo: `<h2>À propos de la formulation de la combinatoire géométrique</h2><p>Le <strong>système avancé de calcul de triangles</strong> utilise une formulation géométrique révolutionnaire et performante découverte par <strong>Eng. Md. Abu Hantash</strong>. Conçu avec une <strong>complexité temporelle constante O(1)</strong> en utilisant une notation <strong>Big O</strong> stricte.</p><p>Y a-t-il un avantage à appliquer ce programme n'importe où ? Le principe utilisé ici (combinatoire et géométrie algorithmique) a des applications vitales dans le monde réel :</p><ul><li><strong>Conception de puces électroniques:</strong> Pistes s'intersectant sur les puces de processeur (CPU). Les algorithmes calculent les zones fermées pour garantir la vitesse.</li><li><strong>Topologie du réseau:</strong> Le calcul des traces de triangles fermés entre les tours de connexion protège la force du réseau.</li><li><strong>Graphismes 3D & Jeux:</strong> Les piliers des moteurs modernes comme Unreal Engine dépendent d'un traitement rapide du maillage triangulaire.</li><li><strong>Cybersécurité & Cryptographie:</strong> Les systèmes complexes reposent sur des énigmes géométriques complexes.</li></ul>`
+        usage: "Appels restants aujourd'hui: <strong>{rem}</strong> sur 50",
+        captchaHeader: "<i class='fa-solid fa-shield-halved'></i> Vérification de sécurité requise",
+        captchaPlaceholder: "Entrez le jeton ici",
+        bypassText: "Contourner la limite / Contacter le dév",
+        seo: `<h2>À propos de la formulation de la combinatoire géométrique</h2><p>Le <strong>système avancé de calcul de triangles</strong> utilise une formulation géométrique révolutionnaire et performante découverte par <strong>Eng. Md. Abu Hantash</strong>. Conçu avec une <strong>complexité temporelle constante O(1)</strong> en utilisant une notation <strong>Big O</strong> stricte.</p><p>Y a-t-il un avantage à appliquer ce programme n'importe quel endroit ? Le principe utilisé ici (combinatoire et géométrie algorithmique) a des applications vitales dans le monde réel :</p><ul><li><strong>Conception de puces électroniques:</strong> Pistes s'intersectant sur les puces de processeur (CPU). Les algorithmes calculent les zones fermées pour garantir la vitesse.</li><li><strong>Topologie du réseau:</strong> Le calcul des traces de triangles fermés entre les tours de connexion protège la force du réseau.</li><li><strong>Graphismes 3D & Jeux:</strong> Les piliers des moteurs modernes comme Unreal Engine dépendent d'un traitement rapide du maillage triangulaire.</li><li><strong>Cybersécurité & Cryptographie:</strong> Les systèmes complexes reposent sur des énigmes géométriques complexes.</li></ul>`
     },
     es: {
         title: "📐 Contador de Triángulos Avanzado", subtitle: "Sistema de Cálculo de Combinatoria Geométrica de Próxima Generación",
@@ -315,9 +379,47 @@ const translations = {
         email: "Envíame un correo electrónico", footer: "Sistema de Cálculo en la Nube Seguro • Impulsado por Flask, Render & Google Analytics",
         valError: "Validation Error: All fields are required! Please fill in all variables.",
         invError: "Invalid Input! Please enter positive whole numbers only (No decimals, signs, or symbols).", connError: "Connection Error: Could not reach the secure calculation cloud.",
+        usage: "Llamadas restantes hoy: <strong>{rem}</strong> de 50",
+        captchaHeader: "<i class='fa-solid fa-shield-halved'></i> Verificación de seguridad requerida",
+        captchaPlaceholder: "Escriba el token aquí",
+        bypassText: "Omitir límite / Contactar al desarrollador",
         seo: `<h2>Acerca de la formulación de combinatoria geométrica</h2><p>El <strong>Sistema Avanzado de Cálculo de Triángulos</strong> utiliza una formulación geométrica revolucionaria y de alto rendimiento descubierta por <strong>Eng. Md. Abu Hantash</strong>. Diseñado con una <strong>complejidad temporal constante O(1)</strong> utilizando la notación estricta <strong>Big O</strong>.</p><p>¿Existe algún beneficio al aplicar este programa en cualquier lugar? El principio utilizado aquí (Combinatoria y Geometría Computacional) tiene aplicaciones vitales en el mundo real:</p><ul><li><strong>Diseño de microchips:</strong> Pistas que se intersectan en los chips de procesador (CPU). Los algoritmos calculan áreas cerradas para garantizar la velocidad.</li><li><strong>Topología de red:</strong> Calcular trazas de triángulos cerrados entre torres de conexión protege la fuerza de la red.</li><li><strong>Gráficos 3D por computadora y juegos:</strong> Los pilares de los motores modernos como Unreal Engine dependen de un procesamiento rápido de malla triangular.</li><li><strong>Ciberseguridad y criptografía:</strong> Los sistemas complejos se basan en acertijos geométricos complejos.</li></ul>`
     }
 };
+
+// 🧠 DYNAMIC INPUT FONT SCALER FUNCTION
+function adjustResultFontSize() {
+    const resultElement = document.getElementById('resultValue');
+    if (!resultElement) return;
+    
+    const textLength = resultElement.innerText.trim().length;
+    
+    // إعادة تعيين الحجم الافتراضي أولاً
+    resultElement.style.fontSize = "42px";
+    
+    // تقليص الحجم هندسياً بناءً على عدد الحروف الناتجة لضمان عدم تشويه الواجهة
+    if (textLength > 20) {
+        resultElement.style.fontSize = "16px";
+    } else if (textLength > 15) {
+        resultElement.style.fontSize = "20px";
+    } else if (textLength > 10) {
+        resultElement.style.fontSize = "26px";
+    } else if (textLength > 6) {
+        resultElement.style.fontSize = "34px";
+    }
+}
+
+// 🎰 DYNAMIC CAPTCHA TOKEN GENERATOR FOR FRONTEND MATCHING WITH FLASK BACKEND
+function generateLocalCaptchaToken() {
+    const chars = '1234567890';
+    let token = '';
+    for (let i = 0; i < 4; i++) {
+        token += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    globalCaptchaToken = token;
+    const box = document.getElementById('captchaBoxText');
+    if (box) box.innerText = token;
+}
 
 function changeLanguage(lang) {
     currentLang = lang;
@@ -343,6 +445,13 @@ function changeLanguage(lang) {
     document.getElementById('lblFooterSystem').innerText = t.footer;
     document.getElementById('seoContainer').innerHTML = t.seo;
     
+    // ترجمة حقول الكابتشا
+    document.getElementById('lblCaptchaHeader').innerHTML = t.captchaHeader;
+    document.getElementById('captcha_input').placeholder = t.captchaPlaceholder;
+    
+    // استدعاء تجديد الحصص لتحديث صياغة اللغة الحية في الـ Badge العلوي
+    updateUsageBadgeText();
+    
     if (lang === 'ar') {
         document.body.style.direction = 'rtl';
         document.body.classList.add('rtl-mode');
@@ -351,6 +460,55 @@ function changeLanguage(lang) {
         document.body.style.direction = 'ltr';
         document.body.classList.remove('rtl-mode');
         document.getElementById('langSelect').parentElement.style.justifyContent = 'flex-end';
+    }
+}
+
+let storedRemainingCalls = 50; 
+function updateUsageBadgeText() {
+    const t = translations[currentLang];
+    document.getElementById('lblUsageText').innerHTML = t.usage.replace("{rem}", storedRemainingCalls);
+}
+
+// 🌐 INITIAL API STATUS FETCH ON LOAD
+async function fetchUsageStatus() {
+    try {
+        let response = await fetch('https://triangel-server.onrender.com/api/usage-status');
+        let data = await response.json();
+        if (data.success) {
+            storedRemainingCalls = data.remaining_calls;
+            updateUsageBadgeText();
+            
+            // إبراز الكابتشا وزر التواصل إذا كان require_captcha = true أو المحاولات المتبقية <= 40
+            handleConditionalElementsVisibility(data.require_captcha, data.remaining_calls);
+        }
+    } catch (e) {
+        console.error("Could not load initial API configuration", e);
+    }
+}
+
+function handleConditionalElementsVisibility(requireCaptcha, remainingCalls) {
+    const captchaWrapper = document.getElementById('captchaWrapper');
+    const btnContactEmail = document.getElementById('btnContactEmail');
+    const lblEmailMe = document.getElementById('lblEmailMe');
+    const t = translations[currentLang];
+    
+    // التحكم في الكابتشا
+    if (requireCaptcha) {
+        if (captchaWrapper.style.display !== 'flex') {
+            generateLocalCaptchaToken(); 
+            captchaWrapper.style.display = 'flex';
+        }
+    } else {
+        captchaWrapper.style.display = 'none';
+    }
+    
+    // إبراز زر الاتصال وتحويله لزر مضيء ملفت للنظر عند استهلاك أول 10 محاولات (المتبقي 40 أو أقل)
+    if (remainingCalls <= 40) {
+        btnContactEmail.classList.add('highlight');
+        lblEmailMe.innerText = t.bypassText;
+    } else {
+        btnContactEmail.classList.remove('highlight');
+        lblEmailMe.innerText = t.email;
     }
 }
 
@@ -363,6 +521,10 @@ function autoDetectLanguage() {
         document.getElementById('langSelect').value = 'en';
         changeLanguage('en');
     }
+    
+    // استدعاء جلب البيانات الأولي وإعداد الكابتشا الافتراضية
+    generateLocalCaptchaToken();
+    fetchUsageStatus();
 }
 window.onload = autoDetectLanguage;
 
@@ -371,6 +533,7 @@ async function calculateTriangles() {
     let v2 = document.getElementById('v2').value.trim();
     let v3 = document.getElementById('v3').value.trim();
     let p_val = document.getElementById('p_val').value.trim();
+    let captcha_input = document.getElementById('captcha_input').value.trim();
     
     let errorBox = document.getElementById('errorBox');
     let errorText = document.getElementById('errorText');
@@ -419,7 +582,14 @@ async function calculateTriangles() {
         let response = await fetch('https://triangel-server.onrender.com/calculate', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ v1: v1, v2: v2, v3: v3, p_val: p_val })
+            body: JSON.stringify({ 
+                v1: v1, 
+                v2: v2, 
+                v3: v3, 
+                p_val: p_val,
+                captcha_input: captcha_input,
+                captcha_token: globalCaptchaToken
+            })
         });
         
         let data = await response.json();
@@ -429,7 +599,16 @@ async function calculateTriangles() {
         calcBtn.disabled = false;
 
         if (data.success) {
+            // تحديث حصة الاستهلاك المتبقية في الواجهة فوراً
+            if (data.remaining_calls !== undefined) {
+                storedRemainingCalls = data.remaining_calls;
+                updateUsageBadgeText();
+            }
+            
+            // تحديث القيمة وتطبيق ميزة تقليص حجم الخط الذكي تلقائياً
             document.getElementById('resultValue').innerText = data.result;
+            adjustResultFontSize();
+            
             resultBox.style.display = 'block';
             
             if(data.total_calls) {
@@ -437,10 +616,24 @@ async function calculateTriangles() {
                 document.getElementById('callCounterBox').style.display = 'block';
             }
             
+            // تجديد الكابتشا ومراقبة العناصر المشروطة للخطوة القادمة بشكل استباقي
+            handleConditionalElementsVisibility(data.require_captcha, data.remaining_calls);
+            if (data.require_captcha) {
+                generateLocalCaptchaToken();
+                document.getElementById('captcha_input').value = "";
+            }
+
             gtag('event', 'calculate_success', { 'event_category': 'Engagement', 'event_label': 'Triangle Formula Calculation' });
         } else {
-            errorText.innerText = data.error;
+            // التعامل مع أخطاء الكابتشا والحد اليومي
+            errorText.innerText = data.message || data.error;
             errorBox.style.display = 'flex';
+            
+            // تجديد الرموز إذا كانت الكابتشا خاطئة
+            if (data.error === 'INVALID_CAPTCHA' || data.error === 'CAPTCHA_REQUIRED') {
+                handleConditionalElementsVisibility(true, storedRemainingCalls);
+                generateLocalCaptchaToken();
+            }
         }
     } catch (error) {
         clearInterval(countdownInterval);
