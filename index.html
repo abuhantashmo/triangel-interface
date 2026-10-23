@@ -97,7 +97,7 @@
         .error-box { margin-top: 20px; padding: 15px 20px; background-color: #fef2f2; border: 1px solid #fca5a5; border-radius: 12px; color: #b91c1c; font-size: 14px; font-weight: 600; display: none; align-items: center; gap: 10px; }
         
         .result-box { margin-top: 25px; padding: 20px; background-color: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; text-align: center; display: none; overflow: hidden; }
-        .result-value { font-size: 42px; font-weight: 900; color: #15803d; word-wrap: break-word; word-break: break-all; transition: font-size 0.15s ease-out; line-height: 1.2; padding: 5px 0; }
+        .result-value { font-size: 42px; font-weight: 900; color: #15803d; word-wrap: break-word; word-break: break-all; transition: font-size 0.15s ease-out; line-height: 1.2; padding: 5px 0; letter-spacing: 0.5px; }
         .call-counter { margin-top: 15px; font-size: 13.5px; color: #64748b; font-weight: 500; border-top: 1px dashed var(--border); padding-top: 12px; }
         
         .guide-title { font-size: 18px; font-weight: 700; color: var(--text-main); margin-bottom: 20px; display: flex; align-items: center; gap: 8px; width: 100%; }
@@ -220,6 +220,8 @@
         </div>
     </div>
 
+    <div class="seo-section" id="seoContainer"></div>
+
     <div class="author-card">
         <div class="author-info">
             <h3 id="lblAuthorTitle">Algorithm Invented by: Eng. Md. Abu Hantash</h3>
@@ -255,7 +257,8 @@ const translations = {
         usage: "Remaining calls today: <strong>{rem}</strong> of 50",
         captchaHeader: "<i class='fa-solid fa-shield-halved'></i> Security Verification Required",
         captchaPlaceholder: "Type token here",
-        bypassText: "Bypass Limit / Contact Developer"
+        bypassText: "Bypass Limit / Contact Developer",
+        seo: `<h2>About the Geometric Combinatorics Formulation</h2><p>The <strong>Advanced Triangle Calculation System</strong> utilizes a revolutionary, high-performance geometric formulation discovered by <strong>Eng. Md. Abu Hantash</strong>. Built with <strong>Constant Time Complexity O(1)</strong> using strict <strong>Big O Notation</strong>.</p><p>Is there a benefit to applying this program anywhere? The principle used here (Combinatorics and Computational Geometry) has vital real-world applications:</p><ul><li><strong>Microchip Design:</strong> Intersecting tracks on processor chips (CPUs). Algorithms calculate closed areas to ensure speed.</li><li><strong>Network Topology:</strong> Calculating closed triangle tracks between connection towers protects network strength.</li><li><strong>3D Computer Graphics & Games:</strong> Backbones of modern engines like Unreal Engine depend on swift triangular mesh processing.</li><li><strong>Cybersecurity & Cryptography:</strong> Complex systems rely on complex geometric puzzles.</li></ul>`
     },
     ar: {
         title: "📐 الحاسب المتقدم للمثلثات", subtitle: "نظام الحساب الهندسي من الجيل القادم",
@@ -272,7 +275,8 @@ const translations = {
         usage: "المحاولات المتبقية اليوم: <strong>{rem}</strong> من أصل 50",
         captchaHeader: "<i class='fa-solid fa-shield-halved'></i> يرجى إدخال رمز التحقق الأمني",
         captchaPlaceholder: "اكتب الرمز هنا",
-        bypassText: "للتخطي / تواصل مع المطور"
+        bypassText: "للتخطي / تواصل مع المطور",
+        seo: `<h2>حول صيغة التراكيب الهندسية التوافقيّة</h2><p>يعتمد <strong>نظام حساب المثلثات المتقدم</strong> على معادلة هندسية ثورية وعالية الأداء اكتشفها <strong>المهندس محمد أبو هنطش</strong> تم تصميمه بـ <strong>زمن تنفيذ ثابت O(1)</strong> باستخدام <strong>رمز تدوين Big O</strong> الصارم.</p><p>هل هناك فائدة من تطبيق هذا البرنامج في أي مكان؟ في الحقيقة، المبدأ الرياضي والبرمجي المستخدم هنا (وهو علم التركيبات والهندسة الحسابية - Computational Geometry) له تطبيقات حيوية جداً في العالم الحقيقي:</p><ul><li><strong>تصميم رقاقات أشباه الموصلات والدوائر الإلكترونية (Microchip Design):</strong> تتقاطع ملايين المسارات والخطوط الكهربائية الدقيقة على شريحة السيليكون عند تصميم المعالجات (CPUs)، وتُستخدم هذه الخوارزميات لضمان كفاءة الشريحة وسرعتها.</li><li><strong>الشبكات وأنظمة الاتصالات (Network Topology):</strong> حساب عدد المسارات المغلقة بين نقاط الاتصال أو الأبراج يساعد المهندسين في تحليل قوة الشبكة وكفاءة نقل البيانات وضمان وجود مسارات بديلة.</li><li><strong>الرسومات ثلاثية الأبعاد والألعاب (3D Computer Graphics):</strong> تتكون رسومات الألعاب من ملايين المثلثات الصغيرة (Mesh)، والخوارزميات فائقة السرعة هي العمود القبلي لمحركات الألعاب مثل (Unreal Engine).</li><li><strong>الأمن السيبراني والتشفير (Cryptography):</strong> بعض أنظمة التشفير المعقدة تعتمد على مسائل هندسية صعبة الحل رياضياً وسهلة التحقق برمجياً.</li></ul>`
     },
     zh: {
         title: "📐 高级三角形计数器", subtitle: "次世代几何组合计算系统",
@@ -284,10 +288,13 @@ const translations = {
         g3: "<strong>智能排序：</strong> 数学公式自动在幕后对输入进行排序，以保持高精度。",
         author: "算法发明人: Eng. Md. Abu Hantash", copyright: "几何组合学公式创新 © 2026. 保留所有权利。",
         email: "电邮联系我", footer: "安全云端计算系统 • 由 Flask, Render 和 Google Analytics 驱动",
+        valError: "Validation Error: All fields are required! Please fill in all variables.",
+        invError: "Invalid Input! Please enter positive whole numbers only (No decimals, signs, or symbols).", connError: "Connection Error: Could not reach the secure calculation cloud.",
         usage: "今日剩余调用次数: <strong>{rem}</strong> / 50",
         captchaHeader: "<i class='fa-solid fa-shield-halved'></i> 需要安全验证",
         captchaPlaceholder: "在此输入验证码",
-        bypassText: "跳过限制 / 联系开发者"
+        bypassText: "跳过限制 / 联系开发者",
+        seo: `<h2>关于几何组合学公式</h2><p><strong>高级三角形计算系统</strong>利用了 <strong>Eng. Md. Abu Hantash</strong> 发现的具有革命性、高性能的几何公式。利用具有 <strong>常数时间复杂度 O(1)</strong> 的严格 <strong>大O表示法</strong> 设计。</p><p>在任何地方应用这个程序有什么好处吗？这里使用的原理（组合数学和计算几何）具有至关重要的现实应用：</p><ul><li><strong>微芯片设计：</strong> 处理器芯片（CPU）上的交叉轨道。算法计算封闭区域以确保速度。</li><li><strong>网络拓扑结构：</strong> 计算连接塔之间的封闭三角形轨迹可保护网络强度。</li><li><strong>3D 几何图形与游戏：</strong> 像 Unreal Engine 这样的现代引擎的骨干依赖于快速的三角形网格处理。</li><li><strong>网络安全与密码学：</strong> 复杂的系统依赖于复杂的几何谜题。</li></ul>`
     },
     de: {
         title: "📐 Fortschrittlicher Dreiecksrechner", subtitle: "Geometrisches Kombinatorik-Berechnungssystem der nächsten Generation",
@@ -304,7 +311,8 @@ const translations = {
         usage: "Verbleibende Anrufe heute: <strong>{rem}</strong> von 50",
         captchaHeader: "<i class='fa-solid fa-shield-halved'></i> Sicherheitsüberprüfung erforderlich",
         captchaPlaceholder: "Token hier eingeben",
-        bypassText: "Limit umgehen / Entwickler kontaktieren"
+        bypassText: "Limit umgehen / Entwickler kontaktieren",
+        seo: `<h2>Über die Formulierung der geometrischen Kombinatorik</h2><p>Das <strong>erweiterte Dreiecksberechnungssystem</strong> nutzt eine revolutionäre, hochperformante geometrische Formulierung, die von <strong>Eng. Md. Abu Hantash</strong> entdeckt wurde. Entwickelt mit <strong>konstanter Zeitkomplexität O(1)</strong> unter Verwendung strenger <strong>Big O Notation</strong>.</p><p>Gibt es einen Vorteil, dieses Programm irgendwo anzuwenden? Das hier verwendete Prinzip (Kombinatorik und Computergometrie) hat lebenswichtige reale Anwendungen:</p><ul><li><strong>Mikrochip-Design:</strong> Kreuzende Spuren auf Prozessorchips (CPUs). Algorithmen berechnen geschlossene Bereiche, um die Geschwindigkeit sicherzustellen.</li><li><strong>Netzwerktopologie:</strong> Die Berechnung geschlossener Dreiecksspuren zwischen Verbindungsmasten schützt die Netzwerkstärke.</li><li><strong>3D-Computergraphik & Spiele:</strong> Die Grundlagen moderner Engines wie der Unreal Engine hängen von der schnellen Verarbeitung dreieckiger Meshes ab.</li><li><strong>Cybersicherheit & Kryptographie:</strong> Komplexe Systeme beruhen auf komplexen geometrischen Rätseln.</li></ul>`
     },
     ja: {
         title: "📐 高度な三角形カウンター", subtitle: "次世代幾何学的組合せ論計算システム",
@@ -313,7 +321,7 @@ const translations = {
         resultTitle: "形成された三角形の総数", executions: "総実行回数:", times: "回", guideTitle: "幾何学的入力ガイド",
         g1: "<strong>頂点：</strong> 各コーナーから始まり、反対側の底辺に着地する直線を数えます。",
         g2: "<strong>点 P：</strong> 3つの内部直線が1つの点で正確に交差する内部ノードのみを数えます。",
-        g3: "<strong>スマート自動：</strong> 数学的な方程式がバックグラウンドで入力を自动的にソートし、高い精度を維持します。",
+        g3: "<strong>スマート自動：</strong> 数学的な方程式がバックグラウンドで入力を自動的にソートし、高い精度を維持します。",
         author: "アルゴリズム発明者: Eng. Md. Abu Hantash", copyright: "革新的な幾何学的組合せ論の公式 © 2026. All rights reserved.",
         email: "メールを送る", footer: "安全なクラウド計算システム • Powered by Flask, Render & Google Analytics",
         valError: "Validation Error: All fields are required! Please fill in all variables.",
@@ -321,7 +329,8 @@ const translations = {
         usage: "本日の残り呼び出し回数: <strong>{rem}</strong> / 50",
         captchaHeader: "<i class='fa-solid fa-shield-halved'></i> セキュリティ検証が必要です",
         captchaPlaceholder: "トークンを入力",
-        bypassText: "制限を回避 / 開発者に連絡"
+        bypassText: "制限を回避 / 開発者に連絡",
+        seo: `<h2>幾何学的組合せ論の公式について</h2><p><strong>高度な三角形計算システム</strong>は、<strong>Eng. Md. Abu Hantash</strong>によって発見された、革新的で高性能な幾何学的公式を利用しています。厳密な<strong>ビッグオー記法</strong>を使用した<strong>定数時間計算量 O(1)</strong>で設計されています。</p><p>このプログラムをどこかに適用することにメリットはありますか？ここで使用されている原理（組合せ論と計算幾何学）には、現実世界における極めて重要な応用があります。</p><ul><li><strong>マイクロチップ設計：</strong> プロセッサチップ（CPU）上の交差するトラック。アルゴリズムが閉じた領域を計算して速度を確保します。</li><li><strong>ネットワークトポロジ：</strong> 接続タワー間の閉じた三角形の軌道を計算することで、ネットワークの強度を保護します。</li><li><strong>3Dコンピュータグラフィックス＆ゲーム：</strong> Unreal Engineのような最新エンジンの骨格は、迅速な三角形メッシュ処理に依存しています。</li><li><strong>サイバーセキュリティ＆暗号：</strong> 複雑なシステムは複雑な幾何学的パズルに依存しています。</li></ul>`
     },
     ko: {
         title: "📐 고급 삼각형 카운터", subtitle: "차세대 기하 조합론 계산 시스템",
@@ -338,7 +347,8 @@ const translations = {
         usage: "오늘 남은 요청 횟수: <strong>{rem}</strong> / 50",
         captchaHeader: "<i class='fa-solid fa-shield-halved'></i> 보안 보안 인증 필요",
         captchaPlaceholder: "보안 문자 입력",
-        bypassText: "제한 우회 / 개발자 문의"
+        bypassText: "제한 우회 / 개발자 문의",
+        seo: `<h2>기하 조합론 공식 정보</h2><p><strong>고급 삼각형 계산 시스템</strong>은 <strong>Eng. Md. Abu Hantash</strong>가 발견한 혁신적이고 고성능인 기하학적 공식을 활용합니다. 엄격한 <strong>Big O 표기법</strong>을 사용한 <strong>상수 시간 복잡도 O(1)</strong>로 설계되었습니다.</p><p>이 프로그램을 어디에나 적용하는 것이 유익합니까? 여기에 사용된 원리(조합론 및 계산 기하학)는 실제 세계에서 매우 중요한 응용 분야를 가지고 있습니다.</p><ul><li><strong>마이크로칩 디자인:</strong> 프로세서 칩(CPU)의 교차 트랙. 알고리즘은 속도를 보장하기 위해 폐쇄된 영역을 계산합니다.</li><li><strong>네트워크 토폴로지:</strong> 연결 타워 사이의 폐쇄된 삼각형 트랙을 계산하면 네트워크 강도가 보호됩니다.</li><li><strong>3D 컴퓨터 그래픽 및 게임:</strong> Unreal Engine과 같은 최신 엔진의 중추는 신속한 삼각형 메쉬 처리에 의존합니다.</li><li><strong>사이버 보안 및 암호화:</strong> 복잡한 시스템은 복잡한 기하학적 퍼즐에 의존합니다.</li></ul>`
     },
     fr: {
         title: "📐 Compteur de Triangles Avancé", subtitle: "Système de Calcul de Combinatoire Géométrique de Nouvelle Génération",
@@ -355,10 +365,11 @@ const translations = {
         usage: "Appels restants aujourd'hui: <strong>{rem}</strong> sur 50",
         captchaHeader: "<i class='fa-solid fa-shield-halved'></i> Vérification de sécurité requise",
         captchaPlaceholder: "Entrez le jeton ici",
-        bypassText: "Contourner la limite / Contacter le dév"
+        bypassText: "Contourner la limite / Contacter le dév",
+        seo: `<h2>À propos de la formulation de la combinatoire géométrique</h2><p>Le <strong>système avancé de calcul de triangles</strong> utilise une formulation géométrique révolutionnaire et performante découverte par <strong>Eng. Md. Abu Hantash</strong>. Conçu avec une <strong>complexité temporelle constante O(1)</strong> en utilisant une notation <strong>Big O</strong> stricte.</p><p>Y a-t-il un avantage à appliquer ce programme n'importe où ? Le principe utilisé ici (combinatoire et géométrie algorithmique) a des applications vitales dans le monde réel :</p><ul><li><strong>Conception de puces électroniques:</strong> Pistes s'intersectant sur les puces de processeur (CPU). Les algorithmes calculent les zones fermées para garantir la vitesse.</li><li><strong>Topologie du réseau:</strong> Le calcul des traces de triangles fermés entre les tours de connexion protège la force du réseau.</li><li><strong>Graphismes 3D & Jeux:</strong> Les piliers des moteurs modernes comme Unreal Engine dépendent d'un traitement rapide du maillage triangulaire.</li><li><strong>Cybersécurité & Cryptographie:</strong> Les systèmes complexes reposent sur des énigmes géométriques complexes.</li></ul>`
     },
     es: {
-        title: "📐 Contador de Triángulos Avanzado", subtitle: "Sistema de Cálculo de Combinatoria Geométrica de Próxima Generation",
+        title: "📐 Contador de Triángulos Avanzado", subtitle: "Sistema de Cálculo de Combinatoria Geométrica de Próxima Generación",
         v1: "Líneas desde el Vértice 1", v2: "Líneas desde el Vértice 2", v3: "Líneas desde el Vértice 3", p: "Intersecciones Triples (P)",
         btn: "Calcular Total de Triángulos", timer: "Si es la primera vez, espere (<strong id='secondsCount'>25</strong>s)...",
         resultTitle: "Total de Triángulos Formados", executions: "Ejecuciones Totales:", times: "veces", guideTitle: "Guía de Entrada Geométrica",
@@ -372,45 +383,10 @@ const translations = {
         usage: "Llamadas restantes hoy: <strong>{rem}</strong> de 50",
         captchaHeader: "<i class='fa-solid fa-shield-halved'></i> Verificación de seguridad requerida",
         captchaPlaceholder: "Escriba el token aquí",
-        bypassText: "Omitir límite / Contactar al desarrollador"
+        bypassText: "Omitir límite / Contactar al desarrollador",
+        seo: `<h2>Acerca de la formulación de combinatoria geométrica</h2><p>El <strong>Sistema Avanzado de Cálculo de Triángulos</strong> utiliza una formulación geométrica revolucionaria y de alto rendimiento descubierta por <strong>Eng. Md. Abu Hantash</strong>. Diseñado con una <strong>complejidad temporal constante O(1)</strong> utilizando la notación estricta <strong>Big O</strong>.</p><p>¿Existe algún beneficio al aplicar este programa en cualquier lugar? El principio utilizado aquí (Combinatoria y Geometría Computacional) tiene aplicaciones vitales en el mundo real:</p><ul><li><strong>Diseño de microchips:</strong> Pistas que se intersectan en los chips de procesador (CPU). Los algoritmos calculan áreas cerradas para garantizar la velocidad.</li><li><strong>Topología de red:</strong> Calcular trazas de triángulos cerrados entre torres de conexión protege la fuerza de la red.</li><li><strong>Gráficos 3D por computadora y juegos:</strong> Los pilares de los motores modernos como Unreal Engine dependen de un procesamiento rápido de malla triangular.</li><li><strong>Ciberseguridad y criptografía:</strong> Los sistemas complejos se basan en acertijos geométricos complejos.</li></ul>`
     }
 };
-
-// 🧠 EXPERT-LEVEL SOLUTION FOR SCIENTIFIC NOTATION (E+) EXPANSION IN JAVASCRIPT
-function formatLargeNumberRaw(numInput) {
-    let str = String(numInput).trim();
-    
-    // إذا كان يحتوي على صيغة الأس e+ أو E+ نقوم بتفكيكه وتحويله لرقم ممتد صريح
-    if (str.includes('e') || str.includes('E')) {
-        let parts = str.split(/[eE]/);
-        let base = parts[0];
-        let exponent = parseInt(parts[1], 10);
-        
-        // إزالة الفاصلة العشرية من الأساس لحساب الخانات الحقيقية
-        let dotIndex = base.indexOf('.');
-        if (dotIndex >= 0) {
-            let decimalPlaces = base.length - dotIndex - 1;
-            base = base.replace('.', '');
-            exponent = exponent - decimalPlaces;
-        }
-        
-        // إضافة الأصفار المطلوبة في نهاية الرقم
-        if (exponent > 0) {
-            str = base + '0'.repeat(exponent);
-        } else if (exponent < 0) {
-            // معالجة الكسور إن وجدت
-            let absExp = Math.abs(exponent);
-            if (absExp >= base.length) {
-                str = '0.' + '0'.repeat(absExp - base.length) + base;
-            } else {
-                str = base.slice(0, base.length - absExp) + '.' + base.slice(base.length - absExp);
-            }
-        } else {
-            str = base;
-        }
-    }
-    return str;
-}
 
 function adjustResultFontSize() {
     const resultElement = document.getElementById('resultValue');
@@ -419,15 +395,15 @@ function adjustResultFontSize() {
     const textLength = resultElement.innerText.trim().length;
     resultElement.style.fontSize = "42px";
     
-    if (textLength > 30) {
+    if (textLength > 40) {
         resultElement.style.fontSize = "13px";
-    } else if (textLength > 20) {
+    } else if (textLength > 30) {
         resultElement.style.fontSize = "16px";
-    } else if (textLength > 15) {
-        resultElement.style.fontSize = "22px";
-    } else if (textLength > 10) {
-        resultElement.style.fontSize = "28px";
-    } else if (textLength > 6) {
+    } else if (textLength > 20) {
+        resultElement.style.fontSize = "20px";
+    } else if (textLength > 12) {
+        resultElement.style.fontSize = "26px";
+    } else if (textLength > 7) {
         resultElement.style.fontSize = "34px";
     }
 }
@@ -465,6 +441,7 @@ function changeLanguage(lang) {
     document.getElementById('lblCopyright').innerText = t.copyright;
     document.getElementById('lblEmailMe').innerText = t.email;
     document.getElementById('lblFooterSystem').innerText = t.footer;
+    document.getElementById('seoContainer').innerHTML = t.seo;
     
     document.getElementById('lblCaptchaHeader').innerHTML = t.captchaHeader;
     document.getElementById('captcha_input').placeholder = t.captchaPlaceholder;
@@ -617,10 +594,8 @@ async function calculateTriangles() {
                 updateUsageBadgeText();
             }
             
-            // الحل الهندسي المتكامل: فك النمذجة الأسية يدوياً وتحويلها لرقم صريح
-            let finalNumberStr = formatLargeNumberRaw(data.result);
-            
-            document.getElementById('resultValue').innerText = finalNumberStr;
+            // Render the raw string explicitly to prevent floating-point compression or zeroes
+            document.getElementById('resultValue').innerText = String(data.result);
             adjustResultFontSize();
             
             resultBox.style.display = 'block';
