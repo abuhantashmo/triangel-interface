@@ -114,8 +114,6 @@
         .btn-contact:hover { background-color: #e2e8f0; }
         .btn-contact.highlight { background-color: #fef08a; color: #854d0e; border: 1px solid #eab308; animation: pulse 2s infinite; }
         .btn-contact.highlight:hover { background-color: #fef08a; opacity: 0.9; }
-        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(234, 179, 8, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(234, 179, 8, 0); } 100% { box-shadow: 0 0 0 0 rgba(234, 179, 8, 0); } }
-        .copyright-text { margin-top: 25px; font-size: 13px; color: #64748b; text-align: center; width: 100%; }
         @media (max-width: 900px) { .header-controls { flex-direction: column-reverse; align-items: flex-end; } .main-wrapper { flex-direction: column; } .diagram-side { border-left: none; border-top: 1px solid var(--border); padding: 35px; } body.rtl-mode .diagram-side { border-right: none; } .author-card { flex-direction: column; gap: 20px; } }
         @media (max-width: 500px) { .input-grid { grid-template-columns: 1fr; } .calculator-side { padding: 25px; } }
     </style>
@@ -130,6 +128,8 @@
         <select class="lang-select" id="langSelect" onchange="changeLanguage(this.value)">
             <option value="en">English</option>
             <option value="ar">العربية</option>
+            <option value="hi">हिन्दी (Hindi)</option>
+            <option value="ur">اردو (Urdu)</option>
             <option value="zh">简体中文</option>
             <option value="de">Deutsch</option>
             <option value="ja">日本語</option>
@@ -220,6 +220,9 @@
         </div>
     </div>
 
+    <!-- SEO SECTION DYNAMIC CONTAINER -->
+    <div class="seo-section" id="seoContainer"></div>
+
     <div class="author-card">
         <div class="author-info">
             <h3 id="lblAuthorTitle">Algorithm Invented by: Eng. Md. Abu Hantash</h3>
@@ -275,6 +278,150 @@ const translations = {
         captchaPlaceholder: "اكتب الرمز هنا",
         bypassText: "للتخطي / تواصل مع المطور",
         seo: `<h2>حول صيغة التراكيب الهندسية التوافقيّة</h2><p>يعتمد <strong>نظام حساب المثلثات المتقدم</strong> على معادلة هندسية ثورية وعالية الأداء اكتشفها <strong>المهندس محمد أبو هنطش</strong> تم تصميمه بـ <strong>زمن تنفيذ ثابت O(1)</strong> باستخدام <strong>رمز تدوين Big O</strong> الصارم.</p><p>هل هناك فائدة من تطبيق هذا البرنامج في أي مكان؟ في الحقيقة، المبدأ الرياضي والبرمجي المستخدم هنا (وهو علم التركيبات والهندسة الحسابية - Computational Geometry) له تطبيقات حيوية جداً في العالم الحقيقي:</p><ul><li><strong>تصميم رقاقات أشباه الموصلات والدوائر الإلكترونية (Microchip Design):</strong> تتقاطع ملايين المسارات والخطوط الكهربائية الدقيقة على شريحة السيليكون عند تصميم المعالجات (CPUs)، وتُستخدم هذه الخوارزميات لضمان كفاءة الشريحة وسرعتها.</li><li><strong>الشبكات وأنظمة الاتصالات (Network Topology):</strong> حساب عدد المسارات المغلقة بين نقاط الاتصال أو الأبراج يساعد المهندسين في تحليل قوة الشبكة وكفاءة نقل البيانات وضمان وجود مسارات بديلة.</li><li><strong>الرسومات ثلاثية الأبعاد والألعاب (3D Computer Graphics):</strong> تتكون رسومات الألعاب من ملايين المثلثات الصغيرة (Mesh)، والخوارزميات فائقة السرعة هي العمود القبلي لمحركات الألعاب مثل (Unreal Engine).</li><li><strong>الأمن السيبراني والتشفير (Cryptography):</strong> بعض أنظمة التشفير المعقدة تعتمد على مسائل هندسية صعبة الحل رياضياً وسهلة التحقق برمجياً.</li></ul>`
+    },
+    hi: {
+        title: "📐 उन्नत त्रिभुज गणक", subtitle: "अगली पीढ़ी की ज्यामितीय संयोजन गणना प्रणाली",
+        v1: "शीर्ष 1 से रेखाएँ", v2: "शीर्ष 2 से रेखाएँ", v3: "शीर्ष 3 से रेखाएँ", p: "तिहरे प्रतिच्छेदन (P)",
+        btn: "कुल त्रिभुजों की गणना करें", timer: "यदि यह पहली बार है तो कृपया प्रतीक्षा करें (<strong id='secondsCount'>25</strong>s)...",
+        resultTitle: "बने कुल त्रिभुज", executions: "कुल निष्पादन:", times: "बार", guideTitle: "ज्यामितीय इनपुट गाइड",
+        g1: "<strong>शीर्ष:</strong> प्रत्येक कोने से खींची गई और विपरीत आधार पक्ष पर समाप्त होने वाली रेखाओं को गिनें।",
+        g2: "<strong>बिंदु P:</strong> केवल उन आंतरिक नोड्स को गिनें जहां ठीक तीन आंतरिक रेखाएं एक ही बिंदु पर मिलती हैं।",
+        g3: "<strong>स्मार्ट ऑटो:</strong> गणितीय समीकरण उच्च सटीकता बनाए रखने के लिए पृष्ठभूमि में इनपुट को स्वचालित रूप से क्रमबद्ध करता है।",
+        author: "एल्गोरिथ्म के आविष्कारक: इंजी. मोहम्मद अबू हंतश", copyright: "अभिनव ज्यामितीय संयोजन सूत्र © 2026. सभी अधिकार सुरक्षित।",
+        email: "मुझे ईमेल करें", footer: "सुरक्षित क्लाउड गणना प्रणाली • Flask, Render और Google Analytics द्वारा संचालित",
+        valError: "सत्यापन त्रुटि: सभी फ़ील्ड आवश्यक हैं! कृपया सभी चर भरें।",
+        invError: "अवैध इनपुट! कृपया केवल धनात्मक पूर्ण संख्याएँ दर्ज करें (कोई दशमलव, चिह्न या प्रतीक नहीं)।", connError: "कनेक्शन त्रुटि: सुरक्षित गणना क्लाउड तक नहीं पहुंचा जा सका।",
+        usage: "आज शेष कॉल: 50 में से <strong>{rem}</strong>",
+        captchaHeader: "<i class='fa-solid fa-shield-halved'></i> सुरक्षा सत्यापन आवश्यक है",
+        captchaPlaceholder: "टोकन यहाँ टाइप करें",
+        bypassText: "बायपास सीमा / डेवलपर से संपर्क करें",
+        seo: `<h2>ज्यामितीय संयोजन सूत्र के बारे में</h2><p><strong>उन्नत त्रिभुज गणना प्रणाली</strong> इंजी. मोहम्मद अबू हंतश द्वारा खोजे गए एक क्रांतिकारी, उच्च प्रदर्शन वाले ज्यामितीय सूत्र का उपयोग करती है। इसे सख्त <strong>Big O नोटेशन</strong> का उपयोग करके <strong>स्थिर समय जटिलता O(1)</strong> के साथ बनाया गया है।</p><p>क्या इस प्रोग्राम को कहीं भी लागू करने का कोई लाभ है? यहाँ उपयोग किए जाने वाले सिद्धांत (संयोजन और कम्प्यूटेशनल ज्यामिति) के वास्तविक दुनिया में महत्वपूर्ण अनुप्रयोग हैं:</p><ul><li><strong>माइक्रोचिप डिज़ाइन:</strong> प्रोसेसर चिप्स (CPU) पर प्रतिच्छेद करने वाले ट्रैक। गति सुनिश्चित करने के लिए एल्गोरिदम बंद क्षेत्रों की गणना करते हैं।</li><li><strong>नेटवर्क टोपोलॉजी:</strong> कनेक्शन टावरों के बीच बंद त्रिकोणीय ट्रैक की गणना नेटवर्क की ताकत की रक्षा करती है।</li><li><strong>3D कंप्यूटर ग्राफिक्स और गेम्स:</strong> Unreal Engine जैसे आधुनिक इंजनों की रीढ़ की हड्डी तेजी से त्रिकोणीय मेश प्रोसेसिंग पर निर्भर करती है।</li><li><strong>साइबर सुरक्षा और क्रिप्टोग्राफी:</strong> जटिल प्रणालियाँ जटिल ज्यामितीय पहेलियों पर निर्भर करती हैं।</li></ul>`
+    },
+    ur: {
+        title: "📐 جدید تکون کاؤنٹر", subtitle: "اگلی نسل کا ہندسی امتزاجاتی حسابی نظام",
+        v1: "راس 1 سے لکیریں", v2: "راس 2 سے لکیریں", v3: "راس 3 سے لکیریں", p: "تہرے تقاطع (P)",
+        btn: "کل تکونوں کا حساب لگائیں", timer: "اگر یہ پہلی بار ہے تو براہ کرم انتظار کریں (<strong id='secondsCount'>25</strong> سیکنڈ)...",
+        resultTitle: "بننے والے کل تکون", executions: "کل تعمیل:", times: "بار", guideTitle: "ہندسی ان پٹ گائیڈ",
+        g1: "<strong>راس:</strong> ہر کونے سے شروع ہو کر مخالف بنیاد کی طرف جانے والی لکیروں کو گنیں۔",
+        g2: "<strong>نقطہ P:</strong> صرف ان اندرونی نوڈس کو گنیں جہاں بالکل تین اندرونی لکیریں ایک ہی نقطہ پر آپس میں ملتی ہیں۔",
+        g3: "<strong>سمارٹ آٹو:</strong> ریاضیاتی مساوات درستگی برقرار رکھنے کے لیے پس منظر میں ان پٹ کو خود بخود ترتیب دیتی ہے۔",
+        author: "الگورتھم کے موجد: انجینئر محمد ابو ہنطش", copyright: "جدید ہندسی امتزاجاتی فارمولا © 2026۔ جملہ حقوق محفوظ ہیں۔",
+        email: "مجھے ای میل کریں", footer: "محفوظ کلاؤڈ کیلکولیشن سسٹم • Flask, Render اور Google Analytics کے تعاون سے",
+        valError: "توثیق کی غلطی: تمام فیلڈز مطلوب ہیں! براہ کرم تمام متغیرات پُر کریں۔",
+        invError: "غلط ان پٹ! براہ کرم صرف مثبت مکمل اعداد درج کریں (کوئی اعشاریہ، نشان یا علامت نہیں)۔", connError: "کنکشن کی غلطی: محفوظ کلاؤڈ سرور تک رسائی حاصل نہیں ہو سکی۔",
+        usage: "آج کی باقی کالز: 50 میں سے <strong>{rem}</strong>",
+        captchaHeader: "<i class='fa-solid fa-shield-halved'></i> سیکیورٹی تصدیق درکار ہے",
+        captchaPlaceholder: "ٹوکن یہاں لکھیں",
+        bypassText: "حد بائی پاس کریں / ڈویلپر سے رابطہ کریں",
+        seo: `<h2>ہندسی امتزاجاتی فارمولے کے بارے میں</h2><p><strong>جدید تکون حسابی نظام</strong> انجینئر محمد ابو ہنطش کے دریافت کردہ ایک انقلابی اور انتہائی موثر ہندسی فارمولے پر مبنی ہے۔ اسے سخت <strong>Big O Notation</strong> کے تحت <strong>مستقل وقت کی پیچیدگی O(1)</strong> کے ساتھ ڈیزائن کیا گیا ہے۔</p><p>کیا اس پروگرام کو کہیں بھی استعمال کرنے کا کوئی فائدہ ہے؟ یہاں استعمال ہونے والا ریاضیاتی اصول (امتزاجات اور کمپیوٹیشنل جیومیٹری) حقیقی دنیا میں انتہائی اہم اطلاقات رکھتا ہے:</p><ul><li><strong>مائیکرو چپ ڈیزائن:</strong> پروسیسر چپس (CPUs) پر برقی راستوں کا تقاطع۔ رفتار کو یقینی بنانے کے لیے الگورتھم بند حصوں کا حساب لگاتے ہیں۔</li><li><strong>نیٹ ورک ٹوپولوجی:</strong> ٹاورز کے درمیان بند تکونی راستوں کا حساب نیٹ ورک کی کارکردگی اور طاقت کو برقرار رکھتا ہے۔</li><li><strong>3D کمپیوٹر گرافکس اور گیمز:</strong> Unreal Engine جیسے جدید انجنوں کا ڈھانچہ تیز رفتار تکونی میش پروسیسنگ پر انحصار کرتا ہے۔</li><li><strong>سائبر سیکیورٹی اور کرپٹوگرافی:</strong> پیچیدہ نظام ہندسی معمیوں پر انحصار کرتے ہیں۔</li></ul>`
+    },
+    zh: {
+        title: "📐 高级三角形计数器", subtitle: "次世代几何组合计算系统",
+        v1: "从顶点 1 引出的线", v2: "从顶点 2 引出的线", v3: "从顶点 3 引出的线", p: "三重交点 (P)",
+        btn: "计算三角形总数", timer: "请等待 (<strong id='secondsCount'>25</strong> 秒)...",
+        resultTitle: "生成的三角形总数", executions: "总执行次数:", times: "次", guideTitle: "几何输入指南",
+        g1: "<strong>顶点：</strong> 计算从每个角开始并在相对底边结束的线条数。",
+        g2: "<strong>P 点：</strong> 仅计算三条内部线在单个点上精确交叉的内部节点。",
+        g3: "<strong>智能排序：</strong> 数学公式自动在幕后对输入进行排序，以保持高精度。",
+        author: "算法发明人: Eng. Md. Abu Hantash", copyright: "几何组合学公式创新 © 2026. 保留所有权利。",
+        email: "电邮联系我", footer: "安全云端计算系统 • 由 Flask, Render 和 Google Analytics 驱动",
+        valError: "Validation Error: All fields are required! Please fill in all variables.",
+        invError: "Invalid Input! Please enter positive whole numbers only (No decimals, signs, or symbols).", connError: "Connection Error: Could not reach the secure calculation cloud.",
+        usage: "今日剩余调用次: 50 中的 <strong>{rem}</strong>",
+        captchaHeader: "<i class='fa-solid fa-shield-halved'></i> 需要安全验证",
+        captchaPlaceholder: "在此输入令牌",
+        bypassText: "绕过限制 / 联系开发人员",
+        seo: `<h2>关于几何组合学公式</h2><p><strong>高级三角形计算系统</strong>利用了 <strong>Eng. Md. Abu Hantash</strong> 发现的具有革命性、高性能的几何公式。利用具有 <strong>常数时间复杂度 O(1)</strong> 的严格 <strong>大O表示法</strong> 设计。</p><p>在任何地方应用这个程序有什么好处吗？这里使用的原理（组合数学和计算几何）具有至关重要的现实应用：</p><ul><li><strong>微芯片设计：</strong> 处理器芯片（CPU）上的交叉轨道。算法计算封闭区域以确保速度。</li><li><strong>网络拓扑结构：</strong> 计算连接塔之间的封闭三角形轨迹可保护网络强度。</li><li><strong>3D 计算机图形与游戏：</strong> 像 Unreal Engine 这样的现代引擎的骨干依赖于快速的三角形网格处理。</li><li><strong>网络安全与密码学：</strong> 复杂的系统依赖于复杂的几何谜题。</li></ul>`
+    },
+    de: {
+        title: "📐 Fortschrittlicher Dreiecksrechner", subtitle: "Geometrisches Kombinatorik-Berechnungssystem der nächsten Generation",
+        v1: "Linien von Scheitelpunkt 1", v2: "Linien von Scheitelpunkt 2", v3: "Linien von Scheitelpunkt 3", p: "Dreifache Schnittpunkte (P)",
+        btn: "Gesamtzahl der Dreiecke berechnen", timer: "Wenn dies das erste Mal ist, warten Sie bitte (<strong id='secondsCount'>25</strong>s)...",
+        resultTitle: "Gesamtzahl der gebildeten Dreiecke", executions: "Ausführungen Gesamt:", times: "Mal", guideTitle: "Leitfaden für geometrische Eingaben",
+        g1: "<strong>Scheitelpunkte:</strong> Zählen Sie Linien, die an jeder Ecke beginnen und auf der gegenüberliegenden Basisseite landen.",
+        g2: "<strong>Punkt P:</strong> Zählen Sie nur interne Knoten, an denen sich genau drei interne Linien an einem einzigen Punkt kreuzen.",
+        g3: "<strong>Smart Auto:</strong> Die mathematische Gleichung sortiert die Eingaben automatisch im Hintergrund, um die Präzision zu wahren.",
+        author: "Algorithmus erfunden von: Eng. Md. Abu Hantash", copyright: "Innovative geometrische Kombinatorik-Formulierung © 2026. Alle Rechte vorbehalten.",
+        email: "E-Mail an mich", footer: "Sicheres Cloud-Berechnungssystem • Unterstützt durch Flask, Render & Google Analytics",
+        valError: "Validation Error: All fields are required! Please fill in all variables.",
+        invError: "Invalid Input! Please enter positive whole numbers only (No decimals, signs, or symbols).", connError: "Connection Error: Could not reach the secure calculation cloud.",
+        usage: "Verbleibende Anrufe heute: <strong>{rem}</strong> von 50",
+        captchaHeader: "<i class='fa-solid fa-shield-halved'></i> Sicherheitsüberprüfung erforderlich",
+        captchaPlaceholder: "Token hier eingeben",
+        bypassText: "Limit umgehen / Entwickler kontaktieren",
+        seo: `<h2>Über die Formulierung der geometrischen Kombinatorik</h2><p>Das <strong>erweiterte Dreiecksberechnungssystem</strong> nutzt eine revolutionäre, hochperformante geometrische Formulierung, die von <strong>Eng. Md. Abu Hantash</strong> entdeckt wurde. Entwickelt mit <strong>konstanter Zeitkomplexität O(1)</strong> unter Verwendung strenger <strong>Big O Notation</strong>.</p><p>Gibt es einen Vorteil, dieses Programm irgendwo anzuwenden? Das hier verwendete Prinzip (Kombinatorik und Computergometrie) hat lebenswichtige reale Anwendungen:</p><ul><li><strong>Mikrochip-Design:</strong> Kreuzende Spuren auf Prozessorchips (CPUs). Algorithmen berechnen geschlossene Bereiche, um die Geschwindigkeit sicherzustellen.</li><li><strong>Netzwerktopologie:</strong> Die Berechnung geschlossener Dreiecksspuren zwischen Verbindungsmasten schützt die Netzwerkstärke.</li><li><strong>3D-Computergraphik & Spiele:</strong> Die Grundlagen moderner Engines wie der Unreal Engine hängen von der schnellen Verarbeitung dreieckiger Meshes ab.</li><li><strong>Cybersicherheit & Kryptographie:</strong> Komplexe Systeme beruhen auf komplexen geometrichen Rätseln.</li></ul>`
+    },
+    ja: {
+        title: "📐 高度な三角形カウンター", subtitle: "次世代幾何学的組合せ論計算システム",
+        v1: "頂点1からの直線数", v2: "頂点2からの直線数", v3: "頂点3からの直線数", p: "三重交点 (P)",
+        btn: "三角形の総数を計算", timer: "初回の場合は、(<strong id='secondsCount'>25</strong>秒) お待ちください...",
+        resultTitle: "形成された三角形の総数", executions: "総実行回数:", times: "回", guideTitle: "幾何学的入力ガイド",
+        g1: "<strong>頂点：</strong> 各コーナーから始まり、反対側の底辺に着地する直線を数えます。",
+        g2: "<strong>点 P：</strong> 3つの内部直線が1つの点で正確に交差する内部ノードのみを数えます。",
+        g3: "<strong>スマート自動：</strong> 数学的な方程式がバックグラウンドで入力を自動的にソートし、高い精度を維持します。",
+        author: "アルゴリズム発明者: Eng. Md. Abu Hantash", copyright: "革新的な幾何学的組合せ論の公式 © 2026. All rights reserved.",
+        email: "メールを送る", footer: "安全なクラウド計算システム • Powered by Flask, Render & Google Analytics",
+        valError: "Validation Error: All fields are required! Please fill in all variables.",
+        invError: "Invalid Input! Please enter positive whole numbers only (No decimals, signs, or symbols).", connError: "Connection Error: Could not reach the secure calculation cloud.",
+        usage: "本日の残りコール数: 50 中 <strong>{rem}</strong>",
+        captchaHeader: "<i class='fa-solid fa-shield-halved'></i> セキュリティ認証が必要です",
+        captchaPlaceholder: "トークンをここに入力",
+        bypassText: "制限をバイパス / 開発者に連絡",
+        seo: `<h2>幾何学的組合せ論の公式について</h2><p><strong>高度な三角形計算システム</strong>は、<strong>Eng. Md. Abu Hantash</strong>によって発見された、革新的で高性能な幾何学的公式を利用しています。厳密な<strong>ビッグオー記法</strong>を使用した<strong>定数時間計算量 O(1)</strong>で設計されています。</p><p>このプログラムをどこかに適用することにメリットはありますか？ここで使用されている原理（組合せ論と計算幾何学）には、現実世界における極めて重要な応用があります。</p><ul><li><strong>マイクロチップ設計：</strong> プロセッサチップ（CPU）上の交差するトラック。アルゴリズムが閉じた領域を計算して速度を確保します。</li><li><strong>ネットワークトポロジ：</strong> 接続タワー間の閉じた三角形の軌道を計算することで、ネットワークの強度を保護します。</li><li><strong>3Dコンピュータグラフィックス＆ゲーム：</strong> Unreal Engineのような最新エンジンの骨格は、迅速な三角形メッシュ処理に依存しています。</li><li><strong>サイバーセキュリティ＆暗号：</strong> 複雑なシステムは複雑な幾何学的パズルに依存しています。</li></ul>`
+    },
+    ko: {
+        title: "📐 고급 삼각형 카운터", subtitle: "차세대 기하 조합론 계산 시스템",
+        v1: "꼭짓점 1의 직선 수", v2: "꼭짓점 2의 직선 수", v3: "꼭짓점 3의 직선 수", p: "삼중 교점 (P)",
+        btn: "총 삼각형 수 계산", timer: "처음인 경우 잠시만 기다려주십시오 (<strong id='secondsCount'>25</strong>초)...",
+        resultTitle: "형성된 총 삼각형 수", executions: "총 실행 횟수:", times: "회", guideTitle: "기하학적 입력 가이드",
+        g1: "<strong>꼭짓점:</strong> 각 모서리에서 시작하여 반대쪽 밑면에 닿는 직선의 수를 세십시오.",
+        g2: "<strong>점 P:</strong> 정확히 3개의 내부 직선이 단일 지점에서 교차하는 내부 노드만 세십시오.",
+        g3: "<strong>스마트 자동:</strong> 수학 공식이 기하학적 정밀도를 유지하기 위해 백그라운드에서 입력을 자동으로 정렬합니다.",
+        author: "알고리즘 발명자: Eng. Md. Abu Hantash", copyright: "혁신적인 기하 조합론 공식 © 2026. All rights reserved.",
+        email: "이메일 보내기", footer: "보안 클라우드 계산 시스템 • Powered by Flask, Render & Google Analytics",
+        valError: "Validation Error: All fields are required! Please fill in all variables.",
+        invError: "Invalid Input! Please enter positive whole numbers only (No decimals, signs, or symbols).", connError: "Connection Error: Could not reach the secure calculation cloud.",
+        usage: "오늘 남은 호출 수: 50 중 <strong>{rem}</strong>",
+        captchaHeader: "<i class='fa-solid fa-shield-halved'></i> 보안 확인 필요",
+        captchaPlaceholder: "토큰을 여기에 입력",
+        bypassText: "제한 우회 / 개발자에게 문의",
+        seo: `<h2>기하 조합론 공식 정보</h2><p><strong>고급 삼각형 계산 시스템</strong>은 <strong>Eng. Md. Abu Hantash</strong>가 발견한 혁신적이고 고성능인 기하학적 공식을 활용합니다. 엄격한 <strong>Big O 표기법</strong>을 사용한 <strong>상수 시간 복잡도 O(1)</strong>로 설계되었습니다.</p><p>이 프로그램을 어디에나 적용하는 것이 유익합니까? 여기에 사용된 원리(조합론 및 계산 기하학)는 실제 세계에서 매우 중요한 응용 분야를 가지고 있습니다.</p><ul><li><strong>마이크로칩 디자인:</strong> 프로세서 칩(CPU)의 교차 트랙. 알고리즘은 속도를 보장하기 위해 폐쇄된 영역을 계산합니다.</li><li><strong>네트워크 토폴로지:</strong> 연결 타워 사이의 폐쇄된 삼각형 트랙을 계산하면 네트워크 강도가 보호됩니다.</li><li><strong>3D 컴퓨터 그래픽 및 게임:</strong> Unreal Engine과 같은 최신 엔진의 중추는 신속한 삼각형 메쉬 처리에 의존합니다.</li><li><strong>사이버 보안 및 암호화:</strong> 복잡한 시스템은 복잡한 기하학적 퍼즐에 의존합니다.</li></ul>`
+    },
+    fr: {
+        title: "📐 Compteur de Triangles Avancé", subtitle: "Système de Calcul de Combinatoire Géométrique de Nouvelle Génération",
+        v1: "Lignes du Sommet 1", v2: "Lignes du Sommet 2", v3: "Lignes du Sommet 3", p: "Intersections Triples (P)",
+        btn: "Calculer le Total des Triangles", timer: "Si c'est la première fois, veuillez patienter (<strong id='secondsCount'>25</strong>s)...",
+        resultTitle: "Total des Triangles Formés", executions: "Total des Exécutions:", times: "fois", guideTitle: "Guide d'Entrée Géométrique",
+        g1: "<strong>Sommets:</strong> Comptez les lignes tracées à partir de chaque coin et arrivant sur le côté de base opposé.",
+        g2: "<strong>Point P:</strong> Comptez uniquement les nœuds intérieurs où exactement trois lignes internes se croisent en un seul point.",
+        g3: "<strong>Smart Auto:</strong> L'équation mathématique trie automatiquement les entrées en coulisses pour maintenir la précision.",
+        author: "Algorithme Inventé par: Eng. Md. Abu Hantash", copyright: "Formulation innovante de combinatoire géométrique © 2026. Tous droits réservés.",
+        email: "Envoyez-moi un e-mail", footer: "Système de Calcul Cloud Sécurisé • Propulsé par Flask, Render & Google Analytics",
+        valError: "Validation Error: All fields are required! Please fill in all variables.",
+        invError: "Invalid Input! Please enter positive whole numbers only (No decimals, signs, or symbols).", connError: "Connection Error: Could not reach the secure calculation cloud.",
+        usage: "Appels restants aujourd'hui : <strong>{rem}</strong> sur 50",
+        captchaHeader: "<i class='fa-solid fa-shield-halved'></i> Vérification de sécurité requise",
+        captchaPlaceholder: "Tapez le jeton ici",
+        bypassText: "Contourner la limite / Contacter le développeur",
+        seo: `<h2>À propos de la formulation de la combinatoire géométrique</h2><p>Le <strong>système avancé de calcul de triangles</strong> utilise une formulation géométrique révolutionnaire et performante découverte par <strong>Eng. Md. Abu Hantash</strong>. Conçu avec une <strong>complexité temporelle constante O(1)</strong> en utilisant une notation <strong>Big O</strong> stricte.</p><p>Y a-t-il un avantage à appliquer ce programme n'importe où ? Le principe utilisé ici (combinatoire et géométrie algorithmique) a des applications vitales dans le monde réel :</p><ul><li><strong>Conception de puces électroniques:</strong> Pistes s'intersectant sur les puces de processeur (CPU). Les algorithmes calculent les zones fermées pour garantir la vitesse.</li><li><strong>Topologie du réseau:</strong> Le calcul des traces de triangles fermés entre les tours de connexion protège la force du réseau.</li><li><strong>Graphismes 3D & Jeux:</strong> Les piliers des moteurs modernes comme Unreal Engine dépendent d'un traitement rapide du maillage triangulaire.</li><li><strong>Cybersécurité & Cryptographie:</strong> Les systèmes complexes reposent sur des énigmes géométriques complexes.</li></ul>`
+    },
+    es: {
+        title: "📐 Contador de Triángulos Avanzado", subtitle: "Sistema de Cálculo de Combinatoria Geométrica de Próxima Generación",
+        v1: "Líneas desde el Vértice 1", v2: "Líneas desde el Vértice 2", v3: "Líneas desde el Vértice 3", p: "Intersecciones Triples (P)",
+        btn: "Calcular Total de Triángulos", timer: "Si es la primera vez, espere (<strong id='secondsCount'>25</strong>s)...",
+        resultTitle: "Total de Triángulos Formados", executions: "Ejecuciones Totales:", times: "veces", guideTitle: "Guía de Entrada Geométrica",
+        g1: "<strong>Vértices:</strong> Cuente las líneas trazadas comenzando desde cada esquina y terminando en el lado de la base opuesto.",
+        g2: "<strong>Punto P:</strong> Cuente solo los nodos interiores donde exactamente tres líneas internas se cruzan en un solo punto.",
+        g3: "<strong>Smart Auto:</strong> La ecuación matemática clasifica automáticamente las entradas entre bastidores para mantener la precisión.",
+        author: "Algoritmo Inventado por: Eng. Md. Abu Hantash", copyright: "Formulación innovadora de combinatoria geométrica © 2026. Todos los derechos reservados.",
+        email: "Envíame un correo electrónico", footer: "Sistema de Cálculo en la Nube Seguro • Impulsado por Flask, Render & Google Analytics",
+        valError: "Validation Error: All fields are required! Please fill in all variables.",
+        invError: "Invalid Input! Please enter positive whole numbers only (No decimals, signs, or symbols).", connError: "Connection Error: Could not reach the secure calculation cloud.",
+        usage: "Llamadas restantes hoy: <strong>{rem}</strong> de 50",
+        captchaHeader: "<i class='fa-solid fa-shield-halved'></i> Verificación de seguridad requerida",
+        captchaPlaceholder: "Escriba el token aquí",
+        bypassText: "Omitir límite / Contactar al desarrollador",
+        seo: `<h2>Acerca de la formulación de combinatoria geométrica</h2><p>El <strong>Sistema Avanzado de Cálculo de Triángulos</strong> utiliza una formulación geométrica revolucionaria y de alto rendimiento descubierta por <strong>Eng. Md. Abu Hantash</strong>. Diseñado con una <strong>complejidad temporal constante O(1)</strong> utilizando la notación estricta <strong>Big O</strong>.</p><p>¿Existe algún beneficio al aplicar este programa en cualquier lugar? El principio utilizado aquí (Combinatoria y Geometría Computacional) tiene aplicaciones vitales en el mundo real:</p><ul><li><strong>Diseño de microchips:</strong> Pistas que se intersectan en los chips de procesador (CPU). Los algoritmos calculan áreas cerradas para garantizar la velocidad.</li><li><strong>Topología de red:</strong> Calcular trazas de triángulos cerrados entre torres de conexión protege la fuerza de la red.</li><li><strong>Gráficos 3D por computadora y juegos:</strong> Los pilares de los motores modernos como Unreal Engine dependen de un procesamiento rápido de malla triangular.</li><li><strong>Ciberseguridad y criptografía:</strong> Los sistemas complejos se basan en acertijos geométricos complejos.</li></ul>`
     }
 };
 
@@ -366,7 +513,7 @@ function changeLanguage(lang) {
     
     updateUsageBadgeText();
     
-    if (lang === 'ar') {
+    if (lang === 'ar' || lang === 'ur') {
         document.body.style.direction = 'rtl';
         document.body.classList.add('rtl-mode');
         document.getElementById('langSelect').parentElement.style.justifyContent = 'flex-start';
@@ -426,6 +573,12 @@ function autoDetectLanguage() {
     if (userLang && userLang.startsWith('ar')) {
         document.getElementById('langSelect').value = 'ar';
         changeLanguage('ar');
+    } else if (userLang && userLang.startsWith('ur')) {
+        document.getElementById('langSelect').value = 'ur';
+        changeLanguage('ur');
+    } else if (userLang && userLang.startsWith('hi')) {
+        document.getElementById('langSelect').value = 'hi';
+        changeLanguage('hi');
     } else {
         document.getElementById('langSelect').value = 'en';
         changeLanguage('en');
