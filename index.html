@@ -215,9 +215,6 @@
         </div>
     </div>
 
-    <!-- SEO / Explanation Container Container -->
-    <div class="seo-section" id="seoContainer"></div>
-
     <div class="author-card">
         <div class="author-info">
             <h3 id="lblAuthorTitle">Algorithm Invented by: Eng. Md. Abu Hantash</h3>
@@ -241,7 +238,7 @@ const translations = {
     en: {
         title: "📐 Advanced Triangle Counter", subtitle: "Next-Generation Geometric Calculation System",
         v1: "Lines from Vertex 1", v2: "Lines from Vertex 2", v3: "Lines from Vertex 3", p: "Triple Intersections (P)",
-        btn: "Calculate Total Triangles", timer: "Server is waking up. If this is the first execution, please wait (<strong id='secondsCount'>25</strong>s)...",
+        btn: "Calculate Total Triangles", timer: "If this is the first time please wait for (<strong id='secondsCount'>25</strong>s)...",
         resultTitle: "Total Triangles Formed", executions: "Total Executions:", times: "times", guideTitle: "Geometric Input Guide",
         g1: "<strong>Vertices:</strong> Count lines drawn starting from each corner and landing on the opposite base side.",
         g2: "<strong>Point P:</strong> Count only interior nodes where exactly three internal lines cross paths at one single point.",
@@ -252,14 +249,13 @@ const translations = {
         invError: "Invalid Input! Please enter positive whole numbers only (No decimals, signs, or symbols).", connError: "Connection Error: Could not reach the secure calculation cloud.",
         usage: "Remaining calls today: <strong>{rem}</strong> of 50",
         captchaHeader: "<i class='fa-solid fa-shield-halved'></i> Security Verification Required",
-        captchaPlaceholder: "Type token here",
-        bypassText: "Bypass Limit / Contact Developer",
-        seo: `<h2>About the Geometric Combinatorics Formulation</h2><p>The <strong>Advanced Triangle Calculation System</strong> utilizes a revolutionary, high-performance geometric formulation discovered by <strong>Eng. Md. Abu Hantash</strong>. Built with <strong>Constant Time Complexity O(1)</strong> using strict <strong>Big O Notation</strong>.</p><p>The mathematical principles used here have vital real-world applications:</p><ul><li><strong>Microchip Design:</strong> Intersecting tracks on processor chips (CPUs). Algorithms calculate closed areas to ensure speed.</li><li><strong>Network Topology:</strong> Calculating closed triangle tracks between connection towers protects network strength.</li><li><strong>3D Computer Graphics & Games:</strong> Backbones of modern engines like Unreal Engine depend on swift triangular mesh processing.</li><li><strong>Cybersecurity & Cryptography:</strong> Complex systems rely on complex geometric puzzles.</li></ul>`
+        captchaPlaceholder: "Type token here", bypassText: "Bypass Limit / Contact Developer",
+        seo: `<h2>About the Geometric Combinatorics Formulation</h2><p>The <strong>Advanced Triangle Calculation System</strong> utilizes a revolutionary, high-performance geometric formulation discovered by <strong>Eng. Md. Abu Hantash</strong>.</p>`
     },
     ar: {
         title: "📐 الحاسب المتقدم للمثلثات", subtitle: "نظام الحساب الهندسي من الجيل القادم",
         v1: "الخطوط من الرأس 1", v2: "الخطوط من الرأس 2", v3: "الخطوط من الرأس 3", p: "التقاطعات الثلاثية (P)",
-        btn: "احسب إجمالي المثلثات", timer: "الخادم يستيقظ الآن. إذا كانت هذه هي المرة الأولى، يرجى الانتظار لثوانٍ معدودة (<strong id='secondsCount'>25</strong> ثانية)...",
+        btn: "احسب إجمالي المثلثات", timer: "إذا كانت هذه هي المرة الأولى، يرجى الانتظار لمدة (<strong id='secondsCount'>25</strong> ثانية)...",
         resultTitle: "إجمالي المثلثات المتكونة", executions: "إجمالي العمليات المنفذة:", times: "مرات", guideTitle: "دليل المدخلات الهندسية",
         g1: "<strong>الرؤوس:</strong> احسب الخطوط المرسومة بدءاً من كل زاوية والتي تنتهي عند الضلع المقابل لها.",
         g2: "<strong>النقطة P:</strong> احسب فقط العقد الداخلية حيث تتقاطع ثلاثة خطوط داخلية بالضبط عند نقطة واحدة.",
@@ -270,69 +266,97 @@ const translations = {
         invError: "إدخال غير صحيح! يرجى إدخال أعداد صحيحة موجبة فقط (بدون فواصل، إشارات أو رموز).", connError: "خطأ في الاتصال: تعذر الوصول إلى خادم الحساب السحابي الآمن.",
         usage: "المحاولات المتبقية اليوم: <strong>{rem}</strong> من أصل 50",
         captchaHeader: "<i class='fa-solid fa-shield-halved'></i> يرجى إدخال رمز التحقق الأمني",
-        captchaPlaceholder: "اكتب الرمز هنا",
-        bypassText: "للتخطي / تواصل مع المطور",
-        seo: `<h2>حول صيغة التراكيب الهندسية التوافقيّة</h2><p>يعتمد <strong>نظام حساب المثلثات المتقدم</strong> على معادلة هندسية ثورية وعالية الأداء اكتشفها <strong>المهندس محمد أبو هنطش</strong> تم تصميمه بـ <strong>زمن تنفيذ ثابت O(1)</strong> باستخدام <strong>رمز تدوين Big O</strong> الصارم.</p><p>المبدأ الرياضي والبرمجي المستخدم هنا (علم التركيبات والهندسة الحسابية) له تطبيقات حيوية في العالم الحقيقي:</p><ul><li><strong>تصميم رقاقات أشباه الموصلات والدوائر الإلكترونية (Microchip Design):</strong> تتقاطع ملايين المسارات والخطوط الكهربائية الدقيقة على شريحة السيليكون عند تصميم المعالجات، وتُستخدم هذه الخوارزميات لضمان كفاءة الشريحة وسرعتها.</li><li><strong>الشبكات وأنظمة الاتصالات (Network Topology):</strong> حساب عدد المسارات المغلقة بين نقاط الاتصال أو الأبراج يساعد المهندسين في تحليل قوة الشبكة وكفاءة نقل البيانات وضمان وجود مسارات بديلة.</li><li><strong>الرسومات ثلاثية الأبعاد والألعاب (3D Computer Graphics):</strong> تتكون رسومات الألعاب من ملايين المثلثات الصغيرة، والخوارزميات فائقة السرعة هي العمود القبلي لمحركات الألعاب مثل (Unreal Engine).</li><li><strong>الأمن السيبراني والتشفير (Cryptography):</strong> بعض أنظمة التشفير المعقدة تعتمد على مسائل هندسية صعبة الحل رياضياً وسهلة التحقق برمجياً.</li></ul>`
+        captchaPlaceholder: "اكتب الرمز هنا", bypassText: "للتخطي / تواصل مع المطور",
+        seo: `<h2>حول صيغة التراكيب الهندسية التوافقيّة</h2><p>يعتمد <strong>نظام حساب المثلثات المتقدم</strong> على معادلة هندسية ثورية وعالية الأداء اكتشفها <strong>المهندس محمد أبو هنطش</strong>.</p>`
     },
     ur: {
         title: "📐 ایڈوانسڈ ٹرائینگل کاؤنٹر", subtitle: "اگلی نسل کا ہندسی حسابی نظام",
         v1: "ورٹیکس 1 سے لائنیں", v2: "ورٹیکس 2 سے لائنیں", v3: "ورٹیکس 3 سے لائنیں", p: "ٹرپل انٹرسیکشن (P)",
-        btn: "کل مثلثات کا حساب لگائیں", timer: "سرور فعال ہو رہا ہے۔ اگر یہ پہلی بار ہے، تو برائے مہربانی انتظار کریں (<strong id='secondsCount'>25</strong>s)...",
-        resultTitle: "بننے والے کل مثلثات", executions: "کل ایگزیکیوشنز:", times: "بار", guideTitle: "ہندسی ان پٹ گائیڈ",
-        g1: "<strong>کونے (Vertices):</strong> ہر کونے سے شروع ہونے والی اور مخالف سمت کی بنیاد پر ختم ہونے والی لائنوں کو شمار کریں۔",
-        g2: "<strong>پوائنٹ P:</strong> صرف ان اندرونی نوڈس کو شمار کریں جہاں بالکل تین اندرونی لائنیں ایک ہی نقطہ پر ملتی ہیں۔",
-        g3: "<strong>سمارٹ آٹو:</strong> ریاضیاتی مساوات درستگی برقرار رکھنے کے لیے پس منظر میں ان پٹس کو خود بخود ترتیب دیتی ہے۔",
-        author: "الگورتھم کے موجد: انجینئر محمد ابو ہنطش", copyright: "جدید ہندسی امتزاج کی تشکیل © 2026۔ جملہ حقوق محفوظ ہیں۔",
-        email: "مجھے ای میل کریں", footer: "محفوظ کلاؤڈ کیلکولیشن سسٹم • پاورڈ بائے Flask, Render اور Google Analytics",
-        valError: "تصدیقی غلطی: تمام فیلڈز مطلوبہ ہیں! براہ کرم تمام متغیرات کو پُر کریں۔",
-        invError: "غلط ان پٹ! براہ کرم صرف مثبت پورے نمبر درج کریں (کوئی اعشاریہ یا علامتیں نہیں)۔", connError: "کنکشن کی غلطی: محفوظ حسابی کلاؤڈ سرور تک رسائی حاصل نہیں ہو سکی۔",
-        usage: "آج کے باقی مطالبات: 50 میں سے <strong>{rem}</strong>",
-        captchaHeader: "<i class='fa-solid fa-shield-halved'></i> سیکیورٹی تصدیق درکار ہے",
-        captchaPlaceholder: "ٹوکن یہاں ٹائپ کریں",
-        bypassText: "حد بائی پاس کریں / ڈویلپر سے رابطہ کریں",
-        seo: `<h2>ہندسی امتزاج کی تشکیل کے بارے میں</h2><p><strong>ایڈوانسڈ ٹرائینگل کیلکولیشن سسٹم</strong> انجینئر <strong>محمد ابو ہنطش</strong> کی دریافت کردہ ایک انقلابی ہندسی مساوات کا استعمال کرتا ہے۔ اسے سخت <strong>Big O Notation</strong> کے ساتھ <strong>Constant Time Complexity O(1)</strong> پر ڈیزائن کیا گیا ہے۔</p>`
+        btn: "کل مثلثات کا حساب لگائیں", timer: "اگر یہ پہلی بار ہے تو براہ کرم (<strong id='secondsCount'>25</strong>s) انتظار کریں...",
+        resultTitle: "بننے والے کل مثلثات", executions: "کل ایگزیکیوشنز:", times: "بار", guideTitle: "ہندسي ان پٹ گائیڈ",
+        g1: "<strong>کونے:</strong> هر کونے سے شروع ہونے والی لائنوں کو شمار کریں۔", g2: "<strong>پوائنٹ P:</strong> صرف ان اندرونی نوڈس کو شمار کریں جہاں تین لائنیں ملتی ہیں۔", g3: "<strong>سمارٹ آٹو:</strong> ریاضیاتی مساوات درستگی برقرار رکھنے کے لیے ان پٹس کو خود بخود ترتیب دیتی ہے۔",
+        author: "الگورتھم کے موجد: انجینئر محمد ابو ہنطش", copyright: "جدید ہندسی امتزاج کی تشکیل © 2026۔",
+        email: "مجھے ای میل کریں", footer: "محفوظ کلاؤڈ کیلکولیشنシステム", valError: "تمام فیلڈز مطلوبہ ہیں!",
+        invError: "غلط ان پٹ! براہ کرم صرف مثبت پورے نمبر درج کریں۔", connError: "کنکشن کی غلطی!",
+        usage: "آج کے باقی مطالبات: 50 میں سے <strong>{rem}</strong>", captchaHeader: "سیکیورٹی تصدیق درکار ہے", captchaPlaceholder: "ٹوکن یہاں درج کریں", bypassText: "حد بائی پاس کریں", seo: ""
     },
     hi: {
         title: "📐 एडवांस्ड ट्रायंगल काउंटर", subtitle: "अगली पीढ़ी की ज्यामितीय गणना प्रणाली",
-        v1: "शीर्ष (Vertex) 1 से रेखाएं", v2: "शीर्ष (Vertex) 2 से रेखाएं", v3: "शीर्ष (Vertex) 3 से रेखाएं", p: "त्रिपल प्रतिच्छेदन (P)",
-        btn: "कुल त्रिभुजों की गणना करें", timer: "सर्वर सक्रिय हो रहा है। यदि यह पहली बार है, तो कृपया प्रतीक्षा करें (<strong id='secondsCount'>25</strong>s)...",
+        v1: "शीर्ष 1 से रेखाएं", v2: "शीर्ष 2 से रेखाएं", v3: "शीर्ष 3 से रेखाएं", p: "त्रिपल प्रतिच्छेदन (P)",
+        btn: "कुल त्रिभुजों की गणना करें", timer: "कृपया (<strong id='secondsCount'>25</strong>s) प्रतीक्षा करें...",
         resultTitle: "बने कुल त्रिभुज", executions: "कुल निष्पादन:", times: "बार", guideTitle: "ज्यामितीय इनपुट गाइड",
-        g1: "<strong>शीर्ष (Vertices):</strong> प्रत्येक कोने से शुरू होने वाली और विपरीत आधार रेखा पर समाप्त होने वाली रेखाओं को गिनें।",
-        g2: "<strong>बिंदु P:</strong> केवल उन आंतरिक नोड्स को गिनें जहां ठीक तीन आंतरिक रेखाएं एक ही बिंदु पर प्रतिच्छेद करती हैं।",
-        g3: "<strong>स्मार्ट ऑटो:</strong> गणितीय समीकरण सटीकता बनाए रखने के लिए पृष्ठभूमि में इनपुट को स्वचालित रूप से क्रमबद्ध करता है।",
-        author: "प्रक्रिया के आविष्कारक: इंजी. एमडी. अबू हंतश", copyright: "अभिनव ज्यामितीय कॉम्बिनेटरिक्स फॉर्मूलेशन © 2026। सभी अधिकार सुरक्षित।",
-        email: "मुझे ईमेल करें", footer: "सुरक्षित क्लाउड गणना प्रणाली • फ्लास्क, रेंडर और गूगल एनालिटिक्स द्वारा संचालित",
-        valError: "सत्यापन त्रुटि: सभी फ़ील्ड आवश्यक हैं! कृपया सभी इनपुट भरें।",
-        invError: "अमान्य इनपुट! कृपया केवल धनात्मक पूर्ण संख्याएं दर्ज करें (कोई दशमलव या प्रतीक नहीं)।", connError: "कनेक्शन त्रुटि: सुरक्षित गणना क्लाउड तक नहीं पहुँचा जा सका।",
-        usage: "आज की शेष कॉल: 50 में से <strong>{rem}</strong>",
-        captchaHeader: "<i class='fa-solid fa-shield-halved'></i> सुरक्षा सत्यापन आवश्यक है",
-        captchaPlaceholder: "टोकन यहां दर्ज करें",
-        bypassText: "सीमा बायपास करें / डेवलپر से संपर्क करें",
-        seo: `<h2>ज्यामितीय कॉम्बिनेटरिक्स फॉर्मूलेशन के बारे में</h2><p><strong>एडवांस्ड ट्रायंगल कैलकुलेशन सिस्टम</strong> इंजी. <strong>एमडी. अबू हंतश</strong> द्वारा खोजे गए एक क्रांतिकारी ज्यामितीय समीकरण का उपयोग करता है। इसे सख्त <strong>Big O Notation</strong> के साथ <strong>Constant Time Complexity O(1)</strong> पर बनाया गया है।</p>`
+        g1: "<strong>शीर्ष:</strong> प्रत्येक कोने से शुरू होने वाली रेखाओं को गिनें।", g2: "<strong>बिंदु P:</strong> केवल आंतरिक नोड्स को गिनें जहां तीन रेखाएं प्रतिच्छेद करती हैं।", g3: "<strong>स्मार्ट ऑटो:</strong> गणितीय समीकरण पृष्ठभूमि में इनपुट को स्वचालित रूप से क्रमबद्ध करता है।",
+        author: "प्रक्रिया के आविष्कारक: इंजी. एमडी. अबू हंतश", copyright: "अभिनव ज्यामितीय कॉम्बिनेटरिक्स फॉर्मूलेशन © 2026।",
+        email: "मुझे ईमेल करें", footer: "सुरक्षित क्लाउड गणना प्रणाली", valError: "सभी फ़ील्ड आवश्यक हैं!",
+        invError: "अमान्य इनपुट! कृपया केवल धनात्मक पूर्ण संख्याएं दर्ज करें।", connError: "कनेक्शन त्रुटि!",
+        usage: "आज की शेष कॉल: 50 में से <strong>{rem}</strong>", captchaHeader: "सुरक्षा सत्यापन आवश्यक है", captchaPlaceholder: "टोकन यहां दर्ज करें", bypassText: "सीमा बायपास करें", seo: ""
     },
     zh: {
         title: "📐 高级三角形计数器", subtitle: "次世代几何组合计算系统",
         v1: "从顶点 1 引出的线", v2: "从顶点 2 引出的线", v3: "从顶点 3 引出的线", p: "三重交点 (P)",
-        btn: "计算三角形总数", timer: "服务器正在唤醒。如果是首次运行，请稍候 (<strong id='secondsCount'>25</strong>秒)...",
+        btn: "计算三角形总数", timer: "请等待 (<strong id='secondsCount'>25</strong> 秒)...",
         resultTitle: "生成的三角形总数", executions: "总执行次数:", times: "次", guideTitle: "几何输入指南",
-        g1: "<strong>顶点：</strong> 计算从每个角开始并在相对底边结束的线条数。",
-        g2: "<strong>P 点：</strong> 仅计算三条内部线在单个点上精确交叉的内部节点。",
-        g3: "<strong>智能排序：</strong> 数学公式自动在幕后对输入进行排序，以保持高精度。",
-        author: "算法发明人: Eng. Md. Abu Hantash", copyright: "几何组合学公式创新 © 2026. 保留所有权利。",
-        email: "电邮联系我", footer: "安全云端计算系统 • 由 Flask, Render 和 Google Analytics 驱动",
-        valError: "Validation Error: All fields are required!",
-        invError: "Invalid Input! Please enter positive whole numbers only.", connError: "Connection Error: Could not reach the secure calculation cloud.",
-        usage: "Remaining calls today: <strong>{rem}</strong> of 50",
-        captchaHeader: "<i class='fa-solid fa-shield-halved'></i> Security Verification Required",
-        captchaPlaceholder: "Type token here",
-        bypassText: "Bypass Limit / Contact Developer",
-        seo: `<h2>关于几何组合学公式</h2><p><strong>高级三角形计算系统</strong>利用了 <strong>Eng. Md. Abu Hantash</strong> 发现的几何公式。</p>`
+        g1: "<strong>顶点：</strong> 计算从每个角开始的线条数。", g2: "<strong>P 点：</strong> 仅计算三条内部线交叉的内部节点。", g3: "<strong>智能排序：</strong> 数学公式自动在幕后对输入进行排序。",
+        author: "算法发明人: Eng. Md. Abu Hantash", copyright: "几何组合学公式创新 © 2026.",
+        email: "电邮联系我", footer: "安全云端计算系统", valError: "All fields are required!",
+        invError: "Invalid Input! Positive whole numbers only.", connError: "Connection Error!",
+        usage: "Remaining calls today: <strong>{rem}</strong> of 50", captchaHeader: "Security Verification Required", captchaPlaceholder: "Type token here", bypassText: "Bypass Limit", seo: ""
     },
-    de: { title: "📐 Fortschrittlicher Dreiecksrechner", subtitle: "Geometrisches Kombinatorik-Berechnungssystem der nächsten Generation", v1: "Linien von Scheitelpunkt 1", v2: "Linien von Scheitelpunkt 2", v3: "Linien von Scheitelpunkt 3", p: "Dreifache Schnittpunkte (P)", btn: "Gesamtzahl der Dreiecke berechnen", timer: "Server erwacht. Bitte warten Sie (<strong id='secondsCount'>25</strong>s)...", resultTitle: "Gesamtzahl der gebildeten Dreiecke", executions: "Ausführungen Gesamt:", times: "Mal", guideTitle: "Leitfaden für geometrische Eingaben", g1: "<strong>Scheitelpunkte:</strong> Linien zählen.", g2: "<strong>Punkt P:</strong> Dreifache Schnittpunkte.", g3: "<strong>Smart Auto:</strong> Automatische Sortierung.", author: "Eng. Md. Abu Hantash", copyright: "© 2026", email: "E-Mail an mich", footer: "Secure Cloud Calculation System", valError: "All fields are required!", invError: "Invalid Input!", connError: "Connection Error!", usage: "Remaining calls: <strong>{rem}</strong>", captchaHeader: "Verification Required", captchaPlaceholder: "Token", bypassText: "Bypass", seo: "<h2>Kombinatorik</h2>" },
-    ja: { title: "📐 高度な三角形カウンター", subtitle: "次世代幾何学計算システム", v1: "頂点1からの直線数", v2: "頂点2からの直線数", v3: "頂点3からの直線数", p: "三重交点 (P)", btn: "三角形の総数を計算", timer: "サーバーを起動中 (<strong id='secondsCount'>25</strong>秒)...", resultTitle: "形成された三角形の総数", executions: "总実行回数:", times: "回", guideTitle: "幾何学的入力ガイド", g1: "<strong>頂点：</strong> 直線数を数えます。", g2: "<strong>点 P：</strong> 交点を数えます。", g3: "<strong>スマート自動：</strong> 自動ソート。", author: "Eng. Md. Abu Hantash", copyright: "© 2026", email: "メールを送る", footer: "Secure Cloud Calculation System", valError: "エラー！", invError: "無効な入力！", connError: "接続エラー！", usage: "残り: <strong>{rem}</strong>", captchaHeader: "認証が必要", captchaPlaceholder: "トークن", bypassText: "バイパス", seo: "<h2>公式について</h2>" },
-    ko: { title: "📐 고급 삼각형 카운터", subtitle: "차세대 기하 조합론 계산 시스템", v1: "꼭짓점 1의 직선 수", v2: "꼭짓점 2의 직선 수", v3: "꼭짓점 3의 직선 수", p: "삼중 교점 (P)", btn: "총 삼각형 수 계산", timer: "서버 깨우는 중 (<strong id='secondsCount'>25</strong>초)...", resultTitle: "형성된 총 삼각형 수", executions: "총 실행 횟수:", times: "회", guideTitle: "기하학적 입력 가이드", g1: "<strong>꼭짓점:</strong> 선을 세십시오.", g2: "<strong>점 P:</strong> 교점을 세십시오.", g3: "<strong>스마트 자동:</strong> 자동 정렬.", author: "Eng. Md. Abu Hantash", copyright: "© 2026", email: "이메일 보내기", footer: "Secure Cloud Calculation System", valError: "필수 입력!", invError: "올바르지 않은 입력!", connError: "연결 오류!", usage: "남은 횟수: <strong>{rem}</strong>", captchaHeader: "보안 인증", captchaPlaceholder: "토큰", bypassText: "우회", seo: "<h2>공식 정보</h2>" },
-    fr: { title: "📐 Compteur de Triangles Avancé", subtitle: "Système de Calcul de Combinatoire Géométrique", v1: "Lignes du Sommet 1", v2: "Lignes du Sommet 2", v3: "Lignes du Sommet 3", p: "Intersections Triples (P)", btn: "Calculer le Total des Triangles", timer: "Le serveur se réveille. Veuillez patienter (<strong id='secondsCount'>25</strong>s)...", resultTitle: "Total des Triangles Formés", executions: "Total des Exécutions:", times: "fois", guideTitle: "Guide d'Entrée Géométrique", g1: "<strong>Sommets:</strong> Comptez les lignes.", g2: "<strong>Point P:</strong> Nœuds intérieurs.", g3: "<strong>Smart Auto:</strong> Tri automatique.", author: "Eng. Md. Abu Hantash", copyright: "© 2026", email: "E-mail", footer: "Secure Cloud Calculation System", valError: "Champs requis!", invError: "Entrée invalide!", connError: "Erreur de connexion!", usage: "Appels restants: <strong>{rem}</strong>", captchaHeader: "Vérification requise", captchaPlaceholder: "Token", bypassText: "Bypass", seo: "<h2>À propos</h2>" },
-    es: { title: "📐 Contador de Triángulos Avanzado", subtitle: "Sistema de Cálculo de Combinatoria Geométrica", v1: "Líneas desde el Vértice 1", v2: "Líneas desde el Vértice 2", v3: "Líneas desde el Vértice 3", p: "Intersecciones Triples (P)", btn: "Calcular Total de Triángulos", timer: "El servidor se está activando. Por favor espere (<strong id='secondsCount'>25</strong>s)...", resultTitle: "Total de Triángulos Formados", executions: "Ejecuciones Totales:", times: "veces", guideTitle: "Guía de Entrada Geométrica", g1: "<strong>Vértices:</strong> Cuente las líneas.", g2: "<strong>Punto P:</strong> Nodos interiores.", g3: "<strong>Smart Auto:</strong> Clasificación automática.", author: "Eng. Md. Abu Hantash", copyright: "© 2026", email: "Correo", footer: "Secure Cloud Calculation System", valError: "Campos requeridos!", invError: "Entrada inválida!", connError: "Error de conexión!", usage: "Llamadas restantes: <strong>{rem}</strong>", captchaHeader: "Verificación requerida", captchaPlaceholder: "Token", bypassText: "Bypass", seo: "<h2>Acerca de</h2>" }
+    de: {
+        title: "📐 Fortschrittlicher Dreiecksrechner", subtitle: "Geometrisches Kombinatorik-Berechnungssystem",
+        v1: "Linien von Scheitelpunkt 1", v2: "Linien von Scheitelpunkt 2", v3: "Linien von Scheitelpunkt 3", p: "Dreifache Schnittpunkte (P)",
+        btn: "Gesamtzahl der Dreiecke berechnen", timer: "Bitte warten Sie (<strong id='secondsCount'>25</strong>s)...",
+        resultTitle: "Gesamtzahl der gebildeten Dreiecke", executions: "Ausführungen Gesamt:", times: "Mal", guideTitle: "Leitfaden für geometrische Eingaben",
+        g1: "<strong>Scheitelpunkte:</strong> Zählen Sie Linien, die an jeder Ecke beginnen.", g2: "<strong>Punkt P:</strong> Zählen Sie nur interne Knoten, an denen sich drei Linien kreuzen.", g3: "<strong>Smart Auto:</strong> Die mathematische Gleichung sortiert die Eingaben automatisch.",
+        author: "Algorithmus erfunden von: Eng. Md. Abu Hantash", copyright: "Innovative geometrische Kombinatorik-Formulierung © 2026.",
+        email: "E-Mail an mich", footer: "Sicheres Cloud-Berechnungssystem", valError: "All fields are required!",
+        invError: "Invalid Input! Positive whole numbers only.", connError: "Connection Error!",
+        usage: "Remaining calls today: <strong>{rem}</strong> of 50", captchaHeader: "Security Verification Required", captchaPlaceholder: "Type token here", bypassText: "Bypass Limit", seo: ""
+    },
+    ja: {
+        title: "📐 高度な三角形カウンター", subtitle: "次世代幾何学的組合せ论計算システム",
+        v1: "頂点1からの直線数", v2: "頂点2からの直線数", v3: "頂点3からの直線数", p: "三重交点 (P)",
+        btn: "三角形の総数を計算", timer: "初回の場合は、(<strong id='secondsCount'>25</strong>秒) お待ちください...",
+        resultTitle: "形成された三角形の総数", executions: "総実行回数:", times: "回", guideTitle: "幾何学的入力ガイド",
+        g1: "<strong>頂点：</strong> 各コーナーから始まる直線を数えます。", g2: "<strong>点 P：</strong> 3つの内部直線が交差する内部ノードのみを数えます。", g3: "<strong>スマート自動：</strong> 方程式が入力を自动的にソートし、精度を維持します。",
+        author: "アルゴリズム発明者: Eng. Md. Abu Hantash", copyright: "革新的な幾何学的組合せ論の公式 © 2026.",
+        email: "メールを送る", footer: "安全なクラウド計算システム", valError: "All fields are required!",
+        invError: "Invalid Input! Positive whole numbers only.", connError: "Connection Error!",
+        usage: "Remaining calls today: <strong>{rem}</strong> of 50", captchaHeader: "Security Verification Required", captchaPlaceholder: "Type token here", bypassText: "Bypass Limit", seo: ""
+    },
+    ko: {
+        title: "📐 고급 삼각형 카운터", subtitle: "차세대 기하 조합론 계산 시스템",
+        v1: "꼭짓점 1의 직선 수", v2: "꼭짓점 2의 직선 수", v3: "꼭짓점 3의 직선 수", p: "삼중 교점 (P)",
+        btn: "총 삼각형 수 계산", timer: "잠시만 기다려주십시오 (<strong id='secondsCount'>25</strong>초)...",
+        resultTitle: "형성된 총 삼각형 수", executions: "총 실행 횟수:", times: "회", guideTitle: "기하학적 입력 가이드",
+        g1: "꼭짓점: 각 모서리에서 시작하는 직선의 수를 세십시오.", g2: "점 P: 3개의 내부直線이 교차하는 내부 노드만 세십시오.", g3: "스마트 자동: 수학 공식이 입력을 자동으로 정렬합니다.",
+        author: "알고리즘 발명자: Eng. Md. Abu Hantash", copyright: "혁신적인 기하 조합론 공식 © 2026.",
+        email: "이메일 보내기", footer: "보안 클라우드 계산 시스템", valError: "All fields are required!",
+        invError: "Invalid Input! Positive whole numbers only.", connError: "Connection Error!",
+        usage: "Remaining calls today: {rem} of 50", captchaHeader: "Security Verification Required", captchaPlaceholder: "Type token here", bypassText: "Bypass Limit", seo: ""
+    },
+    fr: {
+        title: "📐 Compteur de Triangles Avancé", subtitle: "Système de Calcul de Combinatoire Géométrique",
+        v1: "Lignes du Sommet 1", v2: "Lignes du Sommet 2", v3: "Lignes du Sommet 3", p: "Intersections Triples (P)",
+        btn: "Calculer le Total des Triangles", timer: "Si c'est la première fois, veuillez patienter (25s)...",
+        resultTitle: "Total des Triangles Formés", executions: "Total des Exécutions:", times: "fois", guideTitle: "Guide d'Entrée Géométrique",
+        g1: "Sommets: Comptez les lignes tracées à partir de chaque coin.", g2: "Point P: Comptez uniquement les nœuds intérieurs où trois lignes se croisent.", g3: "Smart Auto: L'équation mathématique trie automatiquement les entrées.",
+        author: "Algorithme Inventé par: Eng. Md. Abu Hantash", copyright: "Formulation innovante de combinatoire géométrique © 2026.",
+        email: "Envoyez-moi un e-mail", footer: "Système de Calcul Cloud Sécurisé", valError: "All fields are required!",
+        invError: "Invalid Input! Positive whole numbers only.", connError: "Connection Error!",
+        usage: "Remaining calls today: {rem} of 50", captchaHeader: "Security Verification Required", captchaPlaceholder: "Type token here", bypassText: "Bypass Limit", seo: ""
+    },
+    es: {
+        title: "📐 Contador de Triángulos Avanzado", subtitle: "Sistema de Cálculo de Combinatoria Geométrica",
+        v1: "Líneas desde el Vértice 1", v2: "Líneas desde el Vértice 2", v3: "Líneas desde el Vértice 3", p: "Intersecciones Triples (P)",
+        btn: "Calcular Total de Triángulos", timer: "Si es la primera vez, espere (25s)...",
+        resultTitle: "Total de Triángulos Formados", executions: "Ejecuciones Totales:", times: "veces", guideTitle: "Guía de Entrada Geométrica",
+        g1: "Vértices: Cuente las líneas trazadas comenzando desde cada esquina.", g2: "Punto P: Cuente solo los nodos interiores donde tres líneas se cruzan.", g3: "Smart Auto: La ecuación matemática clasifica automáticamente las entradas.",
+        author: "Algoritmo Inventé por: Eng. Md. Abu Hantash", copyright: "Formulación innovante de combinatoria géométrique © 2026.",
+        email: "Envíame un correo electrónico", footer: "Sistema de Cálculo en la Nube Seguro", valError: "All fields are required!",
+        invError: "Invalid Input! Positive whole numbers only.", connError: "Connection Error!",
+        usage: "Remaining calls today: {rem} of 50", captchaHeader: "Security Verification Required", captchaPlaceholder: "Type token here", bypassText: "Bypass Limit", seo: ""
+    }
 };
 
 function formatLargeNumberRaw(numStr) {
@@ -457,28 +481,30 @@ function drawTriangleSimulation() {
 function changeLanguage(lang) {
     currentLang = lang;
     const t = translations[lang] || translations['en'];
+    const fallback = translations['en']; // طوق الأمان في حال نقص أي حقل مستقبلاً
     
-    document.getElementById('mainTitle').innerHTML = t.title;
-    document.getElementById('mainSubtitle').innerText = t.subtitle;
-    document.getElementById('lblV1').innerText = t.v1;
-    document.getElementById('lblV2').innerText = t.v2;
-    document.getElementById('lblV3').innerText = t.v3;
-    document.getElementById('lblP').innerText = t.p;
-    document.getElementById('calcBtn').innerText = t.btn;
-    document.getElementById('lblResultTitle').innerText = t.resultTitle;
-    document.getElementById('lblExecutions').innerText = t.executions;
-    document.getElementById('lblTimes').innerText = t.times;
-    document.getElementById('lblGuideTitle').innerHTML = `<i class="fa-solid fa-circle-info"></i> ` + t.guideTitle;
-    document.getElementById('guideItem1').innerHTML = t.g1;
-    document.getElementById('guideItem2').innerHTML = t.g2;
-    document.getElementById('guideItem3').innerHTML = t.g3;
-    document.getElementById('lblAuthorTitle').innerText = t.author;
-    document.getElementById('lblCopyright').innerText = t.copyright;
-    document.getElementById('lblEmailMe').innerText = t.email;
-    document.getElementById('lblFooterSystem').innerText = t.footer;
-    document.getElementById('seoContainer').innerHTML = t.seo;
-    document.getElementById('lblCaptchaHeader').innerHTML = t.captchaHeader;
-    document.getElementById('captcha_input').placeholder = t.captchaPlaceholder;
+    document.getElementById('mainTitle').innerHTML = t.title || fallback.title;
+    document.getElementById('mainSubtitle').innerText = t.subtitle || fallback.subtitle;
+    document.getElementById('lblV1').innerText = t.v1 || fallback.v1;
+    document.getElementById('lblV2').innerText = t.v2 || fallback.v2;
+    document.getElementById('lblV3').innerText = t.v3 || fallback.v3;
+    document.getElementById('lblP').innerText = t.p || fallback.p;
+    document.getElementById('calcBtn').innerText = t.btn || fallback.btn;
+    document.getElementById('lblResultTitle').innerText = t.resultTitle || fallback.resultTitle;
+    document.getElementById('lblExecutions').innerText = t.executions || fallback.executions;
+    document.getElementById('lblTimes').innerText = t.times || fallback.times;
+    document.getElementById('lblGuideTitle').innerHTML = `<i class="fa-solid fa-circle-info"></i> ` + (t.guideTitle || fallback.guideTitle);
+    document.getElementById('guideItem1').innerHTML = t.g1 || fallback.g1;
+    document.getElementById('guideItem2').innerHTML = t.g2 || fallback.g2;
+    document.getElementById('guideItem3').innerHTML = t.g3 || fallback.g3;
+    document.getElementById('lblAuthorTitle').innerText = t.author || fallback.author;
+    document.getElementById('lblCopyright').innerText = t.copyright || fallback.copyright;
+    document.getElementById('lblEmailMe').innerText = t.email || fallback.email;
+    document.getElementById('lblFooterSystem').innerText = t.footer || fallback.footer;
+    document.getElementById('seoContainer').innerHTML = t.seo || fallback.seo;
+    
+    document.getElementById('lblCaptchaHeader').innerHTML = t.captchaHeader || fallback.captchaHeader;
+    document.getElementById('captcha_input').placeholder = t.captchaPlaceholder || fallback.captchaPlaceholder;
     
     updateUsageBadgeText();
     
