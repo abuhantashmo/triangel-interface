@@ -533,7 +533,7 @@ function updateUsageBadgeText() {
 
 async function fetchUsageStatus() {
     try {
-        let response = await fetch('https://onrender.com');
+        let response = await fetch('https://triangle-counter.onrender.com/');
         let data = await response.json();
         if (data.success) {
             storedRemainingCalls = data.remaining_calls;
