@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
     <!-- 📊 GOOGLE ANALYTICS INTEGRATION -->
-    <script async src="https://googletagmanager.com"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5PZVV9QJT6"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
@@ -22,17 +22,17 @@
 
     <!-- 📲 SOCIAL MEDIA PREVIEW TAGS -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://onrender.com">
+    <meta property="og:url" content="https://triangle-counter.onrender.com">
     <meta property="og:title" content="Advanced Triangle Counter | Eng. Md. Abu Hantash">
     <meta property="og:description" content="Calculate the total triangles formed instantly via the revolutionary constant-time geometric equation formulation.">
-    <meta property="og:image" content="https://onrender.com/static/preview.png">
-    <meta property="og:image:secure_url" content="https://onrender.com/static/preview.png">
+    <meta property="og:image" content="https://triangle-counter.onrender.com/static/preview.png">
+    <meta property="og:image:secure_url" content="https://triangle-counter.onrender.com/static/preview.png">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
     <!-- 🌟 FONT AWESOME FOR PROFESSIONAL ICONS -->
-    <link rel="stylesheet" href="https://cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
@@ -248,6 +248,9 @@ let countdownInterval = null;
 let currentLang = 'en';
 let globalCaptchaToken = "1234";
 
+// FIX: Centralized Base Server Address Variable for robust alignment
+const SERVER_BASE_URL = 'https://triangle-counter.onrender.com';
+
 const translations = {
     en: {
         title: "📐 Advanced Triangle Counter", subtitle: "Next-Generation Geometric Calculation System",
@@ -283,7 +286,7 @@ const translations = {
         captchaHeader: "<i class='fa-solid fa-shield-halved'></i> يرجى إدخال رمز التحقق الأمني",
         captchaPlaceholder: "اكتب الرمز هنا",
         bypassText: "للتخطي / تواصل مع المطور",
-        seo: `<h2>حول صيغة التراكيب الهندسية التوافقيّة</h2><p>يعتمد <strong>نظام حساب المثلثات المتقدم</strong> على معادلة هندسية ثورية وعالية الأداء اكتشفها <strong>المهندس محمد أبو هنطش</strong> تم تصميمه بـ <strong>زمن تنفيذ ثابت O(1)</strong> باستخدام <strong>رمز تدوين Big O</strong> الصارم.</p><p>المبدأ الرياضي والبرمجي المستخدم هنا (علم التركيبات والهندسة الحسابية) له تطبيقات حيوية في العالم الحقيقي:</p><ul><li><strong>تصميم رقاقات أشباه الموصلات والدوائر الإلكترونية (Microchip Design):</strong> تتقاطع ملايين المسارات والخطوط الكهربائية الدقيقة على شريحة السيليكون عند تصميم المعالجات، وتُستخدم هذه الخوارزميات لضمان كفاءة الشريحة وسرعتها.</li><li><strong>الشبكات وأنظمة الاتصالات (Network Topology):</strong> حساب عدد المسارات المغلقة بين نقاط الاتصال أو الأبراج يساعد المهندسين في تحليل قوة الشبكة وكفاءة نقل البيانات وضمان وجود مسارات بديلة.</li><li><strong>الرسومات ثلاثية الأبعاد والألعاب (3D Computer Graphics):</strong> تتكون رسومات الألعاب من ملايين المثلثات الصغيرة، والخوارزميات فائقة السرعة هي العمود الفقري لمحركات الألعاب مثل (Unreal Engine).</li><li><strong>الأمن السيبراني والتشفير (Cryptography):</strong> بعض أنظمة التشفير المعقدة تعتمد على مسائل هندسية صعبة الحل رياضياً وسهلة التحقق برمجياً.</li></ul>`
+        seo: `<h2>حول صيغة التراكيب الهندسية التوافقيّة</h2><p>يعتمد <strong>نظام حساب المثلثات المتقدم</strong> على معادلة هندسية ثورية وعالية الأداء اكتشفها <strong>المهندس محمد أبو هنطش</strong> تم تصميمه بـ <strong>زمن تنفيذ ثابت O(1)</strong> باستخدام <strong>رمز تدوين Big O</strong> الصارم.</p><p>المبدأ الرياضي والبرمجي المستخدم هنا (علم التركيبات والهندسة الحسابية) له تطبيقات حيوية في العالم الحقيقي:</p><ul><li><strong>تصميم رقاقات أشباه الموصلات والدوائر الإلكترونية (Microchip Design):</strong> تتقاطع ملايين المسارات والخطوط الكهربائية الدقيقة على شريحة السيليكون عند تصميم المعالجات، وتُستخدم هذه الخوارزميات لضمان كفاءة الشريحة وسرعتها.</li><li><strong>الشبكات وأنظمة الاتصالات (Network Topology):</strong> حساب عدد المسارات المغلقة بين نقاط الاتصال أو الأبراج يساعد المهندسين في تحليل قوة الشبكة وكفاءة نقل البيانات وضمان وجود مسارات بديلة.</li><li><strong>الرسومات ثلاثية الأبعاد والألعاب (3D Computer Graphics):</strong> تتكون رسومات الألعاب من ملايين المثلثات الصغيرة، والخوارزميات فائقة السرعة هي العمود القبلي لمحركات الألعاب مثل (Unreal Engine).</li><li><strong>الأمن السيبراني والتشفير (Cryptography):</strong> بعض أنظمة التشفير المعقدة تعتمد على مسائل هندسية صعبة الحل رياضياً وسهلة التحقق برمجياً.</li></ul>`
     },
     ur: {
         title: "📐 ایڈوانسڈ ٹرائینگل کاؤنٹر", subtitle: "اگلی نسل کا ہندسی حسابی نظام",
@@ -301,7 +304,7 @@ const translations = {
         captchaHeader: "<i class='fa-solid fa-shield-halved'></i> سیکیورٹی تصدیق درکار ہے",
         captchaPlaceholder: "ٹوکن یہاں ٹائپ کریں",
         bypassText: "حد بائی پاس کریں / ڈویلپر سے رابطہ کریں",
-        seo: `<h2>ہندسی امتزاج کی تشکیل کے بارے میں</h2><p><strong>ایڈوانسڈ ٹرائینگل کیلکولیشن سسٹم</strong> انجینئر <strong>محمد ابو ہنطش</strong> کی دریافت کردہ ایک انقلابی ہندسی مساوات کا استعمال کرتا ہے۔ اسے سخت <strong>Big O Notation</strong> کے ساتھ <strong>Constant Time Complexity O(1)</strong> پر ڈیزائن کیا گیا ہے۔</p><p>اس کے حقیقی دنیا میں اہم ترین اطلاقات ہیں:</p><ul><li><strong>مائیکرو چِپ ڈیزائن:</strong> پروسیسر چپس (CPUs) پر لائنوں کا باہمی ملاپ۔ رفتار کو یقینی بنانے کے لیے الگورتھم بند علاقوں کا حساب لگاتے ہیں۔</li><li><strong>نیٹ ورک ٹوپولوجی:</strong> ٹاورز کے درمیان مثلث راستوں کا حساب لگانے سے نیٹ ورک کی پائیداری محفوظ رہتی ہے۔</li><li><strong>3D کمپیوٹر گرافکس اور گیمز:</strong> Unreal Engine جیسے جدید انجنوں کی بنیاد تیز ہندسی میش پروسیسنگ پر ہوتی ہے۔</li><li><strong>سائبر سیکیورٹی اور کرپٹوگرافی:</strong> پیچیدہ سسٹمز مشکل ہندسی پہیلیوں پر انحصار کرتے ہیں۔</li></ul>`
+        seo: `<h2>ہندسی امتزاج کی تشکیل کے بارے میں</h2><p><strong>ایڈوانسڈ ٹرائینگل کیلکولیشن سسٹم</strong> انجینئر <strong>محمد ابو ہنطش</strong> کی دریافت کردہ ایک انقلابی ہندسی مساوات کا استعمال کرتا ہے۔ اسے سخت <strong>Big O Notation</strong> کے سانحه <strong>Constant Time Complexity O(1)</strong> پر ڈیزائن کیا گیا ہے۔</p><p>اس کے حقیقی دنیا میں اہم ترین اطلاقات ہیں:</p><ul><li><strong>مائیکرو چِپ ڈیزائن:</strong> پروسیسر چپس (CPUs) پر لائنوں کا باہمی ملاپ۔ رفتار کو یقینی بنانے کے لیے الگورتھم بند علاقوں کا حساب لگاتے ہیں۔</li><li><strong>نیٹ ورک ٹوپولوجی:</strong> ٹاورز کے درمیان مثلث راستوں کا حساب لگانے سے نیٹ ورک کی پائیداری محفوظ رہتی ہے۔</li><li><strong>3D کمپیوٹر گرافکس اور گیمز:</strong> Unreal Engine جیسے جدید انجنوں کی بنیاد تیز ہندسی میش پروسیسنگ پر ہوتی ہے۔</li><li><strong>سائبر سیکیورٹی اور کرپٹوگرافی:</strong> پیچیدہ سسٹمز مشکل ہندسی پہیلیوں پر انحصار کرتے ہیں۔</li></ul>`
     },
     hi: {
         title: "📐 एडवांस्ड ट्रायंगल काउंटर", subtitle: "अगली पीढ़ी की ज्यामितीय गणना प्रणाली",
@@ -318,8 +321,8 @@ const translations = {
         usage: "आज की शेष कॉल: 50 में से <strong>{rem}</strong>",
         captchaHeader: "<i class='fa-solid fa-shield-halved'></i> सुरक्षा सत्यापन आवश्यक है",
         captchaPlaceholder: "टोकन यहां दर्ज करें",
-        bypassText: "सीमा बायपास करें / डेवलپر से संपर्क करें",
-        seo: `<h2>ज्यामितीय कॉम्बिनेटरिक्स फॉर्मूलेशन के बारे में</h2><p><strong>एडवांस्ड ट्रायंगल कैलकुलेशन सिस्टम</strong> इंजी. <strong>एमडी. अबू हंतश</strong> द्वारा खोजे गए एक क्रांतिकारी ज्यामितीय समीकरण का उपयोग करता है। इसे सख्त <strong>Big O Notation</strong> के साथ <strong>Constant Time Complexity O(1)</strong> पर बनाया गया है।</p><p>इसके वास्तविक दुनिया में महत्वपूर्ण अनुप्रयोग हैं:</p><ul><li><strong>माइक्रोचिप डिजाइन:</strong> प्रोसेसर चिप्स (CPUs) पर परस्पर काटने वाले ट्रैक। गति सुनिश्चित करने के लिए एल्गोरिदम बंद क्षेत्रों की गणना करते हैं।</li><li><strong>नेटवर्क टोपोलॉजी:</strong> कनेक्शन टावरों के बीच बंद त्रिकोणीय पटरियों की गणना नेटवर्क की ताकत की रक्षा करती है।</li><li><strong>3D कंप्यूटर ग्राफिक्स और गेम्स:</strong> Unreal Engine जैसे आधुनिक इंजनों की रीढ़ त्वरित त्रिकोणीय मेश प्रोसेसिंग पर निर्भर करती है।</li><li><strong>साइबर सुरक्षा और क्रिप्टोग्राफी:</strong> जटिल प्रणालियाँ जटिल ज्यामितीय पहेलियों पर भरोसा करती हैं।</li></ul>`
+        bypassText: "सीमा बायपास करें / डेवलपर से संपर्क करें",
+        seo: `<h2>ज्यामितीय कॉम्बिनेटरिक्स फॉर्मूलेशन के बारे में</h2><p><strong>एडवांस्ड ट्रायंगल केलकुलेशन सिस्टम</strong> इंजी. <strong>एमडी. अबू हंतश</strong> द्वारा खोजे गए एक क्रांतिकारी ज्यामितीय समीकरण का उपयोग करता है। इसे सख्त <strong>Big O Notation</strong> के साथ <strong>Constant Time Complexity O(1)</strong> पर बनाया गया है।</p><p>इसके वास्तविक दुनिया में महत्वपूर्ण अनुप्रयोग हैं:</p><ul><li><strong>माइक्रोचिप डिजाइन:</strong> प्रोसेसर चिप्स (CPUs) पर परस्पर काटने वाले ट्रैक। गति सुनिश्चित करने के लिए एल्गोरिदम बंद क्षेत्रों की गणना करते हैं।</li><li><strong>नेटवर्क टोपोलॉजी:</strong> कनेक्शन टावरों के बीच बंद त्रिकोणीय पटरियों की गणना नेटवर्क की ताकत की रक्षा करती है।</li><li><strong>3D कंप्यूटर ग्राफिक्स और गेम्स:</strong> Unreal Engine जैसे आधुनिक इंजनों की रीढ़ त्वरित त्रिकोणीय मेश प्रोसेसिंग पर निर्भर करती है।</li><li><strong>साइबर सुरक्षा और क्रिप्टोग्राफी:</strong> जटिल प्रणालियाँ जटिल ज्यामितीय पहेलियों पर भरोसा करती हैं।</li></ul>`
     },
     zh: {
         title: "📐 高级三角形计数器", subtitle: "次世代几何组合计算系统",
@@ -355,7 +358,7 @@ const translations = {
         captchaHeader: "<i class='fa-solid fa-shield-halved'></i> Sicherheitsüberprüfung erforderlich",
         captchaPlaceholder: "Token hier eingeben",
         bypassText: "Limit umgehen / Entwickler kontaktieren",
-        seo: `<h2>Über die Formulierung der geometrischen Kombinatorik</h2><p>Das <strong>erweiterte Dreiecksberechnungssystem</strong> nutzt eine revolutionäre, hochperformante geometrische Formulierung, die von <strong>Eng. Md. Abu Hantash</strong> entdeckt wurde. Entwickelt mit <strong>konstanter Zeitkomplexität O(1)</strong> unter Verwendung strenger <strong>Big O Notation</strong>.</p><p>Die hier verwendeten mathematischen Prinzipien haben wichtige praktische Anwendungen:</p><ul><li><strong>Mikrochip-Design:</strong> Kreuzende Spuren auf Prozessorchips (CPUs). Algorithmen berechnen geschlossene Bereiche, um die Geschwindigkeit zu gewährleisten.</li><li><strong>Netzwerktopologie:</strong> Die Berechnung geschlossener Dreiecksspuren zwischen Verbindungstürmen schützt die Netzwerkstärke.</li><li><strong>3D-Computergrafik & Spiele:</strong> Die Grundlagen moderner Engines wie der Unreal Engine hängen von einer schnellen Verarbeitung von Dreiecksnetzen ab.</li><li><strong>Cybersicherheit & Kryptographie:</strong> Komplexere Systeme basieren auf komplexeren geometrischen Rätseln.</li></ul>`
+        seo: `<h2>Über die Formulierung der geometrischen Kombinatorik</h2><p>Das <strong>erweiterte Dreiecksberechnungssystem</strong> nutzt eine revolutionäre, hochperformante geometrische Formulierung, die von <strong>Eng. Md. Abu Hantash</strong> entdeckt wurde. Entwickelt mit <strong>konstanter Zeitkomplexität O(1)</strong> unter Verwendung strenger <strong>Big O Notation</strong>.</p><p>Die hier verwendeten mathematischen Prinzipien haben wichtige praktische Anwendungen:</p><ul><li><strong>Mikrochip-Design:</strong> Kreuzende Spuren auf Prozessorchips (CPUs). Algorithmen berechnen geschlossene Bereiche, um die Geschwindigkeit zu gewährleisten.</li><li><strong>Netzwerktopologie:</strong> Die Berechnung geschlossener Dreiecksspuren zwischen Verbindungstürmen schützt die Netzwerkstärke.</li><li><strong>3D-Computergrafik & Spiele:</strong> Die Grundlagen modernen Engines wie der Unreal Engine hängen von einer schnellen Verarbeitung von Dreiecksnetzen ab.</li><li><strong>Cybersicherheit & Kryptographie:</strong> Komplexere Systeme basieren auf komplexeren geometrischen Rätseln.</li></ul>`
     },
     ja: {
         title: "📐 高度な三角形カウンター", subtitle: "次世代幾何学的組合せ論計算システム",
@@ -409,17 +412,17 @@ const translations = {
         captchaHeader: "<i class='fa-solid fa-shield-halved'></i> Vérification de sécurité requise",
         captchaPlaceholder: "Tapez le jeton ici",
         bypassText: "Contourner la limite / Contacter le développeur",
-        seo: `<h2>À propos de la formulation de la combinatoire géométrique</h2><p>Le <strong>système avancé de calcul de triangles</strong> utilise une formulation géométrique révolutionnaire et performante découverte par <strong>Eng. Md. Abu Hantash</strong>. Construit avec une <strong>complexité temporelle constante O(1)</strong> en utilisant la notation stricte <strong>Big O</strong>.</p><p>Les principes mathématiques utilisés ici ont des applications vitales dans le monde réel :</p><ul><li><strong>Conception de puces électroniques :</strong> Pistes s'intersectant sur les puces de processeur (CPU). Les algorithmes calculent les zones fermées pour garantir la vitesse.</li><li><strong>Topologie du réseau :</strong> Le calcul des pistes triangulaires fermées entre les tours de connexion protège la force du réseau.</li><li><strong>Graphismes informatiques 3D & Jeux :</strong> Les piliers des moteurs modernes comme Unreal Engine dépendent d'un traitement rapide des maillages triangulaires.</li><li><strong>Cybersécurité & Cryptographie :</strong> Les systèmes complexes reposent sur des énigmes géométriques complexes.</li></ul>`
+        seo: `<h2>À propos de la formulation de la combinatoire géométrique</h2><p>Le <strong>système avancé de calcul de triangles</strong> utilise une formulation géométrique révolutionnaire et performante découverte par <strong>Eng. Md. Abu Hantash</strong>. Construit avec une <strong>complexité temporelle constante O(1)</strong> en utilisant la notation stricte <strong>Big O</strong>.</p><p>Les principes mathématiques utilisés ici ont des applications vitales dans le monde réel :</p><ul><li><strong>Conception de puces électroniques :</strong> Pistes s'intersectant sur les puces de processeur (CPU). Les algorithmes calculent les zones fermées para garantir la vitesse.</li><li><strong>Topologie du réseau :</strong> Le calcul des pistes triangulaires fermées entre les tours de connexion protège la force du réseau.</li><li><strong>Graphismes informatiques 3D & Jeux :</strong> Les piliers des moteurs modernes comme Unreal Engine dépendent d'un traitement rapide des maillages triangulaires.</li><li><strong>Cybersécurité & Cryptographie :</strong> Les systèmes complexes reposent sur des énigmes géométriques complexes.</li></ul>`
     },
     es: {
-        title: "📐 Contador de Triángulos Avanzado", subtitle: "Sistema de Cálculo de Combinatoria Geométrica de Próxima Generación",
+        title: "📐 Contador de Triángulos Avanzado", subtitle: "Sistema de Cálculo de Combinatoria Geométrica de Próxima Generation",
         v1: "Líneas desde el Vértice 1", v2: "Líneas desde el Vértice 2", v3: "Líneas desde el Vértice 3", p: "Intersecciones Triples (P)",
         btn: "Calcular Total de Triángulos", timer: "Si es la primera vez, espere (<strong id='secondsCount'>25</strong>s)...",
         resultTitle: "Total de Triángulos Formados", executions: "Ejecuciones Totales:", times: "veces", guideTitle: "Guía de Entrada Geométrica",
         g1: "<strong>Vértices:</strong> Cuente las líneas trazadas comenzando desde cada esquina y terminando en el lado de la base opuesto.",
         g2: "<strong>Punto P:</strong> Cuente solo los nodos interiores donde exactamente tres líneas internas se cruzan en un solo punto.",
         g3: "<strong>Smart Auto:</strong> La ecuación matemática clasifica automáticamente las entradas entre bastidores para mantener la precisión.",
-        author: "Algoritmo Inventado por: Eng. Md. Abu Hantash", copyright: "Formulación innovadora de combinatoria geométrica © 2026. Todos los derechos reservados.",
+        author: "Algoritmo Inventado por: Eng. Md. Abu Hantash", copyright: "Formulación innovante de combinatoria geométrica © 2026. Todos los derechos reservados.",
         email: "Envíame un correo electrónico", footer: "Sistema de Cálculo en la Nube Seguro • Impulsado por Flask, Render & Google Analytics",
         valError: "Error de validación: ¡Todos los campos son obligatorios! Por favor complete todas las variables.",
         invError: "¡Entrada inválida! Por favor ingrese solo números enteros positivos (sin decimales ni símbolos).", connError: "Error de conexión: No se pudo conectar con la nube de cálculo segura.",
@@ -427,14 +430,13 @@ const translations = {
         captchaHeader: "<i class='fa-solid fa-shield-halved'></i> Se requiere verificación de seguridad",
         captchaPlaceholder: "Escriba el token aquí",
         bypassText: "Bypass de límite / Contactar desarrollador",
-        seo: `<h2>Acerca de la formulación de combinatoria geométrica</h2><p>El <strong>Sistema Avanzado de Cálculo de Triángulos</strong> utiliza una formulación geométrica revolucionaria y de alto rendimiento descubierta por <strong>Eng. Md. Abu Hantash</strong>. Construido con <strong>Complejidad Temporal Constante O(1)</strong> utilizando la notación estricta <strong>Big O</strong>.</p><p>Los principes matemáticos utilizados aquí tienen aplicaciones vitales en el mundo real:</p><ul><li><strong>Diseño de microchips:</strong> Pistas intersecadas en chips de procesadores (CPU). Los algoritmos calculan áreas cerradas para asegurar la velocidad.</li><li><strong>Topología de red:</strong> El cálculo de pistas triangulares cerradas entre torres de conexión protege la fuerza de la red.</li><li><strong>Gráficos de computadora 3D y juegos:</strong> La columna vertebral de los motores modernos como Unreal Engine depende de un procesamiento rápido de malla triangular.</li><li><strong>Ciberseguridad y criptografía:</strong> Los sistemas complejos se basan en acertijos geométricos complexes.</li></ul>`
+        seo: `<h2>Acerca de la formulación de combinatoria geométrica</h2><p>El <strong>Sistema Avanzado de Cálculo de Triángulos</strong> utiliza una formulación geométrica revolucionaria y de alto rendimiento descubierta por <strong>Eng. Md. Abu Hantash</strong>. Construido con <strong>Complejidad Temporal Constante O(1)</strong> utilizando la notación estricta <strong>Big O</strong>.</p><p>Los principes matemáticos utilizados aquí tienen aplicaciones vitales en el mundo real:</p><ul><li><strong>Diseño de microchips:</strong> Pistas intersecadas en chips de procesadores (CPU). Los algoritmos calculan áreas cerradas para asegurar la velocidad.</li><li><strong>Topología de red:</strong> El cálculo de pistas triangulares cerradas entre torres de conexión protege la fuerza de la red.</li><li><strong>Gráficos de computadora 3D y juegos:</strong> La columna vertebral de los motores modernos como Unreal Engine depende de un procesamiento rápido de malla triangular.</li><li><strong>Ciberseguridad y criptografía:</strong> Los sistemas complejos se basan en acertijos geométricos complejos.</li></ul>`
     }
 };
+
 function formatLargeNumberRaw(numStr) {
     let str = numStr.toString().trim();
-    if (!str.toLowerCase().includes('e')) {
-        return str;
-    }
+    if (!str.toLowerCase().includes('e')) return str;
     
     let parts = str.toLowerCase().split('e');
     let base = parts[0];
@@ -443,9 +445,7 @@ function formatLargeNumberRaw(numStr) {
     if (isNaN(exp) || exp <= 0) return str;
     
     let dotIdx = base.indexOf('.');
-    if (dotIdx === -1) {
-        return base + '0'.repeat(exp);
-    }
+    if (dotIdx === -1) return base + '0'.repeat(exp);
     
     let left = base.substring(0, dotIdx);
     let right = base.substring(dotIdx + 1);
@@ -464,17 +464,11 @@ function adjustResultFontSize() {
     const textLength = resultElement.innerText.trim().length;
     resultElement.style.fontSize = "42px";
     
-    if (textLength > 30) {
-        resultElement.style.fontSize = "13px";
-    } else if (textLength > 20) {
-        resultElement.style.fontSize = "16px";
-    } else if (textLength > 15) {
-        resultElement.style.fontSize = "20px";
-    } else if (textLength > 10) {
-        resultElement.style.fontSize = "26px";
-    } else if (textLength > 6) {
-        resultElement.style.fontSize = "34px";
-    }
+    if (textLength > 30) resultElement.style.fontSize = "13px";
+    else if (textLength > 20) resultElement.style.fontSize = "16px";
+    else if (textLength > 15) resultElement.style.fontSize = "20px";
+    else if (textLength > 10) resultElement.style.fontSize = "26px";
+    else if (textLength > 6) resultElement.style.fontSize = "34px";
 }
 
 function generateLocalCaptchaToken() {
@@ -487,6 +481,7 @@ function generateLocalCaptchaToken() {
     const box = document.getElementById('captchaBoxText');
     if (box) box.innerText = token;
 }
+
 function changeLanguage(lang) {
     currentLang = lang;
     const t = translations[lang] || translations['en'];
@@ -533,7 +528,8 @@ function updateUsageBadgeText() {
 
 async function fetchUsageStatus() {
     try {
-        let response = await fetch('https://triangle-counter.onrender.com/');
+        // FIX: Directed endpoint correctly to the API route /api/usage-status to avoid html parse crash
+        let response = await fetch(`${SERVER_BASE_URL}/api/usage-status`);
         let data = await response.json();
         if (data.success) {
             storedRemainingCalls = data.remaining_calls;
@@ -615,7 +611,6 @@ async function calculateTriangles() {
     }
 
     const strictIntegerRegex = /^\d+$/;
-
     if (!strictIntegerRegex.test(v1) || !strictIntegerRegex.test(v2) || !strictIntegerRegex.test(v3) || !strictIntegerRegex.test(p_val)) {
         errorText.innerText = t.invError;
         errorBox.style.display = 'flex';
@@ -632,16 +627,14 @@ async function calculateTriangles() {
         timeLeft--;
         const liveSpan = document.getElementById('secondsCount');
         if (liveSpan) {
-            if (timeLeft >= 0) {
-                liveSpan.innerText = timeLeft;
-            } else {
-                liveSpan.innerText = "0"; 
-            }
+            if (timeLeft >= 0) liveSpan.innerText = timeLeft;
+            else liveSpan.innerText = "0"; 
         }
     }, 1000);
 
     try {
-        let response = await fetch('https://triangle-server.onrender.com/calculate', {
+        // FIX: Unified destination pointer leveraging SERVER_BASE_URL structural constant
+        let response = await fetch(`${SERVER_BASE_URL}/calculate`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ 
